@@ -1,9 +1,7 @@
-// next.config.ts
-import type { NextConfig } from "next";
+﻿import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  eslint: { ignoreDuringBuilds: true },      // ⬅ skip ESLint on build
-  typescript: { ignoreBuildErrors: true },   // ⬅ optional: skip TS errors on build
+  // keep it minimal; add your own options here if you had any
 };
 
 export default nextConfig;

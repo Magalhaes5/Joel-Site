@@ -61,7 +61,7 @@ export default function Home() {
 
   return (
     <>
-      {/* HERO (kept static so the reveal tests are obvious when you scroll) */}
+      {/* HERO */}
       <section className={styles.hero} aria-label="City drone video">
         <div className={styles.videoWrap}>
           <video
@@ -73,6 +73,7 @@ export default function Home() {
             playsInline
             autoPlay
             loop
+            preload="auto"
           />
           <div className={styles.scrim} />
         </div>
@@ -82,10 +83,16 @@ export default function Home() {
           <p className={styles.heroSubtitle}>{t("home_subtitle")}</p>
 
           <div className={styles.ctas}>
-            <a href={`/#certificate?lang=${lang}`} className={`${styles.button} ${styles.primary}`}>
+            <a
+              href={`/#certificate?lang=${lang}`}
+              className={`${styles.button} ${styles.primary}`}
+            >
               {t("cta_certificate")}
             </a>
-            <a href={`/contact?lang=${lang}`} className={`${styles.button} ${styles.secondary}`}>
+            <a
+              href={`/contact?lang=${lang}`}
+              className={`${styles.button} ${styles.secondary}`}
+            >
               {t("cta_contact")}
             </a>
           </div>
@@ -96,25 +103,7 @@ export default function Home() {
             onClick={togglePlay}
             aria-label={isPaused ? "Play video" : "Pause video"}
             title={isPaused ? "Play" : "Pause"}
-            style={{
-              position: "absolute",
-              left: 16,
-              bottom: 16,
-              zIndex: 5,
-              width: 44,
-              height: 44,
-              borderRadius: 9999,
-              display: "grid",
-              placeItems: "center",
-              background: "rgba(0,0,0,.55)",
-              backdropFilter: "saturate(140%) blur(6px)",
-              boxShadow: "0 8px 24px rgba(0,0,0,.35)",
-              border: "1px solid rgba(255,255,255,.12)",
-              color: "#fff",
-              transition: "transform .15s ease, background .15s ease",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1.0)")}
+            className={styles.ppBtn}
           >
             {isPaused ? (
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -173,6 +162,7 @@ export default function Home() {
               muted
               loop
               playsInline
+              preload="auto"
               style={{
                 width: "100%",
                 height: "100%",

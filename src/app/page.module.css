@@ -1,4 +1,4 @@
-/* ===== HERO ===== */
+/* ===== HERO (AS BEFORE) ===== */
 .hero {
   position: relative;
   width: 100%;
@@ -6,6 +6,7 @@
   border-radius: 18px;
   overflow: hidden;
   margin: 0 auto 28px;
+  isolation: isolate;
 }
 
 .videoWrap {
@@ -14,12 +15,23 @@
 }
 
 .video {
+  /* keep the original behavior */
+  position: absolute;          /* pins video to the hero wrapper */
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   display: block;
   filter: saturate(1.05) contrast(1.03) brightness(.9);
+  transform: translateZ(0);
+  will-change: transform;
+  image-rendering: auto;
+}
+
+/* On very tall/narrow screens, avoid excessive zoom */
+@media (max-aspect-ratio: 9/16) {
+  .video { object-fit: contain; background: #000; }
 }
 
 .scrim {
@@ -43,7 +55,6 @@
   margin: 0;
   line-height: 1.12;
   letter-spacing: -0.01em;
-  /* slightly bigger than before */
   font-size: clamp(30px, 4.6vw, 58px);
   font-weight: 800;
   color: #fff;
@@ -54,7 +65,7 @@
   margin: 4px 0 12px;
   color: rgba(255,255,255,.92);
   font-weight: 450;
-  font-size: clamp(15px, 1.65vw, 19px);   /* slightly bigger */
+  font-size: clamp(15px, 1.65vw, 19px);
   text-shadow: 0 4px 16px rgba(0,0,0,.45);
 }
 
@@ -95,23 +106,89 @@
 }
 .secondary:hover { transform: translateY(-1px) scale(1.01); }
 
-/* Play / Pause */
-.pauseBtn {
-  margin-top: 10px;
+/* Round Play / Pause control (used by your page.tsx button) */
+.ppBtn {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  z-index: 5;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  display: grid;
+  place-items: center;
   background: rgba(0,0,0,.55);
+  backdrop-filter: saturate(140%) blur(6px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.12);
   color: #fff;
-  border: 1px solid rgba(255,255,255,.18);
-  height: 36px;
-  padding: 0 14px;
-  border-radius: 18px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: background .12s ease, transform .12s ease;
+  transition: transform .15s ease, background .15s ease;
 }
-.pauseBtn:hover { background: rgba(0,0,0,.7); transform: translateY(-1px); }
+.ppBtn:hover { transform: scale(1.05); }
 
-/* ===== UTILS (kept minimal; rest of site uses your existing globals) ===== */
+/* ===== UTILS ===== */
 .section.card .ctas .button {
   height: 42px;
   border-radius: 12px;
+}
+
+/* ========================================================= */
+/* MOBILE-ONLY ENHANCEMENTS (WON'T AFFECT DESKTOP)           */
+/* ========================================================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .section.card {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: min(100%, 980px);
+  }
+}
+
+/* Small tablets / big phones */
+@media (max-width: 768px) {
+  /* Keep hero look, just adjust spacing */
+  .hero { min-height: 52vh; border-radius: 12px; margin-bottom: 20px; }
+  .ppBtn { left: 12px; bottom: 12px; }
+
+  /* BIO split → stack (only if .split2 exists in your DOM) */
+  .split2 { display: flex; flex-direction: column; gap: 18px; }
+  .photoCol { order: -1; }
+  .photoFrame { width: 100%; height: auto; display: block; }
+
+  /* CTAs */
+  .ctas { gap: 10px; }
+  .button { height: 44px; padding: 0 16px; }
+
+  /* Card padding */
+  .section.card { padding: 18px; border-radius: 16px; }
+
+  /* Lead form → 1 column (only inside #certificate) */
+  #certificate .section.card form {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  #certificate .section.card input,
+  #certificate .section.card select,
+  #certificate .section.card textarea {
+    width: 100%;
+  }
+
+  /* Listings slider (Swiper) — show ~1 card */
+  .swiper-slide { width: 86% !important; }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .hero { min-height: 48vh; border-radius: 10px; }
+
+  /* Full-width CTAs for easy tapping */
+  .ctas { width: 100%; }
+  .ctas .button { width: 100%; justify-content: center; }
+
+  .section.card { padding: 14px; }
+
+  /* Wider single slide on tiny screens */
+  .swiper-slide { width: 92% !important; }
 }

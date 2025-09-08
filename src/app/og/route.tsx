@@ -1,4 +1,4 @@
-/* Dynamic OG image for Magalhaes Joel
+/* Dynamic OG image for Magalhães Joel
    Visit /og to preview. Used by Open Graph and social shares. */
 
 import { ImageResponse } from "next/og";
@@ -6,8 +6,10 @@ import { ImageResponse } from "next/og";
 export const runtime = "edge";
 export const contentType = "image/png";
 export const size = { width: 1200, height: 630 };
+export const alt = "Magalhães Joel — Less is more";
 
-export default function og() {
+/** Next.js 15 requires a named GET handler (no default export) */
+export async function GET() {
   const { width, height } = size;
 
   return new ImageResponse(
@@ -22,7 +24,9 @@ export default function og() {
           background:
             "radial-gradient(60% 60% at 20% 20%, rgba(30,70,140,.35) 0%, rgba(0,0,0,.55) 70%), linear-gradient(180deg, #0e0f13 0%, #14213a 100%)",
           position: "relative",
-          fontFamily: "system-ui, Segoe UI, Roboto, Arial, sans-serif",
+          fontFamily:
+            "system-ui, Segoe UI, Roboto, Arial, sans-serif",
+          color: "#fff",
         }}
       >
         {/* Blue flare */}
@@ -39,7 +43,7 @@ export default function og() {
           }}
         />
 
-        <div style={{ textAlign: "center", color: "#fff", padding: "0 80px" }}>
+        <div style={{ textAlign: "center", padding: "0 80px" }}>
           <div
             style={{
               fontSize: 84,

@@ -1,0 +1,233 @@
+"use client";
+
+import { useState } from "react";
+import FadeIn from "./FadeIn";
+
+export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    businessType: "",
+    service: "",
+    budget: "",
+    message: "",
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Form submission logic would go here
+    console.log("Form submitted:", formData);
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  return (
+    <section id="contact" className="py-24 px-6">
+      <div className="max-w-5xl mx-auto">
+        {/* Header */}
+        <FadeIn>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-display mb-4">
+              Ready to build something?
+            </h2>
+            <p className="text-textMuted font-light text-lg">
+              Tell us about your project. We will get back to you within 24 hours.
+            </p>
+          </div>
+        </FadeIn>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          {/* Form - Takes 2 columns */}
+          <div className="lg:col-span-2">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Name */}
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium mb-2"
+                >
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="John Smith"
+                  required
+                  className="w-full bg-surface border border-border px-4 py-3 text-textPrimary placeholder:text-textMuted focus:border-gold focus:outline-none transition-colors"
+                />
+              </div>
+
+              {/* Email */}
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium mb-2"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="john@yourbusiness.com"
+                  required
+                  className="w-full bg-surface border border-border px-4 py-3 text-textPrimary placeholder:text-textMuted focus:border-gold focus:outline-none transition-colors"
+                />
+              </div>
+
+              {/* Business Type */}
+              <div>
+                <label
+                  htmlFor="businessType"
+                  className="block text-sm font-medium mb-2"
+                >
+                  Business Type
+                </label>
+                <select
+                  id="businessType"
+                  name="businessType"
+                  value={formData.businessType}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-surface border border-border px-4 py-3 text-textPrimary focus:border-gold focus:outline-none transition-colors"
+                >
+                  <option value="">Select...</option>
+                  <option value="restaurant">Restaurant / Café</option>
+                  <option value="wellness">Wellness / Beauty</option>
+                  <option value="retail">Retail / Shop</option>
+                  <option value="professional">Professional Services</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              {/* Service */}
+              <div>
+                <label
+                  htmlFor="service"
+                  className="block text-sm font-medium mb-2"
+                >
+                  Service
+                </label>
+                <select
+                  id="service"
+                  name="service"
+                  value={formData.service}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-surface border border-border px-4 py-3 text-textPrimary focus:border-gold focus:outline-none transition-colors"
+                >
+                  <option value="">Select...</option>
+                  <option value="website">Website Creation</option>
+                  <option value="branding">Brand & Design</option>
+                  <option value="social">Social Media</option>
+                  <option value="package">Full Package</option>
+                  <option value="unsure">Not sure yet</option>
+                </select>
+              </div>
+
+              {/* Budget */}
+              <div>
+                <label
+                  htmlFor="budget"
+                  className="block text-sm font-medium mb-2"
+                >
+                  Budget
+                </label>
+                <select
+                  id="budget"
+                  name="budget"
+                  value={formData.budget}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-surface border border-border px-4 py-3 text-textPrimary focus:border-gold focus:outline-none transition-colors"
+                >
+                  <option value="">Select...</option>
+                  <option value="500-800">€500–€800</option>
+                  <option value="800-1500">€800–€1,500</option>
+                  <option value="1500-3000">€1,500–€3,000</option>
+                  <option value="3000+">€3,000+</option>
+                  <option value="discuss">Let&apos;s discuss</option>
+                </select>
+              </div>
+
+              {/* Message */}
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium mb-2"
+                >
+                  Tell me about your project
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="What do you do, who are your customers, what do you need?"
+                  rows={5}
+                  required
+                  className="w-full bg-surface border border-border px-4 py-3 text-textPrimary placeholder:text-textMuted focus:border-gold focus:outline-none transition-colors resize-none"
+                />
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className="w-full bg-gold text-background px-8 py-4 font-medium hover:bg-goldLight transition-colors duration-200"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+
+          {/* Direct Contact Info */}
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-xl font-display mb-4">Direct Contact</h3>
+              <div className="space-y-4">
+                <div>
+                  <p className="text-sm text-textMuted font-light mb-1">
+                    Email
+                  </p>
+                  <a
+                    href="mailto:magalhaesjoel5@gmail.com"
+                    className="text-gold hover:text-goldLight transition-colors"
+                  >
+                    magalhaesjoel5@gmail.com
+                  </a>
+                </div>
+                <div>
+                  <p className="text-sm text-textMuted font-light mb-1">
+                    Location
+                  </p>
+                  <p className="text-textPrimary">Luxembourg · Switzerland</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-6 border-t border-border">
+              <p className="text-sm text-textMuted font-light leading-relaxed">
+                Prefer email? Send your project details directly and we&apos;ll
+                respond within 24 hours.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

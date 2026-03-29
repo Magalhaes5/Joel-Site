@@ -11,10 +11,12 @@ import Blog from "@/components/Blog";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import SchemaMarkup from "@/components/SchemaMarkup";
+import ScrollProgress from "@/components/ScrollProgress";
 
 export default function Home() {
   return (
     <>
+      <ScrollProgress />
       <SchemaMarkup type="home" />
       <Navigation />
       <main>

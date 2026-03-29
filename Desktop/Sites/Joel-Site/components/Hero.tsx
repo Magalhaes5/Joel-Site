@@ -1,6 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import CountUp from "./CountUp";
+import MagneticButton from "./MagneticButton";
+import TextSplit from "./TextSplit";
 
 const showcaseProjects = [
   {
@@ -82,9 +85,11 @@ export default function Hero() {
           </div>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-display mb-6 leading-tight">
-            We Don't Just Build Websites.
+            <TextSplit text="We Don't Just Build Websites." />
             <br />
-            <span className="animated-gradient-text italic">We Build Revenue Engines.</span>
+            <span className="animated-gradient-text italic">
+              <TextSplit text="We Build Revenue Engines." delay={400} />
+            </span>
           </h1>
 
           <p className="text-lg md:text-xl text-textMuted font-light mb-8 leading-relaxed max-w-xl">
@@ -124,23 +129,17 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <a
-              href="#work"
-              className="bg-gold text-background px-8 py-4 font-medium hover:bg-goldLight transition-all duration-200 text-center group"
-            >
+            <MagneticButton href="#work" className="bg-gold text-background px-8 py-4 font-medium hover:bg-goldLight transition-all duration-200 text-center group">
               <span className="inline-flex items-center gap-2">
                 Explore Our Work
                 <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </span>
-            </a>
-            <a
-              href="#contact"
-              className="border-2 border-gold text-gold px-8 py-4 font-medium hover:bg-gold hover:text-background transition-all duration-200 text-center"
-            >
+            </MagneticButton>
+            <MagneticButton href="#contact" className="border-2 border-gold text-gold px-8 py-4 font-medium hover:bg-gold hover:text-background transition-all duration-200 text-center">
               Start Your Project
-            </a>
+            </MagneticButton>
           </div>
         </div>
 
@@ -220,12 +219,16 @@ export default function Hero() {
 
           {/* Floating Stats Cards */}
           <div className="absolute -left-8 top-20 bg-cardBg border border-gold/20 px-4 py-3 rounded shadow-lg animate-float hidden lg:block">
-            <div className="text-2xl font-display text-gold">173%</div>
+            <div className="text-2xl font-display text-gold">
+              <CountUp end={173} suffix="%" />
+            </div>
             <div className="text-xs text-textMuted">Traffic Increase</div>
           </div>
 
           <div className="absolute -right-8 bottom-32 bg-cardBg border border-gold/20 px-4 py-3 rounded shadow-lg animate-float-delayed hidden lg:block">
-            <div className="text-2xl font-display text-gold">7 Days</div>
+            <div className="text-2xl font-display text-gold">
+              <CountUp end={7} suffix=" Days" />
+            </div>
             <div className="text-xs text-textMuted">Average Delivery</div>
           </div>
         </div>

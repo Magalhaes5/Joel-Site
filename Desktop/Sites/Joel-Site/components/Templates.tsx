@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import FadeIn from "./FadeIn";
+import CardTilt from "./CardTilt";
 
 type Category = "All" | "Restaurant" | "Wellness" | "Retail" | "Professional" | "Hospitality";
 
@@ -142,7 +143,8 @@ export default function Templates() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredTemplates.map((template, index) => (
             <FadeIn key={template.title} delay={index * 0.1}>
-              <div className="bg-background border border-border overflow-hidden group hover:border-gold/40 transition-all duration-300">
+              <CardTilt>
+                <div className="bg-background border border-border overflow-hidden group hover:border-gold/40 hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] transition-all duration-300">
                 {/* Template Image */}
                 <div className="relative aspect-video overflow-hidden bg-surface2">
                   <Image
@@ -198,6 +200,7 @@ export default function Templates() {
                   </div>
                 </div>
               </div>
+              </CardTilt>
             </FadeIn>
           ))}
         </div>

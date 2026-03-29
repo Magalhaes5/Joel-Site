@@ -1,5 +1,6 @@
 import Image from "next/image";
 import FadeIn from "./FadeIn";
+import CardTilt from "./CardTilt";
 
 export default function Work() {
   const projects = [
@@ -59,12 +60,13 @@ export default function Work() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* First card - full width - Miazia */}
           <FadeIn delay={0.2} className="md:col-span-2">
-            <a
-              href={projects[0].url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block group"
-            >
+            <CardTilt>
+              <a
+                href={projects[0].url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block group"
+              >
               <div className="relative aspect-video overflow-hidden bg-surface2">
                 <Image
                   src={projects[0].image}
@@ -98,17 +100,19 @@ export default function Work() {
                   ))}
                 </div>
               </div>
-            </a>
+              </a>
+            </CardTilt>
           </FadeIn>
 
           {/* Second card - La Maison Template */}
           <FadeIn delay={0.4}>
-            <a
-              href={projects[1].url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block group"
-            >
+            <CardTilt>
+              <a
+                href={projects[1].url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block group"
+              >
               <div className="relative aspect-video overflow-hidden bg-surface2">
                 <Image
                   src={projects[1].image}
@@ -142,17 +146,19 @@ export default function Work() {
                   ))}
                 </div>
               </div>
-            </a>
+              </a>
+            </CardTilt>
           </FadeIn>
 
           {/* Third card - Wellness Studio */}
           <FadeIn delay={0.6}>
-            <a
-              href={projects[2].url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block group"
-            >
+            <CardTilt>
+              <a
+                href={projects[2].url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block group"
+              >
               <div className="relative aspect-video overflow-hidden bg-surface2">
                 <Image
                   src={projects[2].image}
@@ -186,7 +192,8 @@ export default function Work() {
                   ))}
                 </div>
               </div>
-            </a>
+              </a>
+            </CardTilt>
           </FadeIn>
         </div>
       </div>

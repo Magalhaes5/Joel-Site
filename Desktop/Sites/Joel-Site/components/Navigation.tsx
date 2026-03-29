@@ -19,9 +19,7 @@ export default function Navigation() {
     { label: "Work", href: "#work" },
     { label: "Templates", href: "#templates" },
     { label: "Services", href: "#services" },
-    { label: "Marketing", href: "/marketing" },
-    { label: "Pricing", href: "#pricing" },
-    { label: "About", href: "#about" },
+    { label: "Blog", href: "/blog" },
     { label: "Contact", href: "#contact" },
   ];
 

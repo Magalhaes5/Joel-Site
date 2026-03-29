@@ -84,7 +84,7 @@ export default function Hero() {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-display mb-6 leading-tight">
             We Don't Just Build Websites.
             <br />
-            <span className="text-gold italic">We Build Revenue Engines.</span>
+            <span className="animated-gradient-text italic">We Build Revenue Engines.</span>
           </h1>
 
           <p className="text-lg md:text-xl text-textMuted font-light mb-8 leading-relaxed max-w-xl">
@@ -249,12 +249,38 @@ export default function Hero() {
           50% { transform: translateY(-15px); }
         }
 
+        @keyframes gradient-shift {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+
         .animate-float {
           animation: float 6s ease-in-out infinite;
         }
 
         .animate-float-delayed {
           animation: float-delayed 6s ease-in-out infinite 3s;
+        }
+
+        .animated-gradient-text {
+          background: linear-gradient(
+            90deg,
+            #D4AF37 0%,
+            #F4E5A7 25%,
+            #FFD700 50%,
+            #F4E5A7 75%,
+            #D4AF37 100%
+          );
+          background-size: 200% auto;
+          color: transparent;
+          -webkit-background-clip: text;
+          background-clip: text;
+          animation: gradient-shift 3s ease-in-out infinite;
+          text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
         }
       `}</style>
     </section>

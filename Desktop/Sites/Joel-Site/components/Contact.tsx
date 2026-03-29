@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef } from "react";
-import emailjs from "@emailjs/browser";
 import FadeIn from "./FadeIn";
 
 export default function Contact() {
@@ -26,24 +25,16 @@ export default function Contact() {
     setStatus({ type: null, message: "" });
 
     try {
-      // EmailJS configuration from environment variables
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+      // Using Formspree - simple form backend
+      const response = await fetch("https://formspree.io/f/xovqgqka", {
+        method: "POST",
+        body: new FormData(formRef.current!),
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
 
-      // Check if EmailJS is configured
-      if (!serviceId || !templateId || !publicKey) {
-        throw new Error("EmailJS is not configured. Please check your .env.local file.");
-      }
-
-      const result = await emailjs.sendForm(
-        serviceId,
-        templateId,
-        formRef.current!,
-        publicKey
-      );
-
-      if (result.text === "OK") {
+      if (response.ok) {
         setStatus({
           type: "success",
           message:
@@ -57,6 +48,8 @@ export default function Contact() {
           budget: "",
           message: "",
         });
+      } else {
+        throw new Error('Form submission failed');
       }
     } catch (error) {
       setStatus({
@@ -64,7 +57,7 @@ export default function Contact() {
         message:
           "Failed to send message. Please try again or email us directly at magalhaesjoel5@gmail.com",
       });
-      console.error("EmailJS error:", error);
+      console.error("Form error:", error);
     } finally {
       setIsSubmitting(false);
     }

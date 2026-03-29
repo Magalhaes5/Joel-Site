@@ -18,7 +18,7 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://jmdigitalsolutions.com'),
+  metadataBase: new URL('https://magalhaesjoel.com'),
   title: {
     default: "JM Digital Solutions | Custom Websites for Local Businesses",
     template: "%s | JM Digital Solutions",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://jmdigitalsolutions.com",
+    url: "https://magalhaesjoel.com",
     siteName: "JM Digital Solutions",
     title: "JM Digital Solutions | Custom Websites for Local Businesses",
     description: "Custom websites for restaurants, wellness spaces, and local businesses in Luxembourg & Switzerland. Built from scratch, delivered fast.",

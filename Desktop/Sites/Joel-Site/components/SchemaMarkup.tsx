@@ -8,12 +8,12 @@ export default function SchemaMarkup({ type = "home" }: SchemaMarkupProps) {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "https://jmdigitalsolutions.com/#organization",
+    "@id": "https://magalhaesjoel.com/#organization",
     name: "JM Digital Solutions",
-    url: "https://jmdigitalsolutions.com",
+    url: "https://magalhaesjoel.com",
     logo: {
       "@type": "ImageObject",
-      url: "https://jmdigitalsolutions.com/logo.png",
+      url: "https://magalhaesjoel.com/logo.png",
     },
     description:
       "Custom websites and digital marketing for restaurants, wellness spaces, and local businesses in Luxembourg and Switzerland.",
@@ -54,10 +54,10 @@ export default function SchemaMarkup({ type = "home" }: SchemaMarkupProps) {
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "@id": "https://jmdigitalsolutions.com/#business",
+    "@id": "https://magalhaesjoel.com/#business",
     name: "JM Digital Solutions",
-    image: "https://jmdigitalsolutions.com/logo.png",
-    url: "https://jmdigitalsolutions.com",
+    image: "https://magalhaesjoel.com/logo.png",
+    url: "https://magalhaesjoel.com",
     telephone: "+352-621-XXX-XXX",
     email: "hello@jmdigitalsolutions.com",
     priceRange: "€€",
@@ -91,10 +91,10 @@ export default function SchemaMarkup({ type = "home" }: SchemaMarkupProps) {
   const webDesignService = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": "https://jmdigitalsolutions.com/#webdesign",
+    "@id": "https://magalhaesjoel.com/#webdesign",
     serviceType: "Web Design & Development",
     provider: {
-      "@id": "https://jmdigitalsolutions.com/#organization",
+      "@id": "https://magalhaesjoel.com/#organization",
     },
     areaServed: [
       {
@@ -144,10 +144,10 @@ export default function SchemaMarkup({ type = "home" }: SchemaMarkupProps) {
   const marketingService = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": "https://jmdigitalsolutions.com/marketing#service",
+    "@id": "https://magalhaesjoel.com/marketing#service",
     serviceType: "Digital Marketing Services",
     provider: {
-      "@id": "https://jmdigitalsolutions.com/#organization",
+      "@id": "https://magalhaesjoel.com/#organization",
     },
     areaServed: [
       {
@@ -206,7 +206,7 @@ export default function SchemaMarkup({ type = "home" }: SchemaMarkupProps) {
     "@context": "https://schema.org",
     "@type": "Review",
     itemReviewed: {
-      "@id": "https://jmdigitalsolutions.com/#business",
+      "@id": "https://magalhaesjoel.com/#business",
     },
     reviewRating: {
       "@type": "Rating",
@@ -226,19 +226,19 @@ export default function SchemaMarkup({ type = "home" }: SchemaMarkupProps) {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://jmdigitalsolutions.com/#website",
-    url: "https://jmdigitalsolutions.com",
+    "@id": "https://magalhaesjoel.com/#website",
+    url: "https://magalhaesjoel.com",
     name: "JM Digital Solutions",
     description:
       "Custom websites and digital marketing for local businesses in Europe",
     publisher: {
-      "@id": "https://jmdigitalsolutions.com/#organization",
+      "@id": "https://magalhaesjoel.com/#organization",
     },
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: "https://jmdigitalsolutions.com/search?q={search_term_string}",
+        urlTemplate: "https://magalhaesjoel.com/search?q={search_term_string}",
       },
       "query-input": "required name=search_term_string",
     },
@@ -252,13 +252,13 @@ export default function SchemaMarkup({ type = "home" }: SchemaMarkupProps) {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://jmdigitalsolutions.com",
+        item: "https://magalhaesjoel.com",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Marketing Services",
-        item: "https://jmdigitalsolutions.com/marketing",
+        item: "https://magalhaesjoel.com/marketing",
       },
     ],
   } : null;

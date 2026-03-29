@@ -17,13 +17,13 @@ const showcaseProjects = [
   },
   {
     name: "Café Moderne",
-    image: "/Gemini_Generated_Image_c1f57tc1f57tc1f5.png",
+    image: "/Gemini_Generated_Image_c1f57tc1f57tc1f5.jpg",
     tags: ["Coffee Shop", "Custom Cursor", "Events"],
     color: "#6F4E37"
   },
   {
     name: "Miazia Restaurant",
-    image: "/Gemini_Generated_Image_beaulpbeaulpbeau.png",
+    image: "/Gemini_Generated_Image_beaulpbeaulpbeau.jpg",
     tags: ["Restaurant", "Interactive Menu", "Authentic Vibe"],
     color: "#8B4513",
     url: "/miazia-preloader.html"

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Block Clock - Loading</title>
+    <style>
+        * {
+            border: 0;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at center, transparent, #000 95%),
+                linear-gradient(#444 0.1em, transparent 0) 0 0 / 1em 1em,
+                linear-gradient(90deg, #444 0.1em, #000 0) 0 0 / 1em 1em;
+            font-size: 20px;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container, .surface, .block, .block-outer, .block-inner {
+            transform-style: preserve-3d;
+        }
+
+        .container, .block, .digit {
+            position: absolute;
+        }
+
+        .container {
+            animation: bounce 2s cubic-bezier(0.4, 0.1, 0.6, 0.9) infinite;
+            display: flex;
+            margin: auto;
+            overflow: hidden;
+            top: 0; right: 0; bottom: 0; left: 0;
+            width: 29.7em;
+            height: 10em;
+            perspective: 800px;
+        }
+
+        .surface {
+            animation: tilt 2s -1.5s cubic-bezier(0.4, 0.1, 0.6, 0.9) infinite;
+            display: block;
+            width: 27em;
+            height: 1em;
+            margin: auto;
+            transform: translateY(2.5em) rotateX(105deg) rotateZ(0deg);
+            will-change: transform;
+        }
+
+        .block { bottom: 0; }
+
+        .block-inner div {
+            background-color: #74d447;
+        }
+
+        .block-inner > div {
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            position: absolute;
+            width: 1em;
+            height: 1em;
+        }
+
+        .block-inner .top:before,
+        .block-inner .bottom:before,
+        .block-inner .left:before,
+        .block-inner .right:before {
+            background-color: #000;
+            content: "";
+            width: 100%;
+            height: 100%;
+        }
+
+        .block-inner .top:before,
+        .block-inner .bottom:before { opacity: 0.2; }
+
+        .block-inner .left:before,
+        .block-inner .right:before { opacity: 0.4; }
+
+        .block-outer, .block-inner {
+            position: relative;
+            width: 1em;
+        }
+
+        .block-outer { transition: transform 0.3s; }
+        .block-inner { transform: rotateX(-90deg) translateZ(1em); }
+        .back { transform: translateZ(-1em) rotateY(180deg); }
+        .left {
+            transform-origin: center left;
+            transform: rotateY(270deg) translateX(-1em);
+        }
+        .right { transform-origin: top right; }
+        .top, .bottom { transform-origin: top center; }
+
+        .block-inner .top, .block-inner .bottom {
+            width: 0.8em;
+            height: 0.8em;
+        }
+        .block-inner .top { transform: rotateX(-90deg) translateY(-0.4em); }
+        .block-inner .bottom { transform: rotateX(-90deg) translateY(-0.4em) translateZ(0.8em); }
+        .block-inner .front, .block-inner .back {
+            width: 0.8em;
+            height: 0.8em;
+        }
+        .block-inner .front { transform: translateZ(0.4em); }
+        .block-inner .left, .block-inner .right {
+            width: 0.8em;
+            height: 0.8em;
+        }
+        .block-inner .right { transform: rotateY(-270deg) translate3d(1em, 0, 0.2em); }
+
+        /* Block positions - Hour tens */
+        .b1 { transform: translate3d(0.4em, -1.4em, 4.9em); }
+        .b2 { transform: translate3d(1.3em, -1.4em, 4.9em); }
+        .b3 { transform: translate3d(2.2em, -1.4em, 4.9em); }
+        .b4 { transform: translate3d(0.4em, -1.4em, 3.9em); }
+        .b5 { transform: translate3d(1.3em, -1.4em, 3.9em); }
+        .b6 { transform: translate3d(2.2em, -1.4em, 3.9em); }
+        .b7 { transform: translate3d(0.4em, -1.4em, 2.9em); }
+        .b8 { transform: translate3d(1.3em, -1.4em, 2.9em); }
+        .b9 { transform: translate3d(2.2em, -1.4em, 2.9em); }
+        .b10 { transform: translate3d(0.4em, -1.4em, 1.9em); }
+        .b11 { transform: translate3d(1.3em, -1.4em, 1.9em); }
+        .b12 { transform: translate3d(2.2em, -1.4em, 1.9em); }
+        .b13 { transform: translate3d(0.4em, -1.4em, 0.9em); }
+        .b14 { transform: translate3d(1.3em, -1.4em, 0.9em); }
+        .b15 { transform: translate3d(2.2em, -1.4em, 0.9em); }
+
+        /* Hour ones */
+        .b16 { transform: translate3d(4em, -1.4em, 4.9em); }
+        .b17 { transform: translate3d(4.9em, -1.4em, 4.9em); }
+        .b18 { transform: translate3d(5.8em, -1.4em, 4.9em); }
+        .b19 { transform: translate3d(4em, -1.4em, 3.9em); }
+        .b20 { transform: translate3d(4.9em, -1.4em, 3.9em); }
+        .b21 { transform: translate3d(5.8em, -1.4em, 3.9em); }
+        .b22 { transform: translate3d(4em, -1.4em, 2.9em); }
+        .b23 { transform: translate3d(4.9em, -1.4em, 2.9em); }
+        .b24 { transform: translate3d(5.8em, -1.4em, 2.9em); }
+        .b25 { transform: translate3d(4em, -1.4em, 1.9em); }
+        .b26 { transform: translate3d(4.9em, -1.4em, 1.9em); }
+        .b27 { transform: translate3d(5.8em, -1.4em, 1.9em); }
+        .b28 { transform: translate3d(4em, -1.4em, 0.9em); }
+        .b29 { transform: translate3d(4.9em, -1.4em, 0.9em); }
+        .b30 { transform: translate3d(5.8em, -1.4em, 0.9em); }
+
+        /* Colon */
+        .b31 { transform: translate3d(7.6em, -1.4em, 3.9em); }
+        .b32 { transform: translate3d(7.6em, -1.4em, 1.9em); }
+
+        /* Minute tens */
+        .b33 { transform: translate3d(9.4em, -1.4em, 4.9em); }
+        .b34 { transform: translate3d(10.3em, -1.4em, 4.9em); }
+        .b35 { transform: translate3d(11.2em, -1.4em, 4.9em); }
+        .b36 { transform: translate3d(9.4em, -1.4em, 3.9em); }
+        .b37 { transform: translate3d(10.3em, -1.4em, 3.9em); }
+        .b38 { transform: translate3d(11.2em, -1.4em, 3.9em); }
+        .b39 { transform: translate3d(9.4em, -1.4em, 2.9em); }
+        .b40 { transform: translate3d(10.3em, -1.4em, 2.9em); }
+        .b41 { transform: translate3d(11.2em, -1.4em, 2.9em); }
+        .b42 { transform: translate3d(9.4em, -1.4em, 1.9em); }
+        .b43 { transform: translate3d(10.3em, -1.4em, 1.9em); }
+        .b44 { transform: translate3d(11.2em, -1.4em, 1.9em); }
+        .b45 { transform: translate3d(9.4em, -1.4em, 0.9em); }
+        .b46 { transform: translate3d(10.3em, -1.4em, 0.9em); }
+        .b47 { transform: translate3d(11.2em, -1.4em, 0.9em); }
+
+        /* Minute ones */
+        .b48 { transform: translate3d(13em, -1.4em, 4.9em); }
+        .b49 { transform: translate3d(13.9em, -1.4em, 4.9em); }
+        .b50 { transform: translate3d(14.8em, -1.4em, 4.9em); }
+        .b51 { transform: translate3d(13em, -1.4em, 3.9em); }
+        .b52 { transform: translate3d(13.9em, -1.4em, 3.9em); }
+        .b53 { transform: translate3d(14.8em, -1.4em, 3.9em); }
+        .b54 { transform: translate3d(13em, -1.4em, 2.9em); }
+        .b55 { transform: translate3d(13.9em, -1.4em, 2.9em); }
+        .b56 { transform: translate3d(14.8em, -1.4em, 2.9em); }
+        .b57 { transform: translate3d(13em, -1.4em, 1.9em); }
+        .b58 { transform: translate3d(13.9em, -1.4em, 1.9em); }
+        .b59 { transform: translate3d(14.8em, -1.4em, 1.9em); }
+        .b60 { transform: translate3d(13em, -1.4em, 0.9em); }
+        .b61 { transform: translate3d(13.9em, -1.4em, 0.9em); }
+        .b62 { transform: translate3d(14.8em, -1.4em, 0.9em); }
+
+        /* Colon */
+        .b63 { transform: translate3d(17.4em, -1.4em, 3.9em); }
+        .b64 { transform: translate3d(17.4em, -1.4em, 1.9em); }
+
+        /* Second tens */
+        .b65 { transform: translate3d(19.2em, -1.4em, 4.9em); }
+        .b66 { transform: translate3d(20.1em, -1.4em, 4.9em); }
+        .b67 { transform: translate3d(21em, -1.4em, 4.9em); }
+        .b68 { transform: translate3d(19.2em, -1.4em, 3.9em); }
+        .b69 { transform: translate3d(20.1em, -1.4em, 3.9em); }
+        .b70 { transform: translate3d(21em, -1.4em, 3.9em); }
+        .b71 { transform: translate3d(19.2em, -1.4em, 2.9em); }
+        .b72 { transform: translate3d(20.1em, -1.4em, 2.9em); }
+        .b73 { transform: translate3d(21em, -1.4em, 2.9em); }
+        .b74 { transform: translate3d(19.2em, -1.4em, 1.9em); }
+        .b75 { transform: translate3d(20.1em, -1.4em, 1.9em); }
+        .b76 { transform: translate3d(21em, -1.4em, 1.9em); }
+        .b77 { transform: translate3d(19.2em, -1.4em, 0.9em); }
+        .b78 { transform: translate3d(20.1em, -1.4em, 0.9em); }
+        .b79 { transform: translate3d(21em, -1.4em, 0.9em); }
+
+        /* Second ones */
+        .b80 { transform: translate3d(22.6em, -1.4em, 4.9em); }
+        .b81 { transform: translate3d(23.5em, -1.4em, 4.9em); }
+        .b82 { transform: translate3d(24.4em, -1.4em, 4.9em); }
+        .b83 { transform: translate3d(22.6em, -1.4em, 3.9em); }
+        .b84 { transform: translate3d(23.5em, -1.4em, 3.9em); }
+        .b85 { transform: translate3d(24.4em, -1.4em, 3.9em); }
+        .b86 { transform: translate3d(22.6em, -1.4em, 2.9em); }
+        .b87 { transform: translate3d(23.5em, -1.4em, 2.9em); }
+        .b88 { transform: translate3d(24.4em, -1.4em, 2.9em); }
+        .b89 { transform: translate3d(22.6em, -1.4em, 1.9em); }
+        .b90 { transform: translate3d(23.5em, -1.4em, 1.9em); }
+        .b91 { transform: translate3d(24.4em, -1.4em, 1.9em); }
+        .b92 { transform: translate3d(22.6em, -1.4em, 0.9em); }
+        .b93 { transform: translate3d(23.5em, -1.4em, 0.9em); }
+        .b94 { transform: translate3d(24.4em, -1.4em, 0.9em); }
+
+        /* Digit display - position 1 (hour tens) */
+        ._0:nth-of-type(1) ~ .surface .b5 .block-outer,
+        ._0:nth-of-type(1) ~ .surface .b8 .block-outer,
+        ._0:nth-of-type(1) ~ .surface .b11 .block-outer { transform: translate3d(-1em, 0, 0); }
+
+        ._1:nth-of-type(1) ~ .surface .b1 .block-outer,
+        ._1:nth-of-type(1) ~ .surface .b4 .block-outer,
+        ._1:nth-of-type(1) ~ .surface .b7 .block-outer,
+        ._1:nth-of-type(1) ~ .surface .b10 .block-outer,
+        ._1:nth-of-type(1) ~ .surface .b13 .block-outer { transform: translate3d(2em, 0, 0); }
+        ._1:nth-of-type(1) ~ .surface .b2 .block-outer,
+        ._1:nth-of-type(1) ~ .surface .b5 .block-outer,
+        ._1:nth-of-type(1) ~ .surface .b8 .block-outer,
+        ._1:nth-of-type(1) ~ .surface .b11 .block-outer,
+        ._1:nth-of-type(1) ~ .surface .b14 .block-outer { transform: translate3d(1em, 0, 0); }
+
+        ._2:nth-of-type(1) ~ .surface .b4 .block-outer { transform: translate3d(2em, 0, 0); }
+        ._2:nth-of-type(1) ~ .surface .b5 .block-outer { transform: translate3d(1em, 0, 0); }
+        ._2:nth-of-type(1) ~ .surface .b11 .block-outer { transform: translate3d(-1em, 0, 0); }
+        ._2:nth-of-type(1) ~ .surface .b12 .block-outer { transform: translate3d(-2em, 0, 0); }
+
+        /* Digit display - position 2 (hour ones) - offset +15 */
+        ._0:nth-of-type(2) ~ .surface .b20 .block-outer,
+        ._0:nth-of-type(2) ~ .surface .b23 .block-outer,
+        ._0:nth-of-type(2) ~ .surface .b26 .block-outer { transform: translate3d(-1em, 0, 0); }
+
+        ._1:nth-of-type(2) ~ .surface .b16 .block-outer,
+        ._1:nth-of-type(2) ~ .surface .b19 .block-outer,
+        ._1:nth-of-type(2) ~ .surface .b22 .block-outer,
+        ._1:nth-of-type(2) ~ .surface .b25 .block-outer,
+        ._1:nth-of-type(2) ~ .surface .b28 .block-outer { transform: translate3d(2em, 0, 0); }
+        ._1:nth-of-type(2) ~ .surface .b17 .block-outer,
+        ._1:nth-of-type(2) ~ .surface .b20 .block-outer,
+        ._1:nth-of-type(2) ~ .surface .b23 .block-outer,
+        ._1:nth-of-type(2) ~ .surface .b26 .block-outer,
+        ._1:nth-of-type(2) ~ .surface .b29 .block-outer { transform: translate3d(1em, 0, 0); }
+
+        ._2:nth-of-type(2) ~ .surface .b19 .block-outer { transform: translate3d(2em, 0, 0); }
+        ._2:nth-of-type(2) ~ .surface .b20 .block-outer { transform: translate3d(1em, 0, 0); }
+        ._2:nth-of-type(2) ~ .surface .b26 .block-outer { transform: translate3d(-1em, 0, 0); }
+        ._2:nth-of-type(2) ~ .surface .b27 .block-outer { transform: translate3d(-2em, 0, 0); }
+
+        /* Continue prompt */
+        .continue-prompt {
+            position: fixed;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: sans-serif;
+            text-align: center;
+            color: #64748B;
+            animation: pulse-text 2s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        .continue-prompt span {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid #64748B;
+            border-radius: 2rem;
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        @keyframes pulse-text {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        @keyframes bounce {
+            from, 50%, to { transform: translateY(0); }
+            25%, 75% { transform: translateY(10px); }
+        }
+
+        @keyframes tilt {
+            from, to { transform: translateY(2.5em) rotateX(105deg) rotateZ(-7deg); }
+            50% { transform: translateY(2.5em) rotateX(105deg) rotateZ(7deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="digit"></div>
+        <div class="digit"></div>
+        <div class="digit"></div>
+        <div class="digit"></div>
+        <div class="digit"></div>
+        <div class="digit"></div>
+        <div class="surface"></div>
+    </div>
+
+    <div class="continue-prompt">
+        <div>Press to continue</div>
+        <span>SPACE / ENTER / CLICK</span>
+    </div>
+
+    <script>
+        // Generate all 94 blocks
+        const surface = document.querySelector('.surface');
+        const blockHTML = Array.from({length: 94}, (_, i) => `
+            <div class="block b${i+1}">
+                <div class="block-outer">
+                    <div class="block-inner">
+                        <div class="bottom"></div>
+                        <div class="front"></div>
+                        <div class="left"></div>
+                        <div class="right"></div>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+        surface.innerHTML = blockHTML;
+
+        // Update clock
+        function update() {
+            let time = new Date(),
+                hr = time.getHours(),
+                min = time.getMinutes(),
+                sec = time.getSeconds();
+
+            if (hr < 10) hr = "0" + hr;
+            if (min < 10) min = "0" + min;
+            if (sec < 10) sec = "0" + sec;
+
+            let timeStr = `${hr}${min}${sec}`;
+            let digits = document.querySelectorAll(".digit");
+
+            for (let d = 0; d < digits.length; d++) {
+                digits[d].className = "digit _" + timeStr[d];
+            }
+            setTimeout(update, 1000);
+        }
+
+        window.addEventListener("load", update);
+
+        // Handle user interaction
+        function proceed() {
+            window.location.href = 'creative-agency-template.html';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space' || e.code === 'Enter') {
+                e.preventDefault();
+                proceed();
+            }
+        });
+
+        document.body.addEventListener('click', proceed);
+    </script>
+</body>
+</html>

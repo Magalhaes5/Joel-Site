@@ -17,7 +17,9 @@ export default function Navigation() {
 
   const navLinks = [
     { label: "Work", href: "#work" },
+    { label: "Templates", href: "#templates" },
     { label: "Services", href: "#services" },
+    { label: "Marketing", href: "/marketing" },
     { label: "Pricing", href: "#pricing" },
     { label: "About", href: "#about" },
     { label: "Contact", href: "#contact" },
@@ -44,12 +46,21 @@ export default function Navigation() {
         <ul className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a
-                href={link.href}
-                className="text-textMuted hover:text-gold transition-colors duration-200 text-sm font-light"
-              >
-                {link.label}
-              </a>
+              {link.href.startsWith("/") ? (
+                <Link
+                  href={link.href}
+                  className="text-textMuted hover:text-gold transition-colors duration-200 text-sm font-light"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  href={link.href}
+                  className="text-textMuted hover:text-gold transition-colors duration-200 text-sm font-light"
+                >
+                  {link.label}
+                </a>
+              )}
             </li>
           ))}
         </ul>

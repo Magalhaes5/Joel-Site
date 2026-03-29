@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 import FadeIn from "./FadeIn";
 
 export default function Contact() {
+  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -12,11 +14,60 @@ export default function Contact() {
     budget: "",
     message: "",
   });
+  const [status, setStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic would go here
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    setStatus({ type: null, message: "" });
+
+    try {
+      // EmailJS configuration from environment variables
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+      // Check if EmailJS is configured
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error("EmailJS is not configured. Please check your .env.local file.");
+      }
+
+      const result = await emailjs.sendForm(
+        serviceId,
+        templateId,
+        formRef.current!,
+        publicKey
+      );
+
+      if (result.text === "OK") {
+        setStatus({
+          type: "success",
+          message:
+            "Message sent successfully! We'll get back to you within 24 hours.",
+        });
+        setFormData({
+          name: "",
+          email: "",
+          businessType: "",
+          service: "",
+          budget: "",
+          message: "",
+        });
+      }
+    } catch (error) {
+      setStatus({
+        type: "error",
+        message:
+          "Failed to send message. Please try again or email us directly at magalhaesjoel5@gmail.com",
+      });
+      console.error("EmailJS error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -33,22 +84,43 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
-        {/* Header */}
+        {/* Header with Reciprocity Offer */}
         <FadeIn>
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-display mb-4">
               Ready to build something?
             </h2>
-            <p className="text-textMuted font-light text-lg">
+            <p className="text-textMuted font-light text-lg mb-6">
               Tell us about your project. We will get back to you within 24 hours.
             </p>
+
+            {/* Free Offer - Reciprocity */}
+            <div className="inline-block bg-gold/10 border border-gold/30 px-8 py-4 mt-4">
+              <p className="text-gold font-medium mb-1">FREE Website Audit Included</p>
+              <p className="text-textMuted text-sm font-light">
+                Get actionable insights on how to improve your current site — no strings attached
+              </p>
+            </div>
           </div>
         </FadeIn>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Form - Takes 2 columns */}
           <div className="lg:col-span-2">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Status Messages */}
+            {status.type && (
+              <div
+                className={`mb-6 p-4 border ${
+                  status.type === "success"
+                    ? "bg-green-900/20 border-green-500/50 text-green-300"
+                    : "bg-red-900/20 border-red-500/50 text-red-300"
+                }`}
+              >
+                {status.message}
+              </div>
+            )}
+
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               {/* Name */}
               <div>
                 <label
@@ -187,9 +259,10 @@ export default function Contact() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-gold text-background px-8 py-4 font-medium hover:bg-goldLight transition-colors duration-200"
+                disabled={isSubmitting}
+                className="w-full bg-gold text-background px-8 py-4 font-medium hover:bg-goldLight transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>

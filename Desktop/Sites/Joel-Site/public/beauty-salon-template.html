@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Élégance Beauty Lounge - Luxury Beauty Salon in Luxembourg</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💅</text></svg>">
+    <meta name="description" content="Premier luxury beauty salon in Luxembourg offering facial treatments, hair services, nail care, massage therapy, and more. Premium products by Dermalogica, Kérastase, and OPI.">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blush: #E8C4C4;
+            --rose: #D4A5A5;
+            --charcoal: #2E2E2E;
+            --cream: #FAF7F5;
+            --gold: #C9A961;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            cursor: none;
+            overflow-x: hidden;
+        }
+
+        /* Custom Elegant Gradient Cursor */
+        .custom-cursor {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, var(--rose) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.2s ease;
+            transform: translate(-50%, -50%);
+            opacity: 0.6;
+        }
+
+        .custom-cursor.hover {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, var(--gold) 0%, var(--rose) 50%, transparent 70%);
+            opacity: 0.8;
+        }
+
+        /* Premium Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(212, 165, 165, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(212, 165, 165, 0.6); }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--rose);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+                        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1600&auto=format&fit=crop&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--rose);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 400;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border: 2px solid var(--rose);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            border-color: var(--white);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--charcoal);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--rose);
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            font-weight: 300;
+        }
+
+        /* Services Section - Visual First */
+        .services {
+            background: var(--white);
+        }
+
+        .service-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+        }
+
+        .service-category-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .service-category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(212, 165, 165, 0.3);
+        }
+
+        .category-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .service-category-card:hover .category-image {
+            transform: scale(1.1);
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(46, 46, 46, 0.95));
+            padding: 2.5rem 2rem;
+            color: var(--white);
+        }
+
+        .category-overlay h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-overlay p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-overlay .price-range {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Service Details Accordion */
+        .service-details-container {
+            max-width: 1200px;
+            margin: 4rem auto 0;
+        }
+
+        .service-accordion {
+            background: var(--cream);
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .accordion-header {
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--white);
+            transition: background 0.3s;
+        }
+
+        .accordion-header:hover {
+            background: var(--cream);
+        }
+
+        .accordion-header h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: var(--charcoal);
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            color: var(--rose);
+            transition: transform 0.3s;
+        }
+
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .accordion-content.active {
+            max-height: 1000px;
+        }
+
+        .service-items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+        }
+
+        .service-item {
+            padding: 1.5rem;
+            background: var(--white);
+            border-left: 3px solid var(--rose);
+        }
+
+        .service-item h5 {
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-item p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-item .price {
+            color: var(--rose);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .service-item .duration {
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        /* Video Section */
+        .video-section {
+            background: var(--charcoal);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .video-section .section-title {
+            color: var(--white);
+        }
+
+        .video-section .section-subtitle {
+            color: var(--gold);
+        }
+
+        .video-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+
+        /* Before/After Section */
+        .before-after {
+            background: var(--cream);
+        }
+
+        .before-after-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .ba-item {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .ba-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+        }
+
+        .ba-image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ba-image-container img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .ba-label {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 4px;
+        }
+
+        .ba-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .ba-info h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+
+        .ba-info p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Salon Ambiance Section */
+        .salon-ambiance {
+            background: var(--white);
+        }
+
+        .ambiance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .ambiance-grid .large {
+            grid-column: span 2;
+        }
+
+        .ambiance-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 400px;
+        }
+
+        .ambiance-grid .large {
+            height: 500px;
+        }
+
+        .ambiance-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .ambiance-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .ambiance-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: var(--white);
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .ambiance-item:hover .ambiance-caption {
+            transform: translateY(0);
+        }
+
+        /* Instagram Grid */
+        .instagram-section {
+            background: var(--cream);
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .insta-item {
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .insta-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s;
+        }
+
+        .insta-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.7);
+        }
+
+        .insta-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--white);
+            font-size: 3rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .insta-item:hover .insta-overlay {
+            opacity: 1;
+        }
+
+        /* Team Section */
+        .team {
+            background: var(--white);
+        }
+
+        .team-intro {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            text-align: center;
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(212, 165, 165, 0.2);
+        }
+
+        .team-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: var(--rose);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--white);
+        }
+
+        .team-member h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+
+        .team-member .role {
+            color: var(--rose);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .team-member p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Packages Section */
+        .packages {
+            background: var(--cream);
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .package-card {
+            background: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .package-card:hover {
+            border-color: var(--rose);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 165, 165, 0.3);
+        }
+
+        .package-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+
+        .package-card .price {
+            font-size: 2.5rem;
+            color: var(--rose);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .package-card ul {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .package-card ul li {
+            padding: 0.5rem 0;
+            color: #666;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .package-card ul li:before {
+            content: '✓ ';
+            color: var(--rose);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--cream);
+            padding: 2.5rem;
+            border-left: 4px solid var(--rose);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(212, 165, 165, 0.2);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--charcoal);
+        }
+
+        .testimonial-rating {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        /* Booking CTA */
+        .booking-cta {
+            background: var(--rose);
+            padding: 5rem 5%;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .booking-cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .booking-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .booking-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--white);
+            color: var(--rose);
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+
+        .booking-button:hover {
+            background: var(--charcoal);
+            color: var(--white);
+        }
+
+        /* Contact Form */
+        .contact {
+            padding: 6rem 5%;
+            background: var(--cream);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            color: var(--charcoal);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            background: var(--white);
+            transition: border-color 0.3s;
+            border-radius: 4px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--rose);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--charcoal);
+            color: var(--white);
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            border-radius: 4px;
+        }
+
+        .submit-button:hover {
+            background: var(--rose);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: var(--cream);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .services-grid,
+            .before-after-grid,
+            .ambiance-grid,
+            .instagram-grid,
+            .team-grid,
+            .packages-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ambiance-grid .large {
+                grid-column: span 1;
+                height: 400px;
+            }
+
+            .video-container iframe {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Élégance Beauty Lounge</div>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#packages">Packages</a></li>
+            <li><a href="#contact">Book Now</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Élégance Beauty Lounge</h1>
+            <p>Luxembourg's Premier Luxury Beauty Destination</p>
+            <a href="#contact" class="cta-button">Book Your Experience</a>
+        </div>
+    </section>
+
+    <!-- Services Section - Visual First with Categories -->
+    <section class="services" id="services">
+        <h2 class="section-title">Our Signature Services</h2>
+        <p class="section-subtitle">Experience luxury treatments tailored to you</p>
+
+        <!-- Service Category Cards with Images -->
+        <div class="service-categories">
+            <div class="service-category-card">
+                <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&auto=format&fit=crop&q=80" alt="Facial Treatments" class="category-image">
+                <div class="category-overlay">
+                    <h3>Facial Treatments</h3>
+                    <p>Radiant, rejuvenated skin with Dermalogica</p>
+                    <p class="price-range">From €55</p>
+                </div>
+            </div>
+
+            <div class="service-category-card">
+                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&auto=format&fit=crop&q=80" alt="Hair Services" class="category-image">
+                <div class="category-overlay">
+                    <h3>Hair Services</h3>
+                    <p>Expert cuts, color & styling with Kérastase</p>
+                    <p class="price-range">From €45</p>
+                </div>
+            </div>
+
+            <div class="service-category-card">
+                <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=800&auto=format&fit=crop&q=80" alt="Nail Services" class="category-image">
+                <div class="category-overlay">
+                    <h3>Nail Services</h3>
+                    <p>Perfect manicures & pedicures with OPI</p>
+                    <p class="price-range">From €45</p>
+                </div>
+            </div>
+
+            <div class="service-category-card">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&auto=format&fit=crop&q=80" alt="Massage Therapy" class="category-image">
+                <div class="category-overlay">
+                    <h3>Massage & Body</h3>
+                    <p>Deep relaxation and therapeutic treatments</p>
+                    <p class="price-range">From €85</p>
+                </div>
+            </div>
+
+            <div class="service-category-card">
+                <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&auto=format&fit=crop&q=80" alt="Makeup Services" class="category-image">
+                <div class="category-overlay">
+                    <h3>Professional Makeup</h3>
+                    <p>Flawless looks for any occasion</p>
+                    <p class="price-range">From €75</p>
+                </div>
+            </div>
+
+            <div class="service-category-card">
+                <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=800&auto=format&fit=crop&q=80" alt="Waxing Services" class="category-image">
+                <div class="category-overlay">
+                    <h3>Waxing & Brows</h3>
+                    <p>Smooth skin and perfectly shaped brows</p>
+                    <p class="price-range">From €18</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Service Pricing (Accordion - Click to Expand) -->
+        <div class="service-details-container">
+            <p style="text-align: center; color: #666; margin-bottom: 2rem; font-size: 1.1rem;">Click to view detailed pricing and services</p>
+
+            <div class="service-accordion">
+                <div class="accordion-header">
+                    <h4>Facial Treatments - Full Menu</h4>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="service-items-grid">
+                        <div class="service-item">
+                            <h5>Express Glow Facial</h5>
+                            <p>Quick refresh for instant radiance</p>
+                            <p class="price">€55</p>
+                            <p class="duration">30 minutes</p>
+                        </div>
+                        <div class="service-item">
+                            <h5>Dermalogica HydraFacial</h5>
+                            <p>Deep hydration & rejuvenation</p>
+                            <p class="price">€95</p>
+                            <p class="duration">60 minutes</p>
+                        </div>
+                        <div class="service-item">
+                            <h5>Brightening Vitamin C</h5>
+                            <p>Even tone & natural radiance</p>
+                            <p class="price">€110</p>
+                            <p class="duration">70 minutes</p>
+                        </div>
+                        <div class="service-item">
+                            <h5>Anti-Aging ProPower Peel</h5>
+                            <p>Reduce fine lines & wrinkles</p>
+                            <p class="price">€125</p>
+                            <p class="duration">75 minutes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-accordion">
+                <div class="accordion-header">
+                    <h4>Hair Services - Full Menu</h4>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="service-items-grid">
+                        <div class="service-item">
+                            <h5>Kérastase Treatment</h5>
+                            <p>Intensive repair & shine</p>
+                            <p class="price">€45</p>
+                            <p class="duration">30 minutes</p>
+                        </div>
+                        <div class="service-item">
+                            <h5>Precision Cut & Style</h5>
+                            <p>Expert cut with blow-dry</p>
+                            <p class="price">€65 - €95</p>
+                            <p class="duration">60-75 minutes</p>
+                        </div>
+                        <div class="service-item">
+                            <h5>Full Color Service</h5>
+                            <p>Complete color transformation</p>
+                            <p class="price">€120 - €180</p>
+                            <p class="duration">2-3 hours</p>
+                        </div>
+                        <div class="service-item">
+                            <h5>Balayage & Highlights</h5>
+                            <p>Dimensional, natural color</p>
+                            <p class="price">€150 - €250</p>
+                            <p class="duration">3-4 hours</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-accordion">
+                <div class="accordion-header">
+                    <h4>Nail Services - Full Menu</h4>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="service-items-grid">
+                        <div class="service-item">
+                            <h5>Luxury Manicure</h5>
+                            <p>Complete nail care & polish</p>
+                            <p class="price">€45</p>
+                            <p class="duration">45 minutes</p>
+                        </div>
+                        <div class="service-item">
+                            <h5>Gel Manicure - CND Shellac</h5>
+                            <p>2-week wear guarantee</p>
+                            <p class="price">€55</p>
+                            <p class="duration">50 minutes</p>
+                        </div>
+                        <div class="service-item">
+                            <h5>Deluxe Pedicure</h5>
+                            <p>Full foot treatment with massage</p>
+                            <p class="price">€60</p>
+                            <p class="duration">60 minutes</p>
+                        </div>
+                        <div class="service-item">
+                            <h5>Gel Extensions</h5>
+                            <p>Natural-looking nail extensions</p>
+                            <p class="price">€85</p>
+                            <p class="duration">90 minutes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-accordion">
+                <div class="accordion-header">
+                    <h4>Massage & Body - Full Menu</h4>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="service-items-grid">
+                        <div class="service-item">
+                            <h5>Swedish Relaxation</h5>
+                            <p>Full-body stress relief</p>
+                            <p class="price">€90</p>
+                            <p class="duration">60 minutes</p>
+                        </div>
+                        <div class="service-item">
+                            <h5>Deep Tissue Therapy</h5>
+                            <p>Target chronic muscle tension</p>
+                            <p class="price">€110</p>
+                            <p class="duration">75 minutes</p>
+                        </div>
+                        <div class="service-item">
+                            <h5>Hot Stone Massage</h5>
+                            <p>Heated stones for deep relaxation</p>
+                            <p class="price">€120</p>
+                            <p class="duration">90 minutes</p>
+                        </div>
+                        <div class="service-item">
+                            <h5>Body Scrub & Wrap</h5>
+                            <p>Exfoliation & nourishment</p>
+                            <p class="price">€85</p>
+                            <p class="duration">60 minutes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <h2 class="section-title">Experience Élégance</h2>
+        <p class="section-subtitle">Take a virtual tour of our luxury salon</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Before/After Gallery -->
+    <section class="before-after" id="gallery">
+        <h2 class="section-title">Real Transformations</h2>
+        <p class="section-subtitle">See the results our clients achieve</p>
+
+        <div class="before-after-grid">
+            <div class="ba-item">
+                <div class="ba-images">
+                    <div class="ba-image-container">
+                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&auto=format&fit=crop&q=80" alt="Before Hair Color">
+                        <div class="ba-label">BEFORE</div>
+                    </div>
+                    <div class="ba-image-container">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&auto=format&fit=crop&q=80" alt="After Hair Color">
+                        <div class="ba-label" style="background: var(--gold);">AFTER</div>
+                    </div>
+                </div>
+                <div class="ba-info">
+                    <h4>Balayage Transformation</h4>
+                    <p>Dimensional color by Marie - 3.5 hours</p>
+                </div>
+            </div>
+
+            <div class="ba-item">
+                <div class="ba-images">
+                    <div class="ba-image-container">
+                        <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400&auto=format&fit=crop&q=80" alt="Before Facial">
+                        <div class="ba-label">BEFORE</div>
+                    </div>
+                    <div class="ba-image-container">
+                        <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=400&auto=format&fit=crop&q=80" alt="After Facial">
+                        <div class="ba-label" style="background: var(--gold);">AFTER</div>
+                    </div>
+                </div>
+                <div class="ba-info">
+                    <h4>Skin Rejuvenation</h4>
+                    <p>6 sessions of microneedling & facials</p>
+                </div>
+            </div>
+
+            <div class="ba-item">
+                <div class="ba-images">
+                    <div class="ba-image-container">
+                        <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=400&auto=format&fit=crop&q=80" alt="Before Nails">
+                        <div class="ba-label">BEFORE</div>
+                    </div>
+                    <div class="ba-image-container">
+                        <img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=400&auto=format&fit=crop&q=80" alt="After Nails">
+                        <div class="ba-label" style="background: var(--gold);">AFTER</div>
+                    </div>
+                </div>
+                <div class="ba-info">
+                    <h4>Nail Restoration</h4>
+                    <p>Gel extensions & nail art by Nathalie</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Salon Ambiance Gallery -->
+    <section class="salon-ambiance">
+        <h2 class="section-title">Our Luxury Space</h2>
+        <p class="section-subtitle">Where elegance meets comfort</p>
+
+        <div class="ambiance-grid">
+            <div class="ambiance-item large">
+                <img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=1200&auto=format&fit=crop&q=80" alt="Salon Interior">
+                <div class="ambiance-caption">
+                    <h4>Elegant Reception</h4>
+                    <p>Your journey begins here</p>
+                </div>
+            </div>
+            <div class="ambiance-item">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&auto=format&fit=crop&q=80" alt="Treatment Room">
+                <div class="ambiance-caption">
+                    <h4>Private Treatment Rooms</h4>
+                    <p>Serene & tranquil spaces</p>
+                </div>
+            </div>
+            <div class="ambiance-item">
+                <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&auto=format&fit=crop&q=80" alt="Facial Suite">
+                <div class="ambiance-caption">
+                    <h4>Facial Suite</h4>
+                    <p>State-of-the-art equipment</p>
+                </div>
+            </div>
+            <div class="ambiance-item">
+                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&auto=format&fit=crop&q=80" alt="Hair Styling Area">
+                <div class="ambiance-caption">
+                    <h4>Hair Styling Stations</h4>
+                    <p>Modern & comfortable</p>
+                </div>
+            </div>
+            <div class="ambiance-item">
+                <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=600&auto=format&fit=crop&q=80" alt="Nail Bar">
+                <div class="ambiance-caption">
+                    <h4>Luxury Nail Bar</h4>
+                    <p>Relax & pamper</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Gallery -->
+    <section class="instagram-section">
+        <h2 class="section-title">Follow Our Journey</h2>
+        <p class="section-subtitle">@elegancebeauty_lux</p>
+
+        <div class="instagram-grid">
+            <div class="insta-item">
+                <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400&auto=format&fit=crop&q=80" alt="Instagram Post">
+                <div class="insta-overlay">📸</div>
+            </div>
+            <div class="insta-item">
+                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&auto=format&fit=crop&q=80" alt="Instagram Post">
+                <div class="insta-overlay">📸</div>
+            </div>
+            <div class="insta-item">
+                <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=400&auto=format&fit=crop&q=80" alt="Instagram Post">
+                <div class="insta-overlay">📸</div>
+            </div>
+            <div class="insta-item">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&auto=format&fit=crop&q=80" alt="Instagram Post">
+                <div class="insta-overlay">📸</div>
+            </div>
+            <div class="insta-item">
+                <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=400&auto=format&fit=crop&q=80" alt="Instagram Post">
+                <div class="insta-overlay">📸</div>
+            </div>
+            <div class="insta-item">
+                <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&auto=format&fit=crop&q=80" alt="Instagram Post">
+                <div class="insta-overlay">📸</div>
+            </div>
+            <div class="insta-item">
+                <img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=400&auto=format&fit=crop&q=80" alt="Instagram Post">
+                <div class="insta-overlay">📸</div>
+            </div>
+            <div class="insta-item">
+                <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&auto=format&fit=crop&q=80" alt="Instagram Post">
+                <div class="insta-overlay">📸</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <h2 class="section-title">Our Expert Team</h2>
+        <p class="section-subtitle">Passionate professionals dedicated to your beauty</p>
+
+        <div class="team-intro">
+            <p>Our carefully selected team brings together decades of experience and genuine passion for making you feel beautiful. Each specialist is certified in their field and committed to ongoing education.</p>
+        </div>
+
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="team-photo">SC</div>
+                <h3>Sophie Christensen</h3>
+                <div class="role">Salon Director</div>
+                <p><strong>Master Aesthetician</strong></p>
+                <p>15+ years experience in advanced skincare</p>
+            </div>
+
+            <div class="team-member">
+                <div class="team-photo">ML</div>
+                <h3>Marie Laurent</h3>
+                <div class="role">Hair Stylist</div>
+                <p><strong>Color Specialist</strong></p>
+                <p>Kérastase certified, balayage expert</p>
+            </div>
+
+            <div class="team-member">
+                <div class="team-photo">IB</div>
+                <h3>Isabella Becker</h3>
+                <div class="role">Massage Therapist</div>
+                <p><strong>Wellness Expert</strong></p>
+                <p>Certified in multiple massage modalities</p>
+            </div>
+
+            <div class="team-member">
+                <div class="team-photo">ND</div>
+                <h3>Nathalie Dubois</h3>
+                <div class="role">Nail Technician</div>
+                <p><strong>CND Educator</strong></p>
+                <p>Nail art & extension specialist</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="packages" id="packages">
+        <h2 class="section-title">Curated Packages</h2>
+        <p class="section-subtitle">Save with our luxury treatment packages</p>
+
+        <div class="packages-grid">
+            <div class="package-card">
+                <h3>Radiance Package</h3>
+                <div class="price">€175</div>
+                <p style="margin-bottom: 2rem; color: var(--rose); font-weight: 700;">Save €40</p>
+                <ul>
+                    <li>Dermalogica HydraFacial</li>
+                    <li>Luxury Manicure</li>
+                    <li>Eyebrow Threading & Tinting</li>
+                    <li>Complimentary scalp massage</li>
+                </ul>
+            </div>
+
+            <div class="package-card">
+                <h3>Ultimate Spa Day</h3>
+                <div class="price">€380</div>
+                <p style="margin-bottom: 2rem; color: var(--rose); font-weight: 700;">Save €110</p>
+                <ul>
+                    <li>Luxury Gold Facial</li>
+                    <li>Hot Stone Massage</li>
+                    <li>Body Scrub & Wrap</li>
+                    <li>Deluxe Pedicure</li>
+                    <li>Champagne & chocolates</li>
+                </ul>
+            </div>
+
+            <div class="package-card">
+                <h3>Bridal Beauty</h3>
+                <div class="price">€450</div>
+                <p style="margin-bottom: 2rem; color: var(--rose); font-weight: 700;">Complete wedding prep</p>
+                <ul>
+                    <li>Bridal Makeup with Trial</li>
+                    <li>Bridal Hair with Trial</li>
+                    <li>Pre-Wedding Facial</li>
+                    <li>Gel Manicure & Pedicure</li>
+                    <li>Touch-up kit included</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2 class="section-title">What Our Clients Say</h2>
+        <p class="section-subtitle">Real reviews from real clients</p>
+
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-rating">★★★★★</div>
+                <p class="testimonial-text">"Élégance Beauty Lounge is simply exceptional! Sophie gave me the best facial of my life. I've been a monthly member for two years and wouldn't dream of going anywhere else."</p>
+                <p class="testimonial-author">- Catherine M.</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-rating">★★★★★</div>
+                <p class="testimonial-text">"Marie is a color genius! She completely transformed my over-processed hair with expert balayage. I get compliments everywhere I go!"</p>
+                <p class="testimonial-author">- Sarah L.</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-rating">★★★★★</div>
+                <p class="testimonial-text">"After six microneedling sessions and regular facials, my acne scars have improved dramatically. So grateful for their expertise!"</p>
+                <p class="testimonial-author">- Michael R.</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-rating">★★★★★</div>
+                <p class="testimonial-text">"Isabella's deep tissue massages eliminated my chronic neck pain. She's incredibly skilled and the hot stone massage is pure bliss!"</p>
+                <p class="testimonial-author">- Patricia D.</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-rating">★★★★★</div>
+                <p class="testimonial-text">"Emma did my bridal makeup and hair - I felt like an absolute princess! My makeup lasted through 8 hours of dancing. Wedding photos are stunning!"</p>
+                <p class="testimonial-author">- Julie K.</p>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="testimonial-rating">★★★★★</div>
+                <p class="testimonial-text">"Nathalie's gel manicures are perfection! Never had lifting or chipping in over a year. Her nail art is incredible - I always get compliments."</p>
+                <p class="testimonial-author">- Alexandra V.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking CTA -->
+    <section class="booking-cta">
+        <h2>Ready to Experience Luxury?</h2>
+        <p>Book your appointment today and discover the Élégance difference</p>
+        <a href="#contact" class="booking-button">Book Your Appointment</a>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Book Your Appointment</h2>
+        <p class="section-subtitle">We'll confirm within 24 hours</p>
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="service">Service Category *</label>
+                <select id="service" name="service" required>
+                    <option value="">Select a service</option>
+                    <option value="facial">Facial Treatments</option>
+                    <option value="hair">Hair Services</option>
+                    <option value="nails">Nail Services</option>
+                    <option value="massage">Massage & Body</option>
+                    <option value="makeup">Makeup</option>
+                    <option value="waxing">Waxing & Brows</option>
+                    <option value="package">Package</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Preferred Date & Specific Service</label>
+                <textarea id="message" name="message" placeholder="Example: Saturday, April 5th at 2:00 PM - Dermalogica HydraFacial" required></textarea>
+            </div>
+            <button type="submit" class="submit-button">Request Booking</button>
+            <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                We'll confirm your appointment within 24 hours
+            </p>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Élégance Beauty Lounge</strong></p>
+        <p>45 Avenue de la Liberté, L-1931 Luxembourg City</p>
+        <p>Phone: +352 27 86 43 21 | WhatsApp: +352 691 234 567</p>
+        <p>Email: info@elegancebeauty.lu</p>
+        <p style="margin-top: 1rem;">Mon-Fri: 9am-9pm | Sat: 8am-6pm | Sun: 10am-5pm</p>
+        <p style="margin-top: 1rem;">Dermalogica • Kérastase • OPI • CND</p>
+        <p style="margin-top: 2rem; opacity: 0.7;">&copy; 2026 Élégance Beauty Lounge. All rights reserved.</p>
+        <p style="opacity: 0.7;">Website Template by JM Digital Solutions</p>
+    </footer>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+
+    <script>
+        // Custom Elegant Cursor
+        const cursor = document.querySelector('.custom-cursor');
+        const hoverElements = document.querySelectorAll('a, button, .service-category-card, .ambiance-item, .insta-item, .package-card, .team-member, .accordion-header');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const accordion = header.parentElement;
+                const content = accordion.querySelector('.accordion-content');
+                const isActive = header.classList.contains('active');
+
+                // Close all accordions
+                document.querySelectorAll('.accordion-header').forEach(h => h.classList.remove('active'));
+                document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('active'));
+
+                // Open clicked accordion if it wasn't active
+                if (!isActive) {
+                    header.classList.add('active');
+                    content.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
+
+        document.querySelectorAll('.service-category-card, .ba-item, .ambiance-item, .insta-item, .team-member, .package-card, .testimonial-card').forEach(el => {
+            el.classList.add('animate-on-scroll');
+            observer.observe(el);
+        });
+
+        // Service category cards entrance animation
+        document.querySelectorAll('.service-category-card').forEach((card, i) => {
+            card.style.animation = `fadeInUp 0.6s ease-out ${i * 0.15}s backwards`;
+        });
+
+        // Instagram grid stagger
+        document.querySelectorAll('.insta-item').forEach((item, i) => {
+            item.style.animation = `scaleIn 0.6s ease-out ${i * 0.1}s backwards`;
+        });
+
+        // Before/After grid animation
+        document.querySelectorAll('.ba-item').forEach((item, i) => {
+            item.style.animation = `fadeInUp 0.8s ease-out ${i * 0.2}s backwards`;
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('.submit-button');
+            btn.textContent = 'Sending Request...';
+            btn.style.background = 'var(--gold)';
+
+            setTimeout(() => {
+                alert('Thank you for your booking request! We will confirm your appointment within 24 hours via email or phone.');
+                this.reset();
+                btn.textContent = 'Request Booking';
+                btn.style.background = 'var(--charcoal)';
+            }, 1500);
+        });
+
+        // Disable custom cursor on mobile
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            document.body.style.cursor = 'auto';
+            cursor.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

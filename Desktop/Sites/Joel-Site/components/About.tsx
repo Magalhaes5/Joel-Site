@@ -3,8 +3,16 @@ import FadeIn from "./FadeIn";
 export default function About() {
   const stats = [
     { value: "10+", label: "Years of experience" },
+    { value: "50+", label: "Projects delivered" },
     { value: "3", label: "Countries active" },
     { value: "5", label: "Languages spoken" },
+  ];
+
+  const credentials = [
+    "Certified Google Analytics Professional",
+    "Meta Blueprint Certified",
+    "10+ years in web development & digital marketing",
+    "Worked with 50+ businesses across Europe",
   ];
 
   return (
@@ -39,8 +47,23 @@ export default function About() {
               </p>
             </div>
 
+            {/* Credentials - Authority Signals */}
+            <div className="mt-8 p-6 bg-background border border-gold/20">
+              <h3 className="text-sm font-medium text-gold mb-4 tracking-wide">CREDENTIALS & EXPERTISE</h3>
+              <ul className="space-y-2">
+                {credentials.map((credential, index) => (
+                  <li key={index} className="flex items-start text-sm text-textMuted">
+                    <svg className="w-4 h-4 text-gold mr-2 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {credential}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 mt-12 pt-8 border-t border-border">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-8 border-t border-border">
               {stats.map((stat, index) => (
                 <div key={index}>
                   <div className="text-3xl font-display text-gold mb-2">

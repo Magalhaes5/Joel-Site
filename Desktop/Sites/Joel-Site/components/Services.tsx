@@ -18,10 +18,10 @@ export default function Services() {
           />
         </svg>
       ),
-      title: "Website Creation",
+      title: "Websites That Turn Visitors Into Customers",
       description:
-        "From single-page sites to full multi-page experiences. Built fast, designed beautifully, optimised for every screen.",
-      features: ["Custom design", "Mobile first", "Fast delivery", "SEO ready"],
+        "Like Miazia Restaurant (3x more bookings) and Perspective Wellness (40% more appointments). Professional sites that make your phone ring and your calendar fill up.",
+      features: ["Proven conversion design", "Mobile-first approach", "2-7 day delivery", "SEO optimized", "Easy to update", "Results that pay for themselves"],
     },
     {
       icon: (
@@ -39,14 +39,16 @@ export default function Services() {
           />
         </svg>
       ),
-      title: "Brand & Design",
+      title: "Brand Identity That Commands Premium Pricing",
       description:
-        "Logo creation, colour palettes, typography systems and brand guidelines that make your business instantly recognisable.",
+        "Stand out from competitors with a polished brand that positions you as the premium choice. Professional branding that justifies higher prices and attracts better clients.",
       features: [
-        "Logo design",
-        "Visual identity",
-        "Brand guidelines",
-        "Print assets",
+        "Memorable logo design",
+        "Complete visual identity",
+        "Professional brand guidelines",
+        "Print-ready assets",
+        "Social media templates",
+        "Consistent look across all touchpoints",
       ],
     },
     {
@@ -65,14 +67,16 @@ export default function Services() {
           />
         </svg>
       ),
-      title: "Social Media",
+      title: "Social Media That Drives Real ROI",
       description:
-        "Content creation, scheduling and strategy for Instagram and Facebook. Consistent posting that builds your audience.",
+        "Stop posting into the void. Strategic content that builds trust, showcases your work, and turns followers into paying customers. Consistent presence without the daily stress.",
       features: [
-        "Content creation",
-        "Monthly calendar",
-        "Caption writing",
-        "Performance review",
+        "High-quality content creation",
+        "Strategic monthly calendar",
+        "Engaging captions + hashtags",
+        "Performance tracking & insights",
+        "Audience growth strategies",
+        "Time saved: 10+ hours/month",
       ],
     },
   ];

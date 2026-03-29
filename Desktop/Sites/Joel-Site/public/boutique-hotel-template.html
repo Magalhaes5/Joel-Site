@@ -1,0 +1,2587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Refuge - Luxury Boutique Hotel in Luxembourg City</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏨</text></svg>">
+    <meta name="description" content="Experience timeless luxury at Le Refuge, a 4-star boutique hotel in the heart of Luxembourg City. Fine dining, spa, elegantly appointed rooms.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #2A4D6E;
+            --gold: #FFB84D;
+            --gold-glow: #FFD700;
+            --cream: #FFF9F0;
+            --charcoal: #2C2C2C;
+            --white: #FFFFFF;
+            --light-gray: #F5F1E8;
+            --warm-accent: #FF9E5E;
+            --bright-accent: #4ECDC4;
+            --coral: #FF6B6B;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: var(--white);
+            color: var(--charcoal);
+            line-height: 1.6;
+            cursor: none;
+            overflow-x: hidden;
+        }
+
+        /* Luxury Cursor Trail */
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: width 0.15s ease, height 0.15s ease, border-width 0.15s ease;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+        }
+
+        .custom-cursor::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 4px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-trail {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: var(--gold-glow);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.8;
+            box-shadow: 0 0 10px var(--gold-glow);
+            animation: trailFade 0.8s ease-out forwards;
+        }
+
+        @keyframes trailFade {
+            to {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes luxuryFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes shimmerGold {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        @keyframes elegantFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Welcome Greeting Animation */
+        .welcome-greeting {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10000;
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--gold);
+            text-align: center;
+            opacity: 0;
+            animation: welcomeFade 4s ease-in-out forwards;
+            pointer-events: none;
+            text-shadow: 0 0 30px rgba(255, 184, 77, 0.9),
+                         0 0 60px rgba(255, 215, 0, 0.6),
+                         0 5px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, var(--gold), var(--gold-glow), var(--bright-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: welcomeFade 4s ease-in-out forwards, shimmerText 3s ease-in-out infinite;
+        }
+
+        @keyframes welcomeFade {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8) rotateY(-15deg);
+            }
+            20% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.1) rotateY(0deg);
+            }
+            25% {
+                transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+            }
+            80% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.2) rotateY(15deg);
+            }
+        }
+
+        @keyframes shimmerText {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* Ambient Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            background: rgba(27, 59, 90, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 1.5rem;
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            opacity: 0;
+            animation: musicPlayerFadeIn 1s ease-out 2s forwards;
+            transition: all 0.3s;
+        }
+
+        .music-player:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(244, 197, 66, 0.4);
+        }
+
+        @keyframes musicPlayerFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .music-label {
+            color: var(--gold);
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .music-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .play-pause-btn {
+            background: var(--gold);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .play-pause-btn:hover {
+            background: var(--gold-glow);
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(244, 197, 66, 0.5);
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .volume-slider {
+            width: 80px;
+            height: 4px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(244, 197, 66, 0.3);
+            border-radius: 2px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            background: var(--gold);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .volume-slider::-webkit-slider-thumb:hover {
+            background: var(--gold-glow);
+            transform: scale(1.2);
+        }
+
+        .volume-slider::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            background: var(--gold);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+
+        .mute-btn {
+            background: transparent;
+            border: none;
+            color: var(--gold);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .mute-btn:hover {
+            color: var(--gold-glow);
+            transform: scale(1.1);
+        }
+
+        /* Disable on mobile */
+        @media (max-width: 768px) {
+            body { cursor: auto; }
+            .custom-cursor, .cursor-trail { display: none; }
+
+            .welcome-greeting {
+                font-size: 2.5rem;
+            }
+
+            .music-player {
+                bottom: 15px;
+                right: 15px;
+                padding: 0.8rem 1rem;
+                gap: 0.6rem;
+                font-size: 0.85rem;
+            }
+
+            .music-label {
+                font-size: 0.75rem;
+            }
+
+            .play-pause-btn {
+                width: 35px;
+                height: 35px;
+            }
+
+            .volume-slider {
+                width: 60px;
+            }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(42, 77, 110, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(255, 184, 77, 0.1);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(255, 184, 77, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            text-shadow: 0 2px 20px rgba(255, 184, 77, 0.6),
+                         0 0 30px rgba(255, 215, 0, 0.4);
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .book-button {
+            padding: 0.8rem 2rem;
+            background: var(--gold);
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .book-button:hover {
+            background: var(--white);
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(255, 184, 77, 0.25), rgba(78, 205, 196, 0.15)),
+                        url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&auto=format&fit=crop&q=80&sat=10') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 40%, rgba(255, 184, 77, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 60%, rgba(78, 205, 196, 0.2) 0%, transparent 50%);
+            animation: luxuryPulse 8s ease-in-out infinite;
+        }
+
+        @keyframes luxuryPulse {
+            0%, 100% {
+                opacity: 0.6;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Floating Particles */
+        .hero-particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, var(--gold-glow), transparent);
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+            animation: floatParticle 15s ease-in-out infinite;
+            box-shadow: 0 0 10px var(--gold-glow);
+        }
+
+        @keyframes floatParticle {
+            0% {
+                opacity: 0;
+                transform: translateY(0) translateX(0) scale(0);
+            }
+            10% {
+                opacity: 0.8;
+                transform: translateY(-30vh) translateX(10px) scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-60vh) translateX(-20px) scale(1.2);
+            }
+            90% {
+                opacity: 0.6;
+                transform: translateY(-90vh) translateX(30px) scale(0.8);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) translateX(0) scale(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+            animation: luxuryFadeIn 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            text-shadow: 0 3px 15px rgba(0, 0, 0, 0.3),
+                         0 0 30px rgba(255, 184, 77, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 3rem;
+            animation: luxuryFadeIn 1.2s 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1.5rem 3.5rem;
+            background: linear-gradient(135deg, var(--gold), var(--warm-accent));
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            animation: luxuryFadeIn 1.2s 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both, ctaPulse 3s ease-in-out infinite;
+            box-shadow: 0 10px 40px rgba(255, 184, 77, 0.5),
+                        0 5px 15px rgba(255, 158, 94, 0.3);
+            border-radius: 8px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes ctaPulse {
+            0%, 100% {
+                box-shadow: 0 10px 40px rgba(255, 184, 77, 0.5),
+                            0 5px 15px rgba(255, 158, 94, 0.3);
+                transform: translateY(0);
+            }
+            50% {
+                box-shadow: 0 15px 50px rgba(255, 215, 0, 0.7),
+                            0 8px 25px rgba(255, 158, 94, 0.5);
+                transform: translateY(-2px);
+            }
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .hero-cta:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .hero-cta:hover {
+            background: linear-gradient(135deg, var(--gold-glow), var(--bright-accent));
+            transform: translateY(-5px) scale(1.08);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.8),
+                        0 10px 30px rgba(78, 205, 196, 0.4);
+        }
+
+        /* Welcome & About */
+        .welcome {
+            padding: 8rem 5%;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--navy);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--bright-accent));
+            border-radius: 2px;
+        }
+
+        .welcome p {
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Story Section */
+        .story {
+            padding: 6rem 5%;
+            background: var(--cream);
+        }
+
+        .story-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .story-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .story-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .story-text p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+
+        .story-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        /* Rooms */
+        .rooms {
+            padding: 6rem 5%;
+        }
+
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 3rem auto 0;
+        }
+
+        .room-card {
+            background: var(--white);
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .room-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(201, 169, 110, 0.1));
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .room-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .room-card:hover::after {
+            opacity: 1;
+        }
+
+        .room-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .room-card:hover .room-image {
+            transform: scale(1.08);
+        }
+
+        .room-content {
+            padding: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .room-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .room-subtitle {
+            font-size: 0.95rem;
+            color: var(--gold);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .room-content p {
+            color: var(--charcoal);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .room-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-tag {
+            padding: 0.5rem 1rem;
+            background: var(--cream);
+            font-size: 0.85rem;
+            color: var(--charcoal);
+        }
+
+        .amenities-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .amenities-list li {
+            padding: 0.3rem 0;
+            font-size: 0.95rem;
+            color: var(--charcoal);
+        }
+
+        .amenities-list li::before {
+            content: '✓ ';
+            color: var(--gold);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .room-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        .book-room {
+            padding: 0.8rem 2rem;
+            background: var(--navy);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .book-room:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        /* Restaurant Section */
+        .restaurant {
+            padding: 6rem 5%;
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .restaurant .section-title {
+            color: var(--gold);
+            text-align: center;
+        }
+
+        .restaurant-content {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .restaurant-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .restaurant-intro p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            margin-bottom: 1rem;
+        }
+
+        .chef-bio {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .chef-bio h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .chef-bio p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .menu-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .menu-category h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 0.5rem;
+        }
+
+        .menu-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .menu-item-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .menu-item-desc {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .dining-hours {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .dining-hours h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .hours-grid {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hours-item {
+            text-align: center;
+        }
+
+        .hours-item strong {
+            display: block;
+            color: var(--gold);
+            margin-bottom: 0.3rem;
+        }
+
+        /* Spa Section */
+        .spa {
+            padding: 6rem 5%;
+            background: var(--cream);
+        }
+
+        .spa-menu {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .spa-category {
+            background: var(--white);
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .spa-category h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 0.5rem;
+        }
+
+        .spa-treatment {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .spa-treatment:last-child {
+            border-bottom: none;
+        }
+
+        .treatment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+
+        .treatment-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--navy);
+        }
+
+        .treatment-price {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .treatment-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--charcoal);
+        }
+
+        .treatment-duration {
+            font-size: 0.85rem;
+            color: var(--gold);
+            font-style: italic;
+            margin-top: 0.3rem;
+        }
+
+        /* Experiences & Packages */
+        .experiences {
+            padding: 6rem 5%;
+        }
+
+        .packages-grid {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .package-card {
+            background: var(--white);
+            padding: 3rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s;
+            border: 2px solid transparent;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            border-color: var(--gold);
+        }
+
+        .package-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .package-price {
+            font-size: 1.5rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .package-card p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+        }
+
+        .package-includes {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .package-includes li {
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
+            color: var(--charcoal);
+        }
+
+        .package-includes li::before {
+            content: '✓ ';
+            color: var(--gold);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .package-cta {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--navy);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            width: 100%;
+            text-align: center;
+        }
+
+        .package-cta:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        /* Location Section */
+        .location {
+            padding: 6rem 5%;
+            background: var(--cream);
+        }
+
+        .location-content {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .location-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .location-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .nearby-attractions {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .nearby-attractions li {
+            padding: 0.7rem 0;
+            font-size: 1rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .nearby-attractions li::before {
+            content: '📍 ';
+            margin-right: 0.5rem;
+        }
+
+        .location-map {
+            width: 100%;
+            height: 500px;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--charcoal);
+        }
+
+        /* Reviews Section */
+        .reviews {
+            padding: 6rem 5%;
+        }
+
+        .reviews-grid {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .review-stars {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .review-author {
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .review-source {
+            font-size: 0.9rem;
+            color: var(--gold);
+            margin-top: 0.3rem;
+        }
+
+        /* Events & Meetings */
+        .events {
+            padding: 6rem 5%;
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .events .section-title {
+            color: var(--gold);
+            text-align: center;
+        }
+
+        .events-content {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .event-type {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+        }
+
+        .event-type h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .event-type p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .event-features {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .event-features li {
+            padding: 0.4rem 0;
+            font-size: 0.95rem;
+        }
+
+        .event-features li::before {
+            content: '✓ ';
+            color: var(--gold);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Amenities */
+        .amenities {
+            padding: 6rem 5%;
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .amenity-item {
+            text-align: center;
+        }
+
+        .amenity-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--navy);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--gold);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            animation: elegantFloat 4s ease-in-out infinite;
+        }
+
+        .amenity-item:nth-child(2) .amenity-icon { animation-delay: 0.5s; }
+        .amenity-item:nth-child(3) .amenity-icon { animation-delay: 1s; }
+        .amenity-item:nth-child(4) .amenity-icon { animation-delay: 1.5s; }
+        .amenity-item:nth-child(5) .amenity-icon { animation-delay: 2s; }
+        .amenity-item:nth-child(6) .amenity-icon { animation-delay: 2.5s; }
+
+        .amenity-item:hover .amenity-icon {
+            background: var(--gold);
+            color: var(--navy);
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .amenity-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .amenity-item p {
+            color: var(--charcoal);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Policies Section */
+        .policies {
+            padding: 6rem 5%;
+            background: var(--cream);
+        }
+
+        .policies-content {
+            max-width: 1000px;
+            margin: 3rem auto 0;
+        }
+
+        .policy-section {
+            margin-bottom: 3rem;
+        }
+
+        .policy-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .policy-section p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--charcoal);
+            margin-bottom: 0.8rem;
+        }
+
+        .policy-highlight {
+            background: var(--white);
+            padding: 1.5rem;
+            margin-top: 1rem;
+            border-left: 4px solid var(--gold);
+        }
+
+        /* Gallery */
+        .gallery {
+            padding: 6rem 5%;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 3rem auto 0;
+        }
+
+        .gallery-item {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            filter: grayscale(30%);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.15) rotate(2deg);
+            filter: grayscale(0%);
+        }
+
+        /* Contact/Booking */
+        .booking {
+            padding: 6rem 5%;
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .booking .section-title {
+            color: var(--gold);
+        }
+
+        .booking-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(201, 169, 110, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            font-family: 'Raleway', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1.5rem;
+            background: var(--gold);
+            color: var(--navy);
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-button:hover {
+            background: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: var(--cream);
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        footer p {
+            margin-bottom: 0.7rem;
+            font-weight: 300;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .story-content,
+            .location-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .rooms-grid,
+            .gallery-grid,
+            .packages-grid,
+            .reviews-grid,
+            .spa-menu,
+            .menu-section,
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Le Refuge</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#restaurant">Restaurant</a></li>
+            <li><a href="#spa">Spa</a></li>
+            <li><a href="#experiences">Packages</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#booking">Contact</a></li>
+        </ul>
+        <a href="#booking" class="book-button">Book Now</a>
+    </nav>
+
+    <!-- Welcome Greeting -->
+    <div class="welcome-greeting">Welcome to Le Refuge</div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Le Refuge</h1>
+            <p>Where Warmth Meets Elegance in Luxembourg's Heart</p>
+            <a href="#rooms" class="hero-cta">Explore Our Rooms</a>
+        </div>
+    </section>
+
+    <!-- Ambient Music Player -->
+    <div class="music-player">
+        <div class="music-label">Ambient Music</div>
+        <div class="music-controls">
+            <button class="play-pause-btn" id="playPauseBtn" aria-label="Play ambient music">▶</button>
+            <div class="volume-control">
+                <button class="mute-btn" id="muteBtn" aria-label="Mute">🔊</button>
+                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="30" aria-label="Volume control">
+            </div>
+        </div>
+        <audio id="ambientAudio" loop crossorigin="anonymous">
+            <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+            <source src="https://assets.mixkit.co/music/preview/mixkit-relaxing-piano-and-strings-2859.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- Welcome -->
+    <section class="welcome">
+        <h2 class="section-title">Welcome Home</h2>
+        <p>Step into Le Refuge and feel the warmth embrace you. In the heart of Luxembourg City's charming historic quarter, our boutique hotel welcomes you with open arms and genuine smiles.</p>
+        <p>We believe luxury isn't just about beautiful spaces—it's about making you feel truly at home. From the moment you arrive, our family-run hotel envelops you in comfort, care, and the kind of hospitality that comes from the heart.</p>
+        <p>With just twelve beautifully bright rooms filled with natural light and thoughtful touches, Le Refuge is your personal sanctuary in the city—a place where memories are made, connections are cherished, and every stay feels like coming home.</p>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story" id="about">
+        <div class="story-content">
+            <div class="story-text">
+                <h2>Our Story</h2>
+                <p>Founded in 1989 by the Laurent family, Le Refuge began as a vision to create a home away from home for travelers seeking authentic Luxembourg hospitality. What started as a modest guesthouse has evolved into one of the city's most cherished boutique hotels.</p>
+
+                <p>In 2018, we completed an extensive renovation that preserved our historical charm while introducing contemporary luxury. Every architectural detail, from the exposed stone walls to the hand-carved wooden beams, tells a story of Luxembourg's rich heritage.</p>
+
+                <h3>Our Philosophy</h3>
+                <p>At Le Refuge, we believe that true luxury is found in the details. It's in the warmth of a genuine smile, the perfect temperature of your room, the freshness of locally-sourced ingredients at breakfast, and the attentiveness of our staff who remember your name and preferences.</p>
+
+                <h3>Family Tradition</h3>
+                <p>Now in its second generation of family ownership, Le Refuge continues to honor the values that made it special: personalized service, attention to detail, and a commitment to creating meaningful memories for every guest. Sophie Laurent, who grew up in these halls, now leads our team with the same passion her parents instilled over three decades ago.</p>
+
+                <h3>Our Commitment</h3>
+                <p>We are dedicated to sustainability and community. We source ingredients from local farms, support Luxembourg artisans, use eco-friendly amenities, and ensure our operations minimize environmental impact while maximizing your comfort.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&auto=format&fit=crop&q=80" alt="Le Refuge Historic Building" class="story-image">
+        </div>
+    </section>
+
+    <!-- Rooms -->
+    <section class="rooms" id="rooms">
+        <h2 class="section-title" style="text-align: center;">Our Rooms & Suites</h2>
+        <div class="rooms-grid">
+            <!-- Classic Room -->
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&auto=format&fit=crop&q=80" alt="Classic Room" class="room-image">
+                <div class="room-content">
+                    <h3>Classic Room</h3>
+                    <p class="room-subtitle">25 m² | Queen Bed | City Views</p>
+                    <p>Our Classic Rooms blend timeless elegance with modern comfort. Featuring warm wood accents, luxurious linens, and thoughtful amenities, these intimate spaces are perfect for solo travelers or couples seeking a cozy retreat in the heart of the city.</p>
+                    <ul class="amenities-list">
+                        <li>Plush queen-size bed with premium linens</li>
+                        <li>En-suite marble bathroom with rain shower</li>
+                        <li>Climate control & blackout curtains</li>
+                        <li>Smart TV with streaming services</li>
+                        <li>Complimentary WiFi & espresso machine</li>
+                        <li>Work desk & seating area</li>
+                        <li>Luxury toiletries & plush robes</li>
+                    </ul>
+                    <div class="room-price">
+                        <span class="price">150 <small>/night</small></span>
+                        <a href="#booking" class="book-room">Book Room</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Superior Room -->
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1631049552240-59c37f38802b?w=800&auto=format&fit=crop&q=80" alt="Superior Room" class="room-image">
+                <div class="room-content">
+                    <h3>Superior Room</h3>
+                    <p class="room-subtitle">32 m² | King Bed | Panoramic City Views</p>
+                    <p>Elevated comfort meets sophisticated design in our Superior Rooms. With more space to relax and large windows showcasing Luxembourg's stunning architecture, these rooms provide the perfect balance of luxury and functionality for the discerning traveler.</p>
+                    <ul class="amenities-list">
+                        <li>Luxurious king-size bed with pillow menu</li>
+                        <li>Spacious marble bathroom with tub & shower</li>
+                        <li>Panoramic windows with city views</li>
+                        <li>Separate lounge area with armchairs</li>
+                        <li>Mini-bar & Nespresso machine</li>
+                        <li>Smart room controls & USB ports</li>
+                        <li>Premium toiletries & bathrobes</li>
+                    </ul>
+                    <div class="room-price">
+                        <span class="price">180 <small>/night</small></span>
+                        <a href="#booking" class="book-room">Book Room</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deluxe Suite -->
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&auto=format&fit=crop&q=80&brightness=110" alt="Deluxe Suite" class="room-image">
+                <div class="room-content">
+                    <h3>Deluxe Suite</h3>
+                    <p class="room-subtitle">45 m² | King Bed | Private Balcony</p>
+                    <p>Experience refined luxury in our Deluxe Suites. Featuring a separate living area, private balcony, and premium furnishings, these suites offer the space and amenities for both relaxation and productivity, making them ideal for extended stays or special occasions.</p>
+                    <ul class="amenities-list">
+                        <li>Premium king-size bed with luxury linens</li>
+                        <li>Separate living room with sofa & dining table</li>
+                        <li>Private balcony overlooking historic quarter</li>
+                        <li>Designer marble bathroom with double vanity</li>
+                        <li>Walk-in rain shower & soaking tub</li>
+                        <li>Fully-stocked mini-bar & wine fridge</li>
+                        <li>Executive work area with ergonomic chair</li>
+                        <li>Exclusive toiletries & luxury amenities</li>
+                    </ul>
+                    <div class="room-price">
+                        <span class="price">220 <small>/night</small></span>
+                        <a href="#booking" class="book-room">Book Room</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Junior Suite -->
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&auto=format&fit=crop&q=80" alt="Junior Suite" class="room-image">
+                <div class="room-content">
+                    <h3>Junior Suite</h3>
+                    <p class="room-subtitle">52 m² | King Bed | Separate Living Area</p>
+                    <p>Our Junior Suites offer generous space and contemporary elegance. With a distinct living area separated from the bedroom, floor-to-ceiling windows, and premium amenities throughout, these suites provide the perfect setting for both business and leisure travelers seeking extra comfort.</p>
+                    <ul class="amenities-list">
+                        <li>Sumptuous king-size bed with premium bedding</li>
+                        <li>Separate living room with convertible sofa</li>
+                        <li>Floor-to-ceiling windows with city views</li>
+                        <li>Luxurious bathroom with heated floors</li>
+                        <li>Oversized rain shower & separate bathtub</li>
+                        <li>Kitchenette with premium appliances</li>
+                        <li>Smart TV in bedroom & living area</li>
+                        <li>Complimentary daily refreshments</li>
+                    </ul>
+                    <div class="room-price">
+                        <span class="price">280 <small>/night</small></span>
+                        <a href="#booking" class="book-room">Book Room</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Presidential Suite -->
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&auto=format&fit=crop&q=80" alt="Presidential Suite" class="room-image">
+                <div class="room-content">
+                    <h3>Presidential Suite</h3>
+                    <p class="room-subtitle">75 m² | King Bed | Private Terrace | Jacuzzi</p>
+                    <p>The crown jewel of Le Refuge, our Presidential Suite represents the pinnacle of luxury accommodation. With panoramic views from your private terrace, an in-room jacuzzi, and exclusive amenities, this suite offers an unparalleled experience for those seeking the very best.</p>
+                    <ul class="amenities-list">
+                        <li>Opulent king-size bed with silk linens</li>
+                        <li>Expansive living & dining area for entertaining</li>
+                        <li>Private terrace with panoramic city views</li>
+                        <li>Master bathroom with marble throughout</li>
+                        <li>In-room jacuzzi & rainfall shower system</li>
+                        <li>Walk-in closet with personal safe</li>
+                        <li>Full kitchen & premium dining area</li>
+                        <li>Personal concierge service</li>
+                        <li>Daily champagne & gourmet amenities</li>
+                        <li>Complimentary pressing & shoe shine</li>
+                    </ul>
+                    <div class="room-price">
+                        <span class="price">380 <small>/night</small></span>
+                        <a href="#booking" class="book-room">Book Room</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Family Suite -->
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&auto=format&fit=crop&q=80" alt="Family Suite" class="room-image">
+                <div class="room-content">
+                    <h3>Family Suite</h3>
+                    <p class="room-subtitle">58 m² | Two Bedrooms | Ideal for Families</p>
+                    <p>Designed with families in mind, our Family Suite features two separate bedrooms, a comfortable living area, and all the amenities needed for a memorable family vacation. Spacious, comfortable, and thoughtfully appointed, it's your home away from home.</p>
+                    <ul class="amenities-list">
+                        <li>Master bedroom with king-size bed</li>
+                        <li>Second bedroom with two twin beds</li>
+                        <li>Central living area with entertainment</li>
+                        <li>Two full bathrooms for convenience</li>
+                        <li>Kitchenette with family essentials</li>
+                        <li>Smart TVs in all rooms</li>
+                        <li>Welcome gifts for children</li>
+                        <li>Complimentary cribs & high chairs</li>
+                        <li>Board games & children's amenities</li>
+                    </ul>
+                    <div class="room-price">
+                        <span class="price">320 <small>/night</small></span>
+                        <a href="#booking" class="book-room">Book Room</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restaurant Section -->
+    <section class="restaurant" id="restaurant">
+        <h2 class="section-title">Le Refuge Restaurant</h2>
+        <div class="restaurant-content">
+            <div class="restaurant-intro">
+                <p>Our award-winning restaurant celebrates the finest of European cuisine with a distinct Luxembourg influence. Every dish is a journey through local traditions, seasonal ingredients, and contemporary culinary artistry.</p>
+                <p>Dine in our elegant dining room with its vaulted ceilings and candlelit ambiance, or enjoy al fresco dining on our terrace overlooking the historic quarter during warmer months.</p>
+            </div>
+
+            <div class="chef-bio">
+                <h3>Meet Chef Henri Dubois</h3>
+                <p>Chef Henri Dubois brings over 20 years of culinary excellence to Le Refuge. Trained in Paris under Michelin-starred mentors, Chef Henri returned to his Luxembourg roots to showcase the region's incredible produce and culinary heritage. His philosophy is simple: respect the ingredients, honor tradition, and never stop innovating.</p>
+                <p>Under his leadership, Le Refuge Restaurant has earned recognition from Luxembourg's top food critics and maintains partnerships with over 30 local farms and artisan producers.</p>
+            </div>
+
+            <div class="menu-section">
+                <div class="menu-category">
+                    <h4>Signature Dishes</h4>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Luxembourg Beef Wellington</div>
+                        <div class="menu-item-desc">Local beef tenderloin, wild mushroom duxelles, puff pastry, red wine reduction</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Pan-Seared Sea Bass</div>
+                        <div class="menu-item-desc">Mediterranean sea bass, saffron beurre blanc, seasonal vegetables, crispy fingerlings</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Duck Confit</div>
+                        <div class="menu-item-desc">Slow-cooked duck leg, potato gratin, cherry gastrique, market greens</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Truffle Risotto</div>
+                        <div class="menu-item-desc">Carnaroli rice, black truffle, parmesan, white wine, fresh herbs</div>
+                    </div>
+                </div>
+
+                <div class="menu-category">
+                    <h4>From Our Garden</h4>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Heritage Tomato Salad</div>
+                        <div class="menu-item-desc">Heirloom tomatoes, burrata, basil oil, aged balsamic, microgreens</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Roasted Beet Carpaccio</div>
+                        <div class="menu-item-desc">Local beets, goat cheese mousse, candied walnuts, arugula</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Seasonal Vegetable Tart</div>
+                        <div class="menu-item-desc">Market vegetables, puff pastry, herb cream, garden salad</div>
+                    </div>
+                </div>
+
+                <div class="menu-category">
+                    <h4>Desserts</h4>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Dark Chocolate Fondant</div>
+                        <div class="menu-item-desc">Molten chocolate cake, vanilla ice cream, berry coulis</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Lemon Tart</div>
+                        <div class="menu-item-desc">Meyer lemon curd, Italian meringue, shortbread crust</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-name">Cheese Selection</div>
+                        <div class="menu-item-desc">Artisan cheeses from Luxembourg & France, seasonal preserves, crackers</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(255, 255, 255, 0.05);">
+                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 1rem;">Wine Cellar</h4>
+                <p style="max-width: 700px; margin: 0 auto;">Our sommelier-curated wine cellar features over 200 selections from renowned European vineyards, with a special focus on Luxembourg's emerging wine regions. Wine pairings are available for all dishes.</p>
+            </div>
+
+            <div class="dining-hours">
+                <h4>Dining Hours</h4>
+                <div class="hours-grid">
+                    <div class="hours-item">
+                        <strong>Breakfast</strong>
+                        <span>7:00 AM - 11:00 AM</span>
+                        <span style="font-size: 0.9rem; opacity: 0.8;">(Complimentary for guests)</span>
+                    </div>
+                    <div class="hours-item">
+                        <strong>Lunch</strong>
+                        <span>12:00 PM - 3:00 PM</span>
+                        <span style="font-size: 0.9rem; opacity: 0.8;">(Tuesday - Sunday)</span>
+                    </div>
+                    <div class="hours-item">
+                        <strong>Dinner</strong>
+                        <span>6:00 PM - 10:30 PM</span>
+                        <span style="font-size: 0.9rem; opacity: 0.8;">(Daily)</span>
+                    </div>
+                </div>
+                <p style="margin-top: 1.5rem; font-style: italic;">Private dining rooms available for groups of 8-20 guests. Advance reservations recommended.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spa Section -->
+    <section class="spa" id="spa">
+        <h2 class="section-title" style="text-align: center;">Le Refuge Spa & Wellness</h2>
+        <div style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">
+            <p style="font-size: 1.2rem; line-height: 1.9; color: var(--charcoal);">Escape to our tranquil spa sanctuary, where expert therapists and premium treatments restore balance to body and mind. Using only organic products and time-honored techniques, we create personalized wellness experiences that rejuvenate and inspire.</p>
+        </div>
+
+        <div class="spa-menu">
+            <div class="spa-category">
+                <h3>Massage Therapies</h3>
+
+                <div class="spa-treatment">
+                    <div class="treatment-header">
+                        <span class="treatment-name">Swedish Massage</span>
+                        <span class="treatment-price">95</span>
+                    </div>
+                    <p class="treatment-desc">Classic relaxation massage using long, flowing strokes to ease tension and promote circulation. Perfect for stress relief and overall wellness.</p>
+                    <p class="treatment-duration">60 minutes</p>
+                </div>
+
+                <div class="spa-treatment">
+                    <div class="treatment-header">
+                        <span class="treatment-name">Deep Tissue Massage</span>
+                        <span class="treatment-price">115</span>
+                    </div>
+                    <p class="treatment-desc">Therapeutic treatment targeting chronic muscle tension and knots. Using firm pressure to release deep-seated stress and improve mobility.</p>
+                    <p class="treatment-duration">75 minutes</p>
+                </div>
+
+                <div class="spa-treatment">
+                    <div class="treatment-header">
+                        <span class="treatment-name">Hot Stone Therapy</span>
+                        <span class="treatment-price">130</span>
+                    </div>
+                    <p class="treatment-desc">Heated volcanic stones combined with massage techniques melt away tension. The warmth penetrates deeply, promoting profound relaxation.</p>
+                    <p class="treatment-duration">90 minutes</p>
+                </div>
+
+                <div class="spa-treatment">
+                    <div class="treatment-header">
+                        <span class="treatment-name">Aromatherapy Massage</span>
+                        <span class="treatment-price">105</span>
+                    </div>
+                    <p class="treatment-desc">Customized massage using essential oils selected for your specific needs. Balances mind, body, and spirit through the power of botanical extracts.</p>
+                    <p class="treatment-duration">60 minutes</p>
+                </div>
+            </div>
+
+            <div class="spa-category">
+                <h3>Facial Treatments</h3>
+
+                <div class="spa-treatment">
+                    <div class="treatment-header">
+                        <span class="treatment-name">Signature Facial</span>
+                        <span class="treatment-price">110</span>
+                    </div>
+                    <p class="treatment-desc">Customized facial treatment tailored to your skin type. Deep cleansing, exfoliation, massage, and hydrating mask for radiant, glowing skin.</p>
+                    <p class="treatment-duration">60 minutes</p>
+                </div>
+
+                <div class="spa-treatment">
+                    <div class="treatment-header">
+                        <span class="treatment-name">Anti-Aging Treatment</span>
+                        <span class="treatment-price">145</span>
+                    </div>
+                    <p class="treatment-desc">Advanced facial using vitamin-rich serums and collagen-boosting techniques. Reduces fine lines, firms skin, and restores youthful radiance.</p>
+                    <p class="treatment-duration">75 minutes</p>
+                </div>
+
+                <div class="spa-treatment">
+                    <div class="treatment-header">
+                        <span class="treatment-name">Gentlemen's Facial</span>
+                        <span class="treatment-price">95</span>
+                    </div>
+                    <p class="treatment-desc">Specifically designed for men's skin. Deep cleansing, pore refinement, and hydration to address shaving irritation and environmental stress.</p>
+                    <p class="treatment-duration">50 minutes</p>
+                </div>
+            </div>
+
+            <div class="spa-category">
+                <h3>Body Treatments</h3>
+
+                <div class="spa-treatment">
+                    <div class="treatment-header">
+                        <span class="treatment-name">Luxury Body Scrub</span>
+                        <span class="treatment-price">85</span>
+                    </div>
+                    <p class="treatment-desc">Full-body exfoliation using natural ingredients removes dead skin cells, revealing soft, smooth skin. Followed by nourishing body butter application.</p>
+                    <p class="treatment-duration">45 minutes</p>
+                </div>
+
+                <div class="spa-treatment">
+                    <div class="treatment-header">
+                        <span class="treatment-name">Body Wrap Treatment</span>
+                        <span class="treatment-price">125</span>
+                    </div>
+                    <p class="treatment-desc">Detoxifying wrap using mineral-rich ingredients. Promotes circulation, eliminates toxins, and deeply hydrates skin for a rejuvenated glow.</p>
+                    <p class="treatment-duration">75 minutes</p>
+                </div>
+
+                <div class="spa-treatment">
+                    <div class="treatment-header">
+                        <span class="treatment-name">Couples Massage</span>
+                        <span class="treatment-price">240</span>
+                    </div>
+                    <p class="treatment-desc">Share the spa experience in our private couples suite. Two therapists provide synchronized massages. Includes champagne and chocolate-covered strawberries.</p>
+                    <p class="treatment-duration">60 minutes</p>
+                </div>
+            </div>
+
+            <div class="spa-category">
+                <h3>Spa Packages</h3>
+
+                <div class="spa-treatment">
+                    <div class="treatment-header">
+                        <span class="treatment-name">Half-Day Retreat</span>
+                        <span class="treatment-price">195</span>
+                    </div>
+                    <p class="treatment-desc">Body scrub, facial treatment, and Swedish massage. Includes spa lunch and access to relaxation lounge, steam room, and sauna.</p>
+                    <p class="treatment-duration">3 hours</p>
+                </div>
+
+                <div class="spa-treatment">
+                    <div class="treatment-header">
+                        <span class="treatment-name">Full-Day Indulgence</span>
+                        <span class="treatment-price">320</span>
+                    </div>
+                    <p class="treatment-desc">Our ultimate spa experience: body wrap, signature facial, hot stone massage, manicure, and pedicure. Includes gourmet lunch and full facility access.</p>
+                    <p class="treatment-duration">6 hours</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; max-width: 800px; margin: 4rem auto 0; padding: 2rem; background: var(--white);">
+            <p style="font-size: 1.05rem; color: var(--charcoal); line-height: 1.8;"><strong>Spa Hours:</strong> Monday - Sunday, 9:00 AM - 8:00 PM | Advance booking recommended | All prices in euros</p>
+        </div>
+    </section>
+
+    <!-- Experiences & Packages -->
+    <section class="experiences" id="experiences">
+        <h2 class="section-title" style="text-align: center;">Special Experiences & Packages</h2>
+        <div class="packages-grid">
+            <div class="package-card">
+                <h3>Romantic Getaway</h3>
+                <p class="package-price">From 499 for 2 nights</p>
+                <p>Celebrate love in the enchanting atmosphere of Le Refuge. This romantic package is designed to create unforgettable memories with your special someone.</p>
+                <ul class="package-includes">
+                    <li>Two nights in a Deluxe Suite</li>
+                    <li>Champagne & chocolate-covered strawberries on arrival</li>
+                    <li>Couples massage in our private spa suite</li>
+                    <li>Four-course romantic dinner with wine pairings</li>
+                    <li>Rose petal turndown service</li>
+                    <li>Late checkout until 2:00 PM</li>
+                    <li>Complimentary breakfast daily</li>
+                </ul>
+                <a href="#booking" class="package-cta">Book This Package</a>
+            </div>
+
+            <div class="package-card">
+                <h3>Business Traveler</h3>
+                <p class="package-price">From 195 per night</p>
+                <p>Everything the modern business traveler needs for a productive and comfortable stay in Luxembourg City.</p>
+                <ul class="package-includes">
+                    <li>Superior Room with executive desk</li>
+                    <li>High-speed WiFi & business center access</li>
+                    <li>Express breakfast service from 6:30 AM</li>
+                    <li>One hour meeting room rental</li>
+                    <li>Daily newspaper & coffee delivery</li>
+                    <li>Complimentary pressing service</li>
+                    <li>Flexible check-in/out times</li>
+                    <li>Late-night room service menu</li>
+                </ul>
+                <a href="#booking" class="package-cta">Book This Package</a>
+            </div>
+
+            <div class="package-card">
+                <h3>Weekend Explorer</h3>
+                <p class="package-price">From 379 for 2 nights</p>
+                <p>Discover the best of Luxembourg City with our curated weekend experience, combining comfort, culture, and cuisine.</p>
+                <ul class="package-includes">
+                    <li>Two nights in a Classic or Superior Room</li>
+                    <li>Daily gourmet breakfast</li>
+                    <li>Luxembourg City Pass (free public transport & museum entry)</li>
+                    <li>Guided walking tour of historic quarter</li>
+                    <li>Three-course dinner at Le Refuge Restaurant</li>
+                    <li>Welcome cocktail at our bar</li>
+                    <li>Concierge recommendations & reservations</li>
+                </ul>
+                <a href="#booking" class="package-cta">Book This Package</a>
+            </div>
+
+            <div class="package-card">
+                <h3>Spa & Stay Escape</h3>
+                <p class="package-price">From 549 for 2 nights</p>
+                <p>The ultimate wellness retreat. Rejuvenate your body and soul with luxurious accommodations and comprehensive spa treatments.</p>
+                <ul class="package-includes">
+                    <li>Two nights in a Deluxe Suite</li>
+                    <li>Daily wellness breakfast with fresh juices</li>
+                    <li>Half-Day Spa Retreat package (per person)</li>
+                    <li>Unlimited access to fitness center & relaxation areas</li>
+                    <li>Evening yoga or meditation session</li>
+                    <li>Healthy three-course dinner</li>
+                    <li>Wellness amenity kit</li>
+                    <li>Extended checkout until 3:00 PM</li>
+                </ul>
+                <a href="#booking" class="package-cta">Book This Package</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location" id="location">
+        <h2 class="section-title" style="text-align: center;">Location & Surroundings</h2>
+        <div class="location-content">
+            <div class="location-info">
+                <h3>Historic Quarter Location</h3>
+                <p>Le Refuge is ideally situated in Luxembourg City's charming historic quarter, a UNESCO World Heritage site where medieval fortifications meet elegant boulevards and world-class culture.</p>
+
+                <p>Our location offers the perfect blend of tranquility and accessibility. Step outside our doors to discover cobblestone streets, artisan boutiques, and authentic Luxembourg cafes, while remaining just minutes from the city's business district and major attractions.</p>
+
+                <h3>Nearby Attractions</h3>
+                <ul class="nearby-attractions">
+                    <li><strong>Grand Ducal Palace</strong> - 3 minutes walk</li>
+                    <li><strong>Bock Casemates</strong> - 5 minutes walk</li>
+                    <li><strong>Notre-Dame Cathedral</strong> - 4 minutes walk</li>
+                    <li><strong>Place d'Armes</strong> - 6 minutes walk</li>
+                    <li><strong>National Museum of History</strong> - 7 minutes walk</li>
+                    <li><strong>Chemin de la Corniche</strong> - 8 minutes walk</li>
+                    <li><strong>Grund District</strong> - 10 minutes walk</li>
+                    <li><strong>Shopping District</strong> - 5 minutes walk</li>
+                    <li><strong>Train Station</strong> - 15 minutes by taxi</li>
+                    <li><strong>Airport</strong> - 20 minutes by taxi</li>
+                </ul>
+
+                <h3>Transportation</h3>
+                <p><strong>Airport Transfer:</strong> We offer private airport transfer service in luxury vehicles. Advance booking recommended.</p>
+                <p><strong>Parking:</strong> Secure underground parking available (20/night). Valet service included.</p>
+                <p><strong>Public Transport:</strong> Multiple bus stops within 2 minutes walk. Free public transport cards available for guests.</p>
+            </div>
+            <div class="location-map">
+                <div style="text-align: center; padding: 2rem;">
+                    <p style="font-size: 1.2rem; color: var(--charcoal);"><strong>Le Refuge</strong></p>
+                    <p style="margin-top: 1rem;">123 Rue de la Loge<br>Historic Quarter<br>Luxembourg City, L-1945</p>
+                    <p style="margin-top: 2rem; font-size: 0.95rem; opacity: 0.8;">[Interactive map would be embedded here]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <h2 class="section-title" style="text-align: center;">Guest Reviews</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Le Refuge exceeded all expectations. The Presidential Suite was absolutely stunning, the staff remembered our names from day one, and Chef Henri's tasting menu was one of the best meals we've had in Europe. The attention to detail is remarkable. We'll definitely be back."</p>
+                <p class="review-author">Sarah & Michael T.</p>
+                <p class="review-source">TripAdvisor - January 2026</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Perfect location in the historic quarter. We walked everywhere! The room was immaculate, breakfast was incredible with local pastries and fresh juice, and the concierge helped us discover hidden gems we never would have found. A truly boutique experience."</p>
+                <p class="review-author">Emma L.</p>
+                <p class="review-source">Google Reviews - February 2026</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"I've stayed at many 5-star hotels for business, but Le Refuge's service is unmatched. They arranged everything I needed for my meetings, the WiFi was lightning fast, and the room was so comfortable I actually looked forward to returning each evening. The spa massage was a perfect way to unwind."</p>
+                <p class="review-author">David K.</p>
+                <p class="review-source">Booking.com - March 2026</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Celebrated our anniversary here and it was magical. The romantic package was worth every euro - champagne on arrival, couples massage was heavenly, and the sunset dinner on the terrace was unforgettable. The family who runs this hotel puts their heart into every detail."</p>
+                <p class="review-author">Sophie & Alexandre D.</p>
+                <p class="review-source">TripAdvisor - February 2026</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"We brought our two children and the Family Suite was perfect - spacious, comfortable, and thoughtfully equipped. The staff was wonderful with the kids, and the location made it easy to explore the city. Breakfast each morning was a highlight. Highly recommend for families!"</p>
+                <p class="review-author">The Morrison Family</p>
+                <p class="review-source">Google Reviews - January 2026</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Everything about Le Refuge speaks of quality and care. From the luxurious linens to the locally-sourced breakfast, from the knowledgeable staff to the beautiful design - this hotel represents the best of Luxembourg hospitality. The spa is also exceptional. Don't miss it!"</p>
+                <p class="review-author">Charlotte W.</p>
+                <p class="review-source">Booking.com - March 2026</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"The Deluxe Suite's balcony overlooking the historic quarter is worth the upgrade alone. Mornings with coffee watching the city wake up were priceless. The restaurant is outstanding - we ate there three nights in a row because we couldn't get enough. True boutique luxury."</p>
+                <p class="review-author">James R.</p>
+                <p class="review-source">TripAdvisor - February 2026</p>
+            </div>
+
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"A hidden gem in Luxembourg! Sophie and her team went above and beyond to make our stay special. They arranged a private wine tasting, gave us insider tips for restaurants, and even helped plan our day trips. The hotel feels like staying with friends who happen to have impeccable taste."</p>
+                <p class="review-author">Lisa & Tom H.</p>
+                <p class="review-source">Google Reviews - January 2026</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events & Meetings -->
+    <section class="events" id="events">
+        <h2 class="section-title">Meetings & Events</h2>
+        <div class="events-content">
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.2rem; line-height: 1.9;">Le Refuge offers intimate event spaces perfect for corporate meetings, private celebrations, and special occasions. Our dedicated events team ensures every detail is perfect.</p>
+
+            <div class="events-grid">
+                <div class="event-type">
+                    <h3>Business Meetings</h3>
+                    <p>Our boardroom accommodates up to 12 guests in an elegant setting with natural light, state-of-the-art AV equipment, and exceptional catering.</p>
+                    <ul class="event-features">
+                        <li>High-speed WiFi</li>
+                        <li>Video conferencing capabilities</li>
+                        <li>Presentation equipment</li>
+                        <li>Coffee & refreshment service</li>
+                        <li>Customized catering menus</li>
+                        <li>On-site technical support</li>
+                    </ul>
+                </div>
+
+                <div class="event-type">
+                    <h3>Private Dining</h3>
+                    <p>Host unforgettable dinners in our private dining room for 8-20 guests. Chef Henri creates bespoke menus tailored to your preferences and dietary requirements.</p>
+                    <ul class="event-features">
+                        <li>Customized menu design</li>
+                        <li>Wine pairing recommendations</li>
+                        <li>Dedicated service staff</li>
+                        <li>Elegant table settings</li>
+                        <li>Intimate, luxurious atmosphere</li>
+                        <li>AV equipment available</li>
+                    </ul>
+                </div>
+
+                <div class="event-type">
+                    <h3>Celebrations & Weddings</h3>
+                    <p>From intimate wedding receptions to milestone celebrations, we create magical moments. Our Presidential Suite terrace offers a stunning venue for ceremonies.</p>
+                    <ul class="event-features">
+                        <li>Capacity up to 35 guests</li>
+                        <li>Ceremony & reception coordination</li>
+                        <li>Customized decor & flowers</li>
+                        <li>Bridal suite preparation</li>
+                        <li>Photography coordination</li>
+                        <li>Accommodation packages for guests</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(255, 255, 255, 0.05);">
+                <p style="font-size: 1.1rem; margin-bottom: 1rem;">For event inquiries and custom proposals, contact our events team:</p>
+                <p style="color: var(--gold); font-weight: 600;">events@lerefuge.com | +352 555 123 460</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities -->
+    <section class="amenities" id="amenities">
+        <h2 class="section-title" style="text-align: center;">Hotel Amenities</h2>
+        <div class="amenities-grid">
+            <div class="amenity-item">
+                <div class="amenity-icon">🍽️</div>
+                <h3>Fine Dining</h3>
+                <p>Award-winning restaurant featuring modern European cuisine crafted by Chef Henri Dubois. Breakfast, lunch, and dinner service with extensive wine list.</p>
+            </div>
+            <div class="amenity-item">
+                <div class="amenity-icon">💆</div>
+                <h3>Spa & Wellness</h3>
+                <p>Full-service spa with massage therapies, facials, body treatments, sauna, steam room, and relaxation lounge. Open daily 9 AM - 8 PM.</p>
+            </div>
+            <div class="amenity-item">
+                <div class="amenity-icon">🏋️</div>
+                <h3>Fitness Center</h3>
+                <p>State-of-the-art gym with cardio equipment, free weights, and strength training machines. Open 24/7 with complimentary water, towels, and amenities.</p>
+            </div>
+            <div class="amenity-item">
+                <div class="amenity-icon">💼</div>
+                <h3>Business Center</h3>
+                <p>Fully-equipped business center with computers, printing services, private workstations, and meeting rooms. Secretarial services available upon request.</p>
+            </div>
+            <div class="amenity-item">
+                <div class="amenity-icon">🛎️</div>
+                <h3>Concierge Services</h3>
+                <p>24-hour concierge arranges restaurant reservations, theater tickets, city tours, car rentals, and personalized experiences throughout Luxembourg.</p>
+            </div>
+            <div class="amenity-item">
+                <div class="amenity-icon">🍴</div>
+                <h3>Room Service</h3>
+                <p>24/7 room service featuring selections from our restaurant menu plus comfort classics. In-room dining, breakfast in bed, late-night snacks available anytime.</p>
+            </div>
+            <div class="amenity-item">
+                <div class="amenity-icon">🚗</div>
+                <h3>Valet Parking</h3>
+                <p>Secure underground parking with valet service. Electric vehicle charging stations available. Airport transfers and luxury car service upon request.</p>
+            </div>
+            <div class="amenity-item">
+                <div class="amenity-icon">📶</div>
+                <h3>High-Speed WiFi</h3>
+                <p>Complimentary high-speed wireless internet throughout the hotel. Business-grade bandwidth in all rooms and public spaces.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Policies Section -->
+    <section class="policies" id="policies">
+        <h2 class="section-title" style="text-align: center;">Hotel Policies</h2>
+        <div class="policies-content">
+            <div class="policy-section">
+                <h3>Check-In & Check-Out</h3>
+                <p><strong>Check-in:</strong> 3:00 PM</p>
+                <p><strong>Check-out:</strong> 12:00 PM (noon)</p>
+                <p>Early check-in and late check-out subject to availability. Please contact us in advance to arrange.</p>
+                <div class="policy-highlight">
+                    <p><strong>Extended Hours:</strong> Deluxe Suite and above includes complimentary late check-out until 2:00 PM. Presidential Suite guests enjoy flexible check-in/out times.</p>
+                </div>
+            </div>
+
+            <div class="policy-section">
+                <h3>Cancellation Policy</h3>
+                <p><strong>Standard Reservations:</strong> Cancel up to 48 hours before arrival for full refund.</p>
+                <p><strong>Package Bookings:</strong> Cancel up to 7 days before arrival for full refund.</p>
+                <p><strong>Special Events & Holidays:</strong> 14-day cancellation policy applies.</p>
+                <div class="policy-highlight">
+                    <p><strong>Flexible Rate:</strong> Select our flexible rate option at booking for fully refundable reservations up to 24 hours before check-in.</p>
+                </div>
+            </div>
+
+            <div class="policy-section">
+                <h3>Pet Policy</h3>
+                <p>We welcome well-behaved pets at Le Refuge! Small to medium-sized dogs and cats are permitted in designated rooms.</p>
+                <p><strong>Pet Fee:</strong> 35 per night per pet (maximum 2 pets)</p>
+                <p><strong>What We Provide:</strong> Pet bed, food and water bowls, welcome treats, waste bags, and local veterinarian information.</p>
+                <p>Please inform us at booking if traveling with pets so we can prepare appropriately.</p>
+                <div class="policy-highlight">
+                    <p><strong>Pet-Friendly Amenities:</strong> Our concierge can recommend nearby parks, pet-friendly restaurants, and arrange pet-sitting services.</p>
+                </div>
+            </div>
+
+            <div class="policy-section">
+                <h3>Children & Families</h3>
+                <p>Children of all ages are welcome at Le Refuge. Our Family Suite is specifically designed for families.</p>
+                <p><strong>Cribs & Rollaway Beds:</strong> Complimentary upon request (subject to availability)</p>
+                <p><strong>Children's Amenities:</strong> High chairs, bottle warmers, baby monitors available</p>
+                <p><strong>Babysitting:</strong> Professional babysitting services can be arranged with 24-hour notice</p>
+            </div>
+
+            <div class="policy-section">
+                <h3>Payment & Deposits</h3>
+                <p>Credit card required to guarantee reservation. We accept Visa, Mastercard, American Express, and bank transfers.</p>
+                <p><strong>Deposit:</strong> One night's accommodation charged at booking for all reservations.</p>
+                <p><strong>Payment:</strong> Full payment due at check-in or check-out, depending on rate type.</p>
+                <p><strong>Currency:</strong> All rates quoted in euros (EUR).</p>
+            </div>
+
+            <div class="policy-section">
+                <h3>Special Requests</h3>
+                <p>We strive to accommodate all special requests including room location, bedding preferences, dietary requirements, and celebration arrangements.</p>
+                <p>While we cannot guarantee all requests, our team works diligently to fulfill them whenever possible. Please communicate your needs at time of booking or by contacting us directly.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery" id="gallery">
+        <h2 class="section-title" style="text-align: center;">Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&auto=format&fit=crop&q=80" alt="Hotel Lobby">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&auto=format&fit=crop&q=80" alt="Restaurant">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&auto=format&fit=crop&q=80" alt="Spa">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&auto=format&fit=crop&q=80" alt="Breakfast">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&auto=format&fit=crop&q=80" alt="Room Interior">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&auto=format&fit=crop&q=80" alt="Hotel Exterior">
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking -->
+    <section class="booking" id="booking">
+        <h2 class="section-title" style="text-align: center;">Reserve Your Stay</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem;">We look forward to welcoming you to Le Refuge. Complete the form below or call us directly at <strong style="color: var(--gold);">+352 555 123 456</strong></p>
+        <div class="booking-container">
+            <form id="bookingForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="checkin">Check-In</label>
+                        <input type="date" id="checkin" name="checkin" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout">Check-Out</label>
+                        <input type="date" id="checkout" name="checkout" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="guests">Number of Guests</label>
+                        <select id="guests" name="guests" required>
+                            <option value="1">1 Guest</option>
+                            <option value="2">2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5+">5+ Guests</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="room-type">Room Type</label>
+                        <select id="room-type" name="room-type" required>
+                            <option value="classic">Classic Room - €150/night</option>
+                            <option value="superior">Superior Room - €180/night</option>
+                            <option value="deluxe">Deluxe Suite - €220/night</option>
+                            <option value="junior">Junior Suite - €280/night</option>
+                            <option value="presidential">Presidential Suite - €380/night</option>
+                            <option value="family">Family Suite - €320/night</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Your full name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+352 ...">
+                </div>
+                <div class="form-group">
+                    <label for="requests">Special Requests</label>
+                    <textarea id="requests" name="requests" rows="4" placeholder="Please let us know about any special requirements, dietary restrictions, celebrations, early check-in needs, or other requests..."></textarea>
+                </div>
+                <button type="submit" class="submit-button">Request Reservation</button>
+                <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.8;">We will confirm your reservation within 24 hours</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>Le Refuge</h3>
+            <p><strong>Boutique Hotel Luxembourg</strong></p>
+            <p>123 Rue de la Loge, Historic Quarter</p>
+            <p>Luxembourg City, L-1945, Luxembourg</p>
+            <p style="margin-top: 1.5rem;">Phone: +352 555 123 456</p>
+            <p>Email: reservations@lerefuge.com</p>
+            <p style="margin-top: 1.5rem; opacity: 0.7;">Restaurant Reservations: restaurant@lerefuge.com</p>
+            <p style="opacity: 0.7;">Spa Bookings: spa@lerefuge.com</p>
+            <p style="opacity: 0.7;">Events: events@lerefuge.com</p>
+            <p style="margin-top: 2rem; opacity: 0.7;">&copy; 2026 Le Refuge Boutique Hotel. All rights reserved.</p>
+            <p style="opacity: 0.5; margin-top: 0.5rem; font-size: 0.9rem;">Website template by JM Digital Solutions</p>
+        </div>
+    </footer>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+
+    <script>
+        // Luxury Trail Cursor
+        const cursor = document.querySelector('.custom-cursor');
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            const speed = 0.75; // Increased from 0.45 for faster, more responsive tracking
+            cursorX += (mouseX - cursorX) * speed;
+            cursorY += (mouseY - cursorY) * speed;
+
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Trail effect
+        let lastTrailTime = 0;
+        document.addEventListener('mousemove', (e) => {
+            const now = Date.now();
+            if (now - lastTrailTime > 30) {
+                const trail = document.createElement('div');
+                trail.className = 'cursor-trail';
+                trail.style.left = e.clientX + 'px';
+                trail.style.top = e.clientY + 'px';
+                document.body.appendChild(trail);
+
+                setTimeout(() => trail.remove(), 800);
+                lastTrailTime = now;
+            }
+        });
+
+        // Cursor expand on interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, select');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.width = '40px';
+                cursor.style.height = '40px';
+                cursor.style.borderWidth = '3px';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.width = '20px';
+                cursor.style.height = '20px';
+                cursor.style.borderWidth = '2px';
+            });
+        });
+
+        // Scroll reveal animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '-50px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Add fade-in-up class to elements and observe
+        const animateElements = document.querySelectorAll('.welcome, .story-content, .room-card, .amenity-item, .gallery-item, .section-title, .review-card, .package-card, .spa-category, .location-content, .event-type');
+        animateElements.forEach((el, index) => {
+            el.classList.add('fade-in-up');
+            el.style.transitionDelay = `${index * 0.05}s`;
+            observer.observe(el);
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your reservation request! We will contact you within 24 hours to confirm your booking at Le Refuge.\n\nFor immediate assistance, please call +352 555 123 456.');
+        });
+
+        // Disable custom cursor on mobile
+        if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+            document.body.style.cursor = 'auto';
+            if (cursor) cursor.style.display = 'none';
+        }
+
+        // Set minimum date for check-in to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('checkin').setAttribute('min', today);
+
+        // Update check-out minimum when check-in changes
+        document.getElementById('checkin').addEventListener('change', function() {
+            const checkinDate = new Date(this.value);
+            checkinDate.setDate(checkinDate.getDate() + 1);
+            document.getElementById('checkout').setAttribute('min', checkinDate.toISOString().split('T')[0]);
+        });
+
+        // Ambient Music Player Functionality
+        const audio = document.getElementById('ambientAudio');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const muteBtn = document.getElementById('muteBtn');
+        const volumeSlider = document.getElementById('volumeSlider');
+
+        let isPlaying = false;
+        let isMuted = false;
+
+        // Set initial volume
+        audio.volume = 0.3; // Lowered for subtle ambiance
+
+        // Attempt to auto-play (will work after user interaction due to browser policies)
+        function attemptAutoPlay() {
+            audio.play().then(() => {
+                playPauseBtn.textContent = '⏸';
+                isPlaying = true;
+            }).catch(err => {
+                // Auto-play prevented - waiting for user interaction
+                console.log('Auto-play prevented. User interaction required.');
+            });
+        }
+
+        // Try auto-play after a short delay
+        setTimeout(attemptAutoPlay, 2500);
+
+        // Also try on first user interaction
+        let hasAttemptedPlay = false;
+        document.addEventListener('click', function() {
+            if (!hasAttemptedPlay && !isPlaying) {
+                attemptAutoPlay();
+                hasAttemptedPlay = true;
+            }
+        }, { once: true });
+
+        // Play/Pause functionality
+        playPauseBtn.addEventListener('click', function() {
+            if (isPlaying) {
+                audio.pause();
+                playPauseBtn.textContent = '▶';
+                isPlaying = false;
+            } else {
+                audio.play().catch(err => {
+                    console.log('Audio playback failed:', err);
+                });
+                playPauseBtn.textContent = '⏸';
+                isPlaying = true;
+            }
+        });
+
+        // Volume control
+        volumeSlider.addEventListener('input', function() {
+            audio.volume = this.value / 100;
+            if (this.value == 0) {
+                muteBtn.textContent = '🔇';
+                isMuted = true;
+            } else {
+                muteBtn.textContent = '🔊';
+                isMuted = false;
+            }
+        });
+
+        // Mute/Unmute functionality
+        let previousVolume = 50;
+        muteBtn.addEventListener('click', function() {
+            if (isMuted) {
+                audio.volume = previousVolume / 100;
+                volumeSlider.value = previousVolume;
+                muteBtn.textContent = '🔊';
+                isMuted = false;
+            } else {
+                previousVolume = volumeSlider.value;
+                audio.volume = 0;
+                volumeSlider.value = 0;
+                muteBtn.textContent = '🔇';
+                isMuted = true;
+            }
+        });
+
+        // Handle audio errors gracefully
+        audio.addEventListener('error', function(e) {
+            console.log('Audio loading error - using fallback');
+            // Optionally hide the music player if audio fails to load
+            // document.querySelector('.music-player').style.display = 'none';
+        });
+
+        // Auto-hide welcome greeting after animation
+        setTimeout(function() {
+            const greeting = document.querySelector('.welcome-greeting');
+            if (greeting) {
+                greeting.style.display = 'none';
+            }
+        }, 4500);
+
+        // Create floating particles in hero section
+        function createHeroParticles() {
+            const hero = document.querySelector('.hero');
+            if (!hero) return;
+
+            const particleCount = 20;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'hero-particle';
+
+                // Random starting positions
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.bottom = '0';
+
+                // Stagger animation delays
+                particle.style.animationDelay = (Math.random() * 10) + 's';
+                particle.style.animationDuration = (12 + Math.random() * 8) + 's';
+
+                hero.appendChild(particle);
+            }
+        }
+
+        // Initialize particles after page load
+        window.addEventListener('load', createHeroParticles);
+    </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # JM Digital Solutions — Website
 
-Premium digital studio website showcasing services for restaurants, wellness businesses, and local brands in Luxembourg and Switzerland.
+Premium digital studio website showcasing web design services with a complete template marketplace for restaurants, wellness businesses, and local brands in Luxembourg and Switzerland.
 
 ## Tech Stack
 
@@ -9,6 +9,7 @@ Premium digital studio website showcasing services for restaurants, wellness bus
 - **Typography**: Cormorant Garamond & Jost (Google Fonts)
 - **Animations**: Framer Motion
 - **Language**: TypeScript
+- **Forms**: EmailJS for contact form handling
 
 ## Getting Started
 
@@ -32,33 +33,66 @@ npm start
 
 ```
 ├── app/
-│   ├── layout.tsx         # Root layout with fonts & metadata
-│   ├── page.tsx           # Home page with all sections
-│   └── globals.css        # Global styles & Tailwind config
+│   ├── layout.tsx              # Root layout with fonts & metadata
+│   ├── page.tsx                # Home page with all sections
+│   └── globals.css             # Global styles & Tailwind config
 ├── components/
-│   ├── Navigation.tsx     # Fixed nav with scroll behavior
-│   ├── Hero.tsx           # Hero section with CTAs
-│   ├── TrustStrip.tsx     # Stats bar
-│   ├── Work.tsx           # Portfolio grid
-│   ├── Services.tsx       # Service cards
-│   ├── Pricing.tsx        # Pricing packages
-│   ├── About.tsx          # About section
-│   ├── Contact.tsx        # Contact form
-│   ├── Footer.tsx         # Footer
-│   └── FadeIn.tsx         # Animation wrapper
+│   ├── Navigation.tsx          # Fixed nav with scroll behavior
+│   ├── Hero.tsx                # Hero section with CTAs
+│   ├── TrustStrip.tsx          # Stats bar (14+ templates, etc.)
+│   ├── Work.tsx                # Portfolio grid (live projects)
+│   ├── Templates.tsx           # ⭐ Template marketplace with filters
+│   ├── Services.tsx            # Service cards
+│   ├── Process.tsx             # Process steps
+│   ├── Pricing.tsx             # ⭐ Pricing with template tiers
+│   ├── Testimonials.tsx        # ⭐ Client testimonials
+│   ├── Blog.tsx                # Blog section
+│   ├── About.tsx               # About section
+│   ├── Contact.tsx             # ⭐ Contact form with EmailJS
+│   ├── Footer.tsx              # Footer
+│   └── FadeIn.tsx              # Animation wrapper
 └── public/
-    └── miazia-images/     # Restaurant project images
+    ├── docs/
+    │   └── template-setup-guide.md  # ⭐ Client documentation
+    ├── miazia-images/          # Restaurant project images
+    ├── cafe-moderne-template.html       # ⭐ Coffee shop template
+    ├── beauty-salon-template.html       # ⭐ Beauty salon template
+    ├── yoga-studio-template.html        # ⭐ Yoga studio template
+    ├── boutique-hotel-template.html     # ⭐ Hotel template
+    ├── professional-services-template.html  # ⭐ Corporate template
+    └── [9 other existing templates]     # Restaurant/wellness templates
 ```
+
+⭐ = New in this update
 
 ## Features
 
-- ✅ Fully responsive design
-- ✅ Scroll animations
+### Main Site
+- ✅ Fully responsive design (mobile-first)
+- ✅ Scroll animations with Framer Motion
 - ✅ Fixed navigation with backdrop blur on scroll
 - ✅ Premium dark theme with gold accents
 - ✅ SEO optimized
-- ✅ Zero build errors
-- ✅ Ready for Vercel deployment
+- ✅ EmailJS contact form integration
+- ✅ Client testimonials with results
+- ✅ Updated pricing with template marketplace tiers
+- ✅ Real-time template filtering by industry
+
+### Template Marketplace
+- ✅ **14+ professional templates** across 5 industries
+- ✅ **Category filtering**: Restaurant, Wellness, Retail, Professional, Hospitality
+- ✅ **Live demo links** for each template
+- ✅ **Fully responsive** HTML/CSS templates
+- ✅ **EmailJS-ready** contact forms in all templates
+- ✅ **Google Fonts** integration
+- ✅ **Setup documentation** for clients
+
+### Templates Included
+1. **Restaurants**: Miazia, La Maison, Miazia Menu
+2. **Wellness**: Perspective Massages, Krystelle Wellness, Serenity Yoga, Élégance Beauty Salon
+3. **Retail**: Café Moderne
+4. **Hospitality**: Le Refuge Boutique Hotel
+5. **Professional Services**: Sterling & Associates (accountant/lawyer)
 
 ## Deployment
 
@@ -79,9 +113,48 @@ Or connect your GitHub repository to Vercel for automatic deployments.
 - Gold Accent: `#c8a96e`
 - Gold Light: `#e5d0a4`
 
+## EmailJS Setup
+
+1. Create a free account at [EmailJS.com](https://www.emailjs.com/)
+2. Create an email service (Gmail, Outlook, etc.)
+3. Create a template with these variables:
+   - `{{name}}` - Sender's name
+   - `{{email}}` - Sender's email
+   - `{{businessType}}` - Business type
+   - `{{service}}` - Service interest
+   - `{{budget}}` - Budget range
+   - `{{message}}` - Message content
+
+4. Copy `.env.local.example` to `.env.local` and add your credentials:
+
+```bash
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+```
+
+**Important**: Never commit `.env.local` to git (already in .gitignore)
+
+## Pricing Structure
+
+- **Template Only**: €499 (as-is HTML/CSS)
+- **Template + Customization**: €899 (colors, content, images)
+- **Template + Branding**: €1,290 (includes logo design)
+- **Custom Design**: €1,490 (designed from scratch)
+- **Premium Custom**: €2,490 (unlimited pages, branding)
+- **Social Media**: From €350/month
+
+## Client Documentation
+
+Template clients receive:
+- `template-setup-guide.md` - Complete customization guide
+- 30 days email support
+- 1 revision round included
+
 ## Notes
 
 - Domain-agnostic: No hardcoded domain references
-- All images lazy-loaded
-- Form submission requires backend integration
+- All images lazy-loaded with Next.js Image
 - Contact email: magalhaesjoel5@gmail.com
+- Based in Luxembourg
+- Serving Luxembourg, Switzerland, and France

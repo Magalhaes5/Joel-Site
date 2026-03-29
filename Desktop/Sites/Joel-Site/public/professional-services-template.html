@@ -1,0 +1,2018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sterling & Associates - Accounting & Consulting Services | Luxembourg</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💼</text></svg>">
+    <meta name="description" content="Expert accounting, tax planning, audit, and business advisory services in Luxembourg since 1998. Trusted by 500+ businesses.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1E3A5F;
+            --blue: #2E5C8A;
+            --gold: #B8956A;
+            --gray: #4A5568;
+            --light-gray: #E2E8F0;
+            --cream: #F7FAFC;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--white);
+            color: var(--gray);
+            line-height: 1.6;
+            cursor: none;
+            overflow-x: hidden;
+        }
+
+        /* Corporate Cursor */
+        .custom-cursor {
+            position: fixed;
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--blue);
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translate(-50%, -50%);
+        }
+
+        .custom-cursor::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            background: var(--blue);
+            transform: translate(-50%, -50%);
+            transition: all 0.2s;
+        }
+
+        /* Scroll Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes professionalPulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(46, 92, 138, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 20px rgba(46, 92, 138, 0);
+            }
+        }
+
+        @keyframes subtleGlow {
+            0%, 100% {
+                filter: brightness(1);
+            }
+            50% {
+                filter: brightness(1.1);
+            }
+        }
+
+        /* Disable on mobile */
+        @media (max-width: 768px) {
+            body { cursor: auto; }
+            .custom-cursor { display: none; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+
+        .contact-button {
+            padding: 0.8rem 2rem;
+            background: var(--blue);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .contact-button:hover {
+            background: var(--navy);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 12rem 5% 8rem;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(184, 149, 106, 0.1) 0%, transparent 70%);
+            animation: subtleGlow 8s ease-in-out infinite;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: slideInFromLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            animation: slideInFromLeft 0.8s 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--gold);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            animation: slideInFromLeft 0.8s 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .hero-cta:hover::before {
+            left: 100%;
+        }
+
+        .hero-cta:hover {
+            background: var(--white);
+            color: var(--navy);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(46, 92, 138, 0.3);
+        }
+
+        /* Services */
+        .services {
+            padding: 6rem 5%;
+            background: var(--cream);
+        }
+
+        .section-title {
+            font-family: 'Merriweather', serif;
+            font-size: 2.5rem;
+            color: var(--navy);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 3rem 2.5rem;
+            border-left: 4px solid var(--blue);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0%;
+            background: var(--gold);
+            transition: height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .service-card:hover::after {
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateX(15px);
+            box-shadow: 0 10px 40px rgba(46, 92, 138, 0.15);
+        }
+
+        .service-card h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .service-pricing {
+            color: var(--blue);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+        }
+
+        .service-details {
+            list-style: none;
+            margin-top: 1rem;
+            padding-left: 0;
+        }
+
+        .service-details li {
+            color: var(--gray);
+            padding: 0.3rem 0;
+            font-size: 0.95rem;
+        }
+
+        .service-details li::before {
+            content: "✓ ";
+            color: var(--gold);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* About */
+        .about {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .about-content h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .values-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1rem;
+        }
+
+        .values-list li {
+            padding: 0.5rem 0;
+            color: var(--gray);
+            font-size: 1.05rem;
+        }
+
+        .values-list li strong {
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        .certifications {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .cert-badge {
+            padding: 0.8rem 1.5rem;
+            background: var(--cream);
+            border: 2px solid var(--blue);
+            color: var(--navy);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .cert-badge:hover {
+            background: var(--blue);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--cream);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: var(--white);
+            box-shadow: 0 5px 20px rgba(46, 92, 138, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--blue);
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .stat-item:hover .stat-number {
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        /* Industries */
+        .industries {
+            padding: 6rem 5%;
+            background: var(--cream);
+        }
+
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .industry-card {
+            background: var(--white);
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            border-top: 3px solid var(--blue);
+        }
+
+        .industry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(46, 92, 138, 0.15);
+            border-top-color: var(--gold);
+        }
+
+        .industry-card h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.2rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .industry-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Team */
+        .team {
+            padding: 6rem 5%;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 3rem auto 0;
+        }
+
+        .team-member {
+            background: var(--white);
+            text-align: center;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(46, 92, 138, 0.15);
+        }
+
+        .team-photo {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+        }
+
+        .team-member:hover .team-photo {
+            filter: grayscale(0%);
+        }
+
+        .team-info {
+            padding: 2rem;
+        }
+
+        .team-info h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            color: var(--blue);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .team-credentials {
+            color: var(--gold);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .team-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Case Studies */
+        .case-studies {
+            padding: 6rem 5%;
+            background: var(--cream);
+        }
+
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 3rem auto 0;
+        }
+
+        .case-study {
+            background: var(--white);
+            padding: 3rem;
+            border-left: 4px solid var(--gold);
+            transition: all 0.3s;
+        }
+
+        .case-study:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(46, 92, 138, 0.15);
+        }
+
+        .case-industry {
+            color: var(--blue);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .case-study h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .case-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .case-section h4 {
+            color: var(--navy);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .case-section p {
+            color: var(--gray);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .case-result {
+            background: var(--cream);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border-left: 3px solid var(--gold);
+        }
+
+        .case-result strong {
+            color: var(--navy);
+        }
+
+        /* Process */
+        .process {
+            padding: 6rem 5%;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+        }
+
+        .process-step:hover .step-number {
+            background: var(--gold);
+            transform: scale(1.1) rotate(10deg);
+            animation: professionalPulse 2s infinite;
+        }
+
+        .process-step h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .process-step p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .process-details {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 5%;
+            background: var(--cream);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 3rem auto 0;
+        }
+
+        .testimonial {
+            background: var(--white);
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 6rem;
+            color: var(--gold);
+            font-family: 'Merriweather', serif;
+            opacity: 0.3;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(46, 92, 138, 0.15);
+        }
+
+        .testimonial-text {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.3rem;
+        }
+
+        .testimonial-position {
+            color: var(--blue);
+            font-size: 0.9rem;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 6rem 5%;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 3rem auto 0;
+        }
+
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 1.5rem;
+            border: 2px solid var(--light-gray);
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: var(--blue);
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            font-family: 'Merriweather', serif;
+            font-size: 1.1rem;
+            color: var(--navy);
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 2rem;
+            font-size: 1.5rem;
+            color: var(--blue);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 2rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 2rem 1.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* Resources */
+        .resources {
+            padding: 6rem 5%;
+            background: var(--cream);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .resource-card {
+            background: var(--white);
+            padding: 2.5rem;
+            transition: all 0.3s;
+            border-top: 4px solid var(--blue);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(46, 92, 138, 0.15);
+        }
+
+        .resource-card h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .resource-card p {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .resource-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .resource-list li {
+            color: var(--gray);
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .resource-link {
+            color: var(--blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .resource-link:hover {
+            color: var(--gold);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 2px solid var(--light-gray);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .newsletter-form button {
+            padding: 0.8rem 2rem;
+            background: var(--blue);
+            color: var(--white);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--gold);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 5%;
+            background: var(--navy);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        /* Contact Form */
+        .contact {
+            padding: 6rem 5%;
+        }
+
+        .contact-wrapper {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+        .contact-info h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item strong {
+            color: var(--navy);
+            min-width: 120px;
+            font-weight: 600;
+        }
+
+        .contact-item span {
+            color: var(--gray);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--light-gray);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--blue);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--blue);
+            color: var(--white);
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-button:hover {
+            background: var(--navy);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: var(--light-gray);
+            padding: 4rem 5%;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Merriweather', serif;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--light-gray);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-image {
+                height: 350px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid,
+            .team-grid,
+            .case-studies-grid,
+            .testimonials-grid,
+            .industries-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Sterling & Associates</div>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#industries">Industries</a></li>
+            <li><a href="#resources">Resources</a></li>
+        </ul>
+        <a href="#contact" class="contact-button">Get in Touch</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Luxembourg's Trusted Accounting & Business Advisory Partner</h1>
+            <p>Since 1998, we've helped over 500 businesses navigate complex financial challenges with integrity, expertise, and personalized service.</p>
+            <a href="#contact" class="hero-cta">Schedule Free Consultation</a>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <h2 class="section-title">Comprehensive Professional Services</h2>
+        <p class="section-subtitle">From tax planning to audit services, we provide the full spectrum of accounting and advisory solutions your business needs to thrive.</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Tax Planning & Compliance</h3>
+                <p>Strategic tax optimization for corporations, partnerships, and individuals. Our team stays current with Luxembourg and international tax law to minimize your liability while ensuring full compliance.</p>
+                <ul class="service-details">
+                    <li>Corporate tax planning and filing</li>
+                    <li>Individual tax returns (resident & non-resident)</li>
+                    <li>International tax structuring</li>
+                    <li>Transfer pricing advisory</li>
+                    <li>Tax audit representation</li>
+                </ul>
+                <div class="service-pricing">From €800/year for individuals | From €2,500/year for businesses</div>
+            </div>
+
+            <div class="service-card">
+                <h3>Business Advisory</h3>
+                <p>Strategic consulting to help you make informed decisions about growth, acquisitions, restructuring, and long-term planning.</p>
+                <ul class="service-details">
+                    <li>Mergers & acquisitions due diligence</li>
+                    <li>Business valuations</li>
+                    <li>Restructuring and turnaround</li>
+                    <li>Growth strategy development</li>
+                    <li>Exit planning</li>
+                </ul>
+                <div class="service-pricing">Project-based: €5,000 - €50,000+ depending on scope</div>
+            </div>
+
+            <div class="service-card">
+                <h3>Audit & Assurance</h3>
+                <p>Independent financial audits and assurance services providing confidence to stakeholders, lenders, and regulatory bodies.</p>
+                <ul class="service-details">
+                    <li>Annual financial statement audits</li>
+                    <li>Internal controls assessment</li>
+                    <li>Compliance audits</li>
+                    <li>Review engagements</li>
+                    <li>Fraud detection and prevention</li>
+                </ul>
+                <div class="service-pricing">From €8,000/year based on company size and complexity</div>
+            </div>
+
+            <div class="service-card">
+                <h3>Bookkeeping & Payroll</h3>
+                <p>Accurate, timely bookkeeping and payroll processing so you can focus on running your business while we handle the details.</p>
+                <ul class="service-details">
+                    <li>Monthly bookkeeping and reconciliation</li>
+                    <li>Accounts payable/receivable management</li>
+                    <li>Full-service payroll processing</li>
+                    <li>Cloud accounting setup (Xero, QuickBooks)</li>
+                    <li>Financial process automation</li>
+                </ul>
+                <div class="service-pricing">From €400/month for basic bookkeeping | Payroll from €25/employee</div>
+            </div>
+
+            <div class="service-card">
+                <h3>Financial Reporting</h3>
+                <p>Clear, actionable financial reports that give you visibility into performance and help you make data-driven decisions.</p>
+                <ul class="service-details">
+                    <li>Monthly/quarterly management reports</li>
+                    <li>Cash flow forecasting</li>
+                    <li>Budget vs. actual analysis</li>
+                    <li>KPI dashboards</li>
+                    <li>Annual financial statements</li>
+                </ul>
+                <div class="service-pricing">From €600/month for comprehensive reporting package</div>
+            </div>
+
+            <div class="service-card">
+                <h3>Corporate Formation</h3>
+                <p>Expert guidance through entity selection, registration, and initial compliance for startups and new business ventures.</p>
+                <ul class="service-details">
+                    <li>Entity structure consulting (Sarl, SA, etc.)</li>
+                    <li>Business registration in Luxembourg</li>
+                    <li>Shareholder agreements</li>
+                    <li>Initial accounting setup</li>
+                    <li>Ongoing compliance calendar</li>
+                </ul>
+                <div class="service-pricing">Formation packages from €2,500 all-inclusive</div>
+            </div>
+
+            <div class="service-card">
+                <h3>VAT & Customs Consulting</h3>
+                <p>Navigate complex VAT regulations, cross-border transactions, and customs compliance with confidence.</p>
+                <ul class="service-details">
+                    <li>VAT registration and filing</li>
+                    <li>Cross-border VAT advisory</li>
+                    <li>Customs duty optimization</li>
+                    <li>Intrastat reporting</li>
+                    <li>VAT audit defense</li>
+                </ul>
+                <div class="service-pricing">From €350/quarter for VAT returns | Advisory hourly at €200/hr</div>
+            </div>
+
+            <div class="service-card">
+                <h3>Risk Management</h3>
+                <p>Identify, assess, and mitigate financial and operational risks to protect your business and ensure continuity.</p>
+                <ul class="service-details">
+                    <li>Enterprise risk assessment</li>
+                    <li>Internal controls design</li>
+                    <li>Business continuity planning</li>
+                    <li>Insurance needs analysis</li>
+                    <li>Regulatory compliance monitoring</li>
+                </ul>
+                <div class="service-pricing">Project-based from €4,000 for initial assessment</div>
+            </div>
+
+            <div class="service-card">
+                <h3>Succession Planning</h3>
+                <p>Ensure smooth business transitions with comprehensive succession and estate planning for business owners.</p>
+                <ul class="service-details">
+                    <li>Family business succession</li>
+                    <li>Estate planning coordination</li>
+                    <li>Buy-sell agreement structuring</li>
+                    <li>Next generation preparation</li>
+                    <li>Wealth transfer strategies</li>
+                </ul>
+                <div class="service-pricing">Custom engagements from €5,000 based on complexity</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="about-grid">
+            <div class="about-content">
+                <h2>Trusted Advisors Since 1998</h2>
+                <p>Sterling & Associates was founded in Luxembourg City by James Sterling, CPA, with a vision to provide personalized, expert accounting and advisory services to the region's growing business community.</p>
+                <p>What began as a two-person operation has grown into a full-service firm with over 30 professionals serving 500+ active clients across diverse industries. Our growth has been driven by one principle: exceptional service built on integrity, expertise, and genuine client relationships.</p>
+                <p>Today, we're recognized as one of Luxembourg's leading mid-sized accounting firms, known for combining Big Four expertise with boutique-level personal attention.</p>
+
+                <h3>Our Core Values</h3>
+                <ul class="values-list">
+                    <li><strong>Integrity First:</strong> We hold ourselves to the highest ethical standards, always acting in our clients' best interests.</li>
+                    <li><strong>Expert Knowledge:</strong> Continuous learning and professional development keep us at the forefront of accounting, tax, and regulatory changes.</li>
+                    <li><strong>Client-Focused:</strong> Your success is our success. We tailor our services to your unique needs and goals.</li>
+                    <li><strong>Proactive Communication:</strong> We don't just respond - we anticipate your needs and reach out with timely insights.</li>
+                    <li><strong>Long-Term Partnerships:</strong> We build relationships that last decades, not just tax seasons.</li>
+                </ul>
+            </div>
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&auto=format&fit=crop&q=80" alt="Sterling & Associates Office" class="about-image">
+        </div>
+
+        <div class="about-content" style="margin-top: 4rem;">
+            <h3>Certifications & Memberships</h3>
+            <p>Our team maintains the highest professional credentials and actively participates in industry organizations:</p>
+            <div class="certifications">
+                <div class="cert-badge">ICSEE Member</div>
+                <div class="cert-badge">CPAC Certified</div>
+                <div class="cert-badge">ISO 9001 Certified</div>
+                <div class="cert-badge">Luxembourg Chamber of Commerce</div>
+                <div class="cert-badge">AICPA International</div>
+            </div>
+
+            <h3 style="margin-top: 2rem;">Why Choose Sterling & Associates?</h3>
+            <p>Our clients choose us because we deliver results. With a 98% client retention rate and an average client relationship spanning 8+ years, we've proven that exceptional service and expertise create lasting value.</p>
+            <p>Unlike larger firms where you're just a number, or smaller firms that lack specialized expertise, we offer the perfect balance: deep technical knowledge across multiple disciplines, combined with partners who know your name and understand your business.</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number">500+</span>
+                <span class="stat-label">Active Clients</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">28</span>
+                <span class="stat-label">Years in Business</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">€120M+</span>
+                <span class="stat-label">Assets Under Advisory</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">98%</span>
+                <span class="stat-label">Client Retention</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">€15M+</span>
+                <span class="stat-label">Tax Savings (2025)</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">30+</span>
+                <span class="stat-label">Team Members</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries -->
+    <section class="industries" id="industries">
+        <h2 class="section-title">Industries We Serve</h2>
+        <p class="section-subtitle">Deep expertise across the sectors that drive Luxembourg's economy</p>
+        <div class="industries-grid">
+            <div class="industry-card">
+                <h3>Technology & Startups</h3>
+                <p>R&D tax credits, equity structures, and growth-stage advisory for innovative companies</p>
+            </div>
+            <div class="industry-card">
+                <h3>Real Estate & Construction</h3>
+                <p>Project accounting, cost segregation, and investment property tax planning</p>
+            </div>
+            <div class="industry-card">
+                <h3>Healthcare & Life Sciences</h3>
+                <p>Practice management, regulatory compliance, and healthcare-specific tax strategies</p>
+            </div>
+            <div class="industry-card">
+                <h3>Financial Services</h3>
+                <p>Fund accounting, regulatory reporting, and specialized audit services</p>
+            </div>
+            <div class="industry-card">
+                <h3>Manufacturing & Distribution</h3>
+                <p>Inventory accounting, supply chain optimization, and international tax structuring</p>
+            </div>
+            <div class="industry-card">
+                <h3>Professional Services</h3>
+                <p>Partnership taxation, billing optimization, and succession planning for firms</p>
+            </div>
+            <div class="industry-card">
+                <h3>Non-Profit Organizations</h3>
+                <p>Fund accounting, grant compliance, and exempt organization tax services</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team" id="team">
+        <h2 class="section-title">Meet Our Leadership Team</h2>
+        <p class="section-subtitle">Experienced professionals dedicated to your success</p>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&auto=format&fit=crop&q=80" alt="James Sterling" class="team-photo">
+                <div class="team-info">
+                    <h3>James Sterling</h3>
+                    <div class="team-role">Managing Partner</div>
+                    <div class="team-credentials">CPA, MSc Taxation • 28 Years Experience</div>
+                    <p>Founded Sterling & Associates in 1998. Specializes in international tax law, corporate structuring, and high-net-worth individual planning. Former Big Four senior manager. University of Luxembourg graduate.</p>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&auto=format&fit=crop&q=80" alt="Sarah Mitchell" class="team-photo">
+                <div class="team-info">
+                    <h3>Sarah Mitchell</h3>
+                    <div class="team-role">Partner - Audit & Assurance</div>
+                    <div class="team-credentials">CA, ACCA • 22 Years Experience</div>
+                    <p>Leads our audit practice with 18 years at PwC Luxembourg. Expert in financial statement audits, internal controls, and regulatory compliance. Specializes in financial services and manufacturing sectors.</p>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&auto=format&fit=crop&q=80" alt="David Chen" class="team-photo">
+                <div class="team-info">
+                    <h3>David Chen</h3>
+                    <div class="team-role">Partner - Business Advisory</div>
+                    <div class="team-credentials">MBA, CFA • 19 Years Experience</div>
+                    <p>Focuses on M&A advisory, business valuations, and strategic planning for SMEs. Previously with Deloitte Corporate Finance. Has facilitated over €400M in successful transactions.</p>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&auto=format&fit=crop&q=80" alt="Marie Dubois" class="team-photo">
+                <div class="team-info">
+                    <h3>Marie Dubois</h3>
+                    <div class="team-role">Partner - Tax Advisory</div>
+                    <div class="team-credentials">Tax Advisor, LL.M • 16 Years Experience</div>
+                    <p>Leads our VAT and indirect tax practice. Expert in cross-border tax planning and EU tax law. Regularly lectures at Luxembourg University on international taxation. Fluent in French, English, German.</p>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&auto=format&fit=crop&q=80" alt="Thomas Weber" class="team-photo">
+                <div class="team-info">
+                    <h3>Thomas Weber</h3>
+                    <div class="team-role">Senior Consultant - Technology</div>
+                    <div class="team-credentials">CPA, CISA • 14 Years Experience</div>
+                    <p>Specializes in accounting for tech companies and startups. Expert in R&D tax credits, equity compensation, and revenue recognition for SaaS businesses. Former startup CFO.</p>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?w=600&auto=format&fit=crop&q=80" alt="Philippe Laurent" class="team-photo">
+                <div class="team-info">
+                    <h3>Philippe Laurent</h3>
+                    <div class="team-role">Senior Consultant - Real Estate</div>
+                    <div class="team-credentials">CPA, CCIM • 12 Years Experience</div>
+                    <p>Dedicated to real estate and construction clients. Expertise in project accounting, cost segregation studies, and 1031 exchanges. Works with developers managing €200M+ in projects.</p>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=600&auto=format&fit=crop&q=80" alt="Emma Rodriguez" class="team-photo">
+                <div class="team-info">
+                    <h3>Emma Rodriguez</h3>
+                    <div class="team-role">Senior Consultant - Advisory</div>
+                    <div class="team-credentials">CA, MSc Finance • 11 Years Experience</div>
+                    <p>Focuses on financial planning, forecasting, and growth strategy for mid-market companies. Expert in financial modeling and scenario analysis. Former investment banking analyst.</p>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop&q=80" alt="Lucas Fernandes" class="team-photo">
+                <div class="team-info">
+                    <h3>Lucas Fernandes</h3>
+                    <div class="team-role">Tax Associate</div>
+                    <div class="team-credentials">EA, MSc Accounting • 5 Years Experience</div>
+                    <p>Handles individual and small business tax preparation and planning. Specializes in expat taxation and cross-border employee matters. Known for exceptional client service and responsiveness.</p>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=80" alt="Sophie Müller" class="team-photo">
+                <div class="team-info">
+                    <h3>Sophie Müller</h3>
+                    <div class="team-role">Audit Associate</div>
+                    <div class="team-credentials">ACCA (in progress) • 4 Years Experience</div>
+                    <p>Works on financial statement audits and review engagements. Strong background in internal controls and compliance testing. Currently completing ACCA certification with distinction grades.</p>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&auto=format&fit=crop&q=80" alt="Alexander Kim" class="team-photo">
+                <div class="team-info">
+                    <h3>Alexander Kim</h3>
+                    <div class="team-role">Bookkeeping Associate</div>
+                    <div class="team-credentials">Certified Bookkeeper • 6 Years Experience</div>
+                    <p>Manages day-to-day bookkeeping for 30+ clients. Expert in QuickBooks, Xero, and process automation. Known for catching discrepancies and maintaining impeccable records.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="case-studies">
+        <h2 class="section-title">Client Success Stories</h2>
+        <p class="section-subtitle">Real results for real businesses</p>
+        <div class="case-studies-grid">
+            <div class="case-study">
+                <div class="case-industry">Technology • SaaS</div>
+                <h3>€180K Tax Savings Through R&D Credit Strategy</h3>
+                <div class="case-section">
+                    <h4>Challenge</h4>
+                    <p>A rapidly growing software company was unaware they qualified for significant R&D tax credits. Previous accountant had never mentioned the opportunity.</p>
+                </div>
+                <div class="case-section">
+                    <h4>Solution</h4>
+                    <p>We conducted a 3-year lookback analysis, documented qualifying activities, and restructured their project tracking to maximize future credits.</p>
+                </div>
+                <div class="case-result">
+                    <strong>Result:</strong> €180,000 in retroactive credits recovered, plus €75K in annual recurring credits. Funds reinvested in product development.
+                </div>
+            </div>
+
+            <div class="case-study">
+                <div class="case-industry">Real Estate • Development</div>
+                <h3>Successful €12M Development Project Financing</h3>
+                <div class="case-section">
+                    <h4>Challenge</h4>
+                    <p>Commercial developer needed detailed financial projections and clean audited statements to secure construction financing for a mixed-use project.</p>
+                </div>
+                <div class="case-section">
+                    <h4>Solution</h4>
+                    <p>We prepared comprehensive 5-year financial models, conducted an audit, and worked directly with lenders to address their due diligence requirements.</p>
+                </div>
+                <div class="case-result">
+                    <strong>Result:</strong> Client secured €12M financing at favorable terms. Project completed on time and under budget. Now a repeat client for 3 additional developments.
+                </div>
+            </div>
+
+            <div class="case-study">
+                <div class="case-industry">Manufacturing • Distribution</div>
+                <h3>€95K Annual Savings via VAT Optimization</h3>
+                <div class="case-section">
+                    <h4>Challenge</h4>
+                    <p>International manufacturer was overpaying VAT on cross-border transactions due to improper classification and missed exemptions.</p>
+                </div>
+                <div class="case-section">
+                    <h4>Solution</h4>
+                    <p>Complete VAT compliance review, reclassification of goods, implementation of proper documentation procedures, and training for operations team.</p>
+                </div>
+                <div class="case-result">
+                    <strong>Result:</strong> €95,000 in annual VAT savings, plus €42K refund for prior overpayments. Automated processes prevent future errors.
+                </div>
+            </div>
+
+            <div class="case-study">
+                <div class="case-industry">Professional Services • Law Firm</div>
+                <h3>Seamless Partner Succession and Buy-Out</h3>
+                <div class="case-section">
+                    <h4>Challenge</h4>
+                    <p>45-person law firm needed to structure founding partner's retirement and buy-out without disrupting operations or creating tax inefficiencies.</p>
+                </div>
+                <div class="case-section">
+                    <h4>Solution</h4>
+                    <p>Designed 5-year succession plan with staged buy-out, favorable tax treatment, and clear governance transition. Coordinated with legal and financial advisors.</p>
+                </div>
+                <div class="case-result">
+                    <strong>Result:</strong> Smooth transition completed over 4 years. Retiring partner achieved full liquidity goals. Firm grew 25% during transition period.
+                </div>
+            </div>
+
+            <div class="case-study">
+                <div class="case-industry">Healthcare • Medical Practice</div>
+                <h3>Multi-Location Practice Growth Strategy</h3>
+                <div class="case-section">
+                    <h4>Challenge</h4>
+                    <p>Successful medical practice wanted to expand to 3 new locations but lacked clear financial visibility and forecasting to support growth.</p>
+                </div>
+                <div class="case-section">
+                    <h4>Solution</h4>
+                    <p>Implemented cloud-based accounting, created location-based P&Ls, built expansion financial models, and provided ongoing CFO-level advisory.</p>
+                </div>
+                <div class="case-result">
+                    <strong>Result:</strong> Successfully opened 3 locations in 18 months. Revenue increased 180%. Practice now has clear path to additional expansion.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process" id="process">
+        <h2 class="section-title">Our Client Process</h2>
+        <p class="section-subtitle">A proven methodology for delivering exceptional results</p>
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h3>Discovery Call</h3>
+                <p>We start with a complimentary 30-minute consultation to understand your business, challenges, and goals.</p>
+                <div class="process-details">During this call, we'll discuss your current situation, identify pain points, and determine if we're the right fit. No pressure, no obligations - just a conversation about how we can help.</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h3>Comprehensive Analysis</h3>
+                <p>Our team conducts a thorough review of your financial situation, systems, and business objectives.</p>
+                <div class="process-details">We review past returns, financial statements, and processes. We identify opportunities for improvement, potential risks, and quick wins. You'll receive a detailed written assessment with prioritized recommendations.</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h3>Custom Strategy Development</h3>
+                <p>We develop a tailored plan with clear recommendations, timelines, and expected outcomes.</p>
+                <div class="process-details">Your dedicated partner presents a comprehensive strategy with specific action items, cost estimates, and success metrics. We discuss options, answer questions, and refine the plan based on your feedback.</div>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h3>Implementation & Ongoing Support</h3>
+                <p>Together we execute the plan with proactive communication, regular check-ins, and continuous optimization.</p>
+                <div class="process-details">We implement solutions systematically, provide regular progress updates, and remain available for questions. Our relationship doesn't end with delivery - we provide ongoing advisory support to help you navigate new challenges.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2 class="section-title">What Our Clients Say</h2>
+        <p class="section-subtitle">Don't just take our word for it</p>
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <p class="testimonial-text">Sterling & Associates saved our company over €120K in taxes last year through proactive planning. They don't just prepare returns - they actively look for ways to improve our financial position. Best accounting decision we ever made.</p>
+                <div class="testimonial-author">Michael Hartmann</div>
+                <div class="testimonial-position">CEO, TechVision Solutions</div>
+            </div>
+
+            <div class="testimonial">
+                <p class="testimonial-text">After 15 years with a Big Four firm where we felt like just another number, Sterling & Associates has been a breath of fresh air. The partners know us by name, understand our business, and respond within hours, not days.</p>
+                <div class="testimonial-author">Catherine Moreau</div>
+                <div class="testimonial-position">CFO, BuildCorp Luxembourg</div>
+            </div>
+
+            <div class="testimonial">
+                <p class="testimonial-text">The audit process was thorough but efficient. Sarah and her team were professional, prepared, and completed everything ahead of schedule. Our board was impressed with the quality of their work.</p>
+                <div class="testimonial-author">Robert Schneider</div>
+                <div class="testimonial-position">Finance Director, MedTech Innovations</div>
+            </div>
+
+            <div class="testimonial">
+                <p class="testimonial-text">As a startup founder, I needed more than just bookkeeping - I needed strategic advice. Sterling & Associates helped structure our first funding round, optimize our burn rate, and position us for growth. They're true partners in our success.</p>
+                <div class="testimonial-author">Lisa Zhang</div>
+                <div class="testimonial-position">Founder & CEO, DataFlow Analytics</div>
+            </div>
+
+            <div class="testimonial">
+                <p class="testimonial-text">The succession planning services were invaluable. After 30 years building my business, I needed expert guidance to transition ownership to my children while minimizing taxes. The process was smooth, and the results exceeded our expectations.</p>
+                <div class="testimonial-author">Jean-Pierre Muller</div>
+                <div class="testimonial-position">Former Owner, Muller & Sons Manufacturing</div>
+            </div>
+
+            <div class="testimonial">
+                <p class="testimonial-text">We've worked with Sterling & Associates for 12 years across 4 different property developments. Their real estate expertise is unmatched. They understand construction accounting, lender requirements, and help us maximize every project's profitability.</p>
+                <div class="testimonial-author">Alexandra Rossi</div>
+                <div class="testimonial-position">Managing Partner, Rossi Development Group</div>
+            </div>
+
+            <div class="testimonial">
+                <p class="testimonial-text">The monthly financial reports are clear, actionable, and actually help me make better business decisions. Previous accountants just sent raw data. Sterling & Associates provides analysis and insights that drive our strategy.</p>
+                <div class="testimonial-author">Thomas Becker</div>
+                <div class="testimonial-position">Owner, Becker Industrial Supply</div>
+            </div>
+
+            <div class="testimonial">
+                <p class="testimonial-text">Outstanding service at a fair price. They found €38K in missed deductions on our first engagement, which more than paid for several years of their services. Highly recommend to any growing business.</p>
+                <div class="testimonial-author">Sophie Laurent</div>
+                <div class="testimonial-position">President, Laurent Consulting SARL</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Everything you need to know about working with us</p>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">How much do your services typically cost?</div>
+                <div class="faq-answer">
+                    <p>Our fees vary based on the complexity and scope of services. Individual tax returns start at €800/year. Small business packages (bookkeeping + tax) start at €6,000/year. We offer transparent, fixed-fee pricing for most services so there are no surprises. During your discovery call, we'll provide a detailed quote tailored to your specific needs.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Do you work with startups and early-stage companies?</div>
+                <div class="faq-answer">
+                    <p>Absolutely! We have extensive experience with startups and high-growth companies. We offer startup-friendly pricing packages and understand the unique challenges of early-stage businesses - from entity selection to fundraising preparation to R&D tax credits. Many of our startup clients have grown into multi-million euro businesses while staying with us.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What's your typical response time?</div>
+                <div class="faq-answer">
+                    <p>We pride ourselves on responsiveness. Urgent matters receive same-day attention. Routine questions are typically answered within 4 business hours. Complex inquiries requiring research are acknowledged immediately with a timeline for a complete response. You'll have direct email and phone access to your dedicated partner - not just junior staff.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Do you offer fixed-fee pricing or just hourly billing?</div>
+                <div class="faq-answer">
+                    <p>We strongly prefer fixed-fee arrangements for recurring services (tax prep, bookkeeping, audits) because it provides clarity and predictability. You'll know exactly what you're paying upfront. For project-based advisory work, we typically provide fixed-fee proposals based on scope. Hourly billing is available for ad-hoc consulting but is rarely our first choice.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Can you help with international tax matters?</div>
+                <div class="faq-answer">
+                    <p>Yes, international tax is one of our core specialties. We regularly handle cross-border transactions, transfer pricing, tax treaties, expat taxation, and multi-country corporate structures. Luxembourg's position as an international business hub means many of our clients have complex international tax needs, and we have the expertise to navigate them.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What accounting software do you recommend and support?</div>
+                <div class="faq-answer">
+                    <p>We're platform-agnostic but most commonly work with Xero, QuickBooks Online, and Sage for small to mid-sized businesses. For larger clients, we work with SAP and NetSuite. We can help you select the right system for your needs, handle the implementation, and provide training. We also integrate with modern tools like Expensify, Bill.com, and Gusto.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How do I get started?</div>
+                <div class="faq-answer">
+                    <p>Simply fill out the contact form below or call us at +352 456 789 012 to schedule your complimentary 30-minute discovery call. We'll discuss your needs, answer your questions, and determine if we're a good fit. No pressure, no obligations - just an honest conversation about how we can help your business succeed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section class="resources" id="resources">
+        <h2 class="section-title">Resources & Insights</h2>
+        <p class="section-subtitle">Stay informed with expert guidance and tools</p>
+        <div class="resources-grid">
+            <div class="resource-card">
+                <h3>2026 Tax Calendar</h3>
+                <p>Important deadlines and filing dates for Luxembourg businesses and individuals</p>
+                <ul class="resource-list">
+                    <li>31 March: Personal tax return deadline</li>
+                    <li>15 April: Q1 VAT return due</li>
+                    <li>31 May: Corporate tax return deadline</li>
+                    <li>15 July: Q2 VAT return due</li>
+                    <li>30 Sept: Estimated tax payments due</li>
+                    <li>15 October: Q3 VAT return due</li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3>Latest Insights</h3>
+                <p>Expert articles and updates from our team</p>
+                <ul class="resource-list">
+                    <li><a href="#" class="resource-link">2026 Tax Law Changes: What Businesses Need to Know</a></li>
+                    <li><a href="#" class="resource-link">R&D Tax Credits: Are You Leaving Money on the Table?</a></li>
+                    <li><a href="#" class="resource-link">Cash Flow Management Strategies for Growing Companies</a></li>
+                    <li><a href="#" class="resource-link">Succession Planning: When to Start and Key Considerations</a></li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3>Financial Tools</h3>
+                <p>Useful calculators and planning resources</p>
+                <ul class="resource-list">
+                    <li><a href="#" class="resource-link">Tax Withholding Calculator</a></li>
+                    <li><a href="#" class="resource-link">Business Valuation Estimator</a></li>
+                    <li><a href="#" class="resource-link">Cash Flow Projection Template</a></li>
+                    <li><a href="#" class="resource-link">Retirement Savings Calculator</a></li>
+                </ul>
+            </div>
+
+            <div class="resource-card">
+                <h3>Newsletter</h3>
+                <p>Receive monthly insights, tips, and updates delivered to your inbox</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Experience the Sterling Difference?</h2>
+        <p>Schedule your complimentary consultation today and discover how expert guidance can transform your financial future</p>
+        <a href="#contact" class="hero-cta">Schedule Free Consultation</a>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-subtitle">We're here to help. Reach out today to start the conversation.</p>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h3>Luxembourg Office</h3>
+                <p>Our office is conveniently located in Luxembourg City's financial district, with ample parking and easy access by public transport.</p>
+
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <strong>Address:</strong>
+                        <span>45 Avenue de la Liberté<br>L-1931 Luxembourg City<br>Luxembourg</span>
+                    </div>
+
+                    <div class="contact-item">
+                        <strong>Phone:</strong>
+                        <span>+352 456 789 012</span>
+                    </div>
+
+                    <div class="contact-item">
+                        <strong>Email:</strong>
+                        <span>info@sterling-associates.lu</span>
+                    </div>
+
+                    <div class="contact-item">
+                        <strong>Office Hours:</strong>
+                        <span>Monday - Friday: 8:30 AM - 6:00 PM<br>Saturday: By appointment only<br>Sunday: Closed</span>
+                    </div>
+                </div>
+
+                <p style="margin-top: 2rem;"><strong>Meeting Options:</strong> We offer in-person meetings at our office, virtual consultations via Zoom or Teams, and can visit your business location if preferred.</p>
+            </div>
+
+            <div class="contact-container">
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company / Organization</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Primary Service Interest *</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service</option>
+                            <option value="tax">Tax Planning & Compliance</option>
+                            <option value="advisory">Business Advisory</option>
+                            <option value="audit">Audit & Assurance</option>
+                            <option value="bookkeeping">Bookkeeping & Payroll</option>
+                            <option value="reporting">Financial Reporting</option>
+                            <option value="formation">Corporate Formation</option>
+                            <option value="vat">VAT & Customs</option>
+                            <option value="risk">Risk Management</option>
+                            <option value="succession">Succession Planning</option>
+                            <option value="general">General Inquiry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Tell us about your needs *</label>
+                        <textarea id="message" name="message" required placeholder="Please describe your situation and what you're looking for..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Sterling & Associates</h4>
+                <p>Luxembourg's trusted accounting and business advisory partner since 1998. Exceptional service built on integrity, expertise, and lasting relationships.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <a href="#services">Tax Planning & Compliance</a>
+                <a href="#services">Business Advisory</a>
+                <a href="#services">Audit & Assurance</a>
+                <a href="#services">Bookkeeping & Payroll</a>
+                <a href="#services">Financial Reporting</a>
+                <a href="#services">Corporate Formation</a>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <a href="#about">About Us</a>
+                <a href="#team">Our Team</a>
+                <a href="#industries">Industries</a>
+                <a href="#resources">Resources</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>45 Avenue de la Liberté<br>L-1931 Luxembourg City</p>
+                <p>Phone: +352 456 789 012</p>
+                <p>Email: info@sterling-associates.lu</p>
+                <p style="margin-top: 1rem;">Monday - Friday: 8:30 AM - 6:00 PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sterling & Associates SARL. All rights reserved. | Professional Services Template by JM Digital Solutions</p>
+        </div>
+    </footer>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+
+    <script>
+        // Corporate Precision Cursor
+        const cursor = document.querySelector('.custom-cursor');
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            const speed = 0.2;
+            cursorX += (mouseX - cursorX) * speed;
+            cursorY += (mouseY - cursorY) * speed;
+
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Cursor effects on interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, select');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.width = '48px';
+                cursor.style.height = '48px';
+                cursor.style.borderColor = 'var(--gold)';
+                cursor.style.borderWidth = '3px';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.width = '24px';
+                cursor.style.height = '24px';
+                cursor.style.borderColor = 'var(--blue)';
+                cursor.style.borderWidth = '2px';
+            });
+        });
+
+        // Scroll reveal animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '-50px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Add fade-in-up class to elements and observe
+        const animateElements = document.querySelectorAll('.service-card, .about-content, .team-member, .process-step, .stat-item, .section-title, .case-study, .testimonial, .faq-item, .resource-card, .industry-card');
+        animateElements.forEach((el, index) => {
+            el.classList.add('fade-in-up');
+            el.style.transitionDelay = `${index * 0.08}s`;
+            observer.observe(el);
+        });
+
+        // Alternating slide animations for service cards
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach((card, index) => {
+            card.style.animation = index % 2 === 0
+                ? 'slideInFromLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards'
+                : 'slideInFromRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+            card.style.animationDelay = `${index * 0.1}s`;
+            card.style.opacity = '0';
+
+            const cardObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                    }
+                });
+            }, observerOptions);
+
+            cardObserver.observe(card);
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+
+                // Close all FAQ items
+                faqItems.forEach(faq => faq.classList.remove('active'));
+
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your interest! This form is ready for backend integration (EmailJS, FormSpree, etc.). A Sterling & Associates representative will contact you within 24 hours.');
+        });
+
+        // Newsletter form
+        const newsletterForms = document.querySelectorAll('.newsletter-form');
+        newsletterForms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for subscribing to our newsletter! You\'ll receive monthly insights and updates.');
+            });
+        });
+
+        // Disable custom cursor on mobile
+        if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+            document.body.style.cursor = 'auto';
+            if (cursor) cursor.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

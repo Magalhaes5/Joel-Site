@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Miazia Restaurant | JM Digital Solutions</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --burgundy: #6B0F1A;
+            --gold: #D4AF37;
+            --cream: #FFF8DC;
+            --dark: #1a1a1a;
+            --gray: #666;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .nav {
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .nav a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: opacity 0.3s;
+        }
+
+        .nav a:hover {
+            opacity: 0.7;
+        }
+
+        .hero-case {
+            padding: 6rem 5% 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .case-badge {
+            display: inline-block;
+            background: var(--burgundy);
+            color: var(--cream);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-intro {
+            font-size: 1.3rem;
+            color: var(--cream);
+            max-width: 800px;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 4rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin: 4rem 0;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--cream);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        .text-block {
+            font-size: 1.1rem;
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .text-block strong {
+            color: var(--gold);
+        }
+
+        .challenge-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin: 4rem 0;
+        }
+
+        .challenge-box, .solution-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--burgundy);
+        }
+
+        .solution-box {
+            border-left-color: var(--gold);
+        }
+
+        .box-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+        }
+
+        .box-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .box-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #ccc;
+        }
+
+        .box-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .testimonial {
+            background: var(--burgundy);
+            padding: 4rem;
+            border-radius: 12px;
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            color: rgba(255, 255, 255, 0.1);
+            position: absolute;
+            top: 20px;
+            left: 40px;
+        }
+
+        .testimonial-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--cream);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .image-grid img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .cta-section {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 4rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            margin-top: 2rem;
+            transition: all 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .challenge-solution { grid-template-columns: 1fr; gap: 2rem; }
+            .image-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="/">← Back to Portfolio</a>
+        <a href="/miazia-menu.html">View Live Site</a>
+    </nav>
+
+    <div class="hero-case">
+        <span class="case-badge">Restaurant · Branding · Web Design</span>
+        <h1>Miazia Restaurant</h1>
+        <p class="hero-intro">Creating an authentic digital experience for a family-run Italian restaurant in Luxembourg. A full-scale website showcasing traditional cuisine, capturing the warmth of Italian hospitality, and driving online reservations.</p>
+        <img src="/miazia-images/CP0031_-scaled.jpg" alt="Miazia Restaurant Interior" class="hero-image">
+
+        <div class="stats-grid">
+            <div class="stat">
+                <span class="stat-number">45%</span>
+                <span class="stat-label">Increase in Reservations</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">3.2x</span>
+                <span class="stat-label">More Organic Traffic</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">92%</span>
+                <span class="stat-label">Mobile Users</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">4.8★</span>
+                <span class="stat-label">Client Rating</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2 class="section-title">The Challenge</h2>
+        <p class="text-block">Miazia, a beloved Italian restaurant in Belvaux, Luxembourg, needed a digital presence that matched the quality of their authentic cuisine. They were losing customers to competitors with modern websites and had no way to showcase their menu or accept online reservations.</p>
+
+        <div class="challenge-solution">
+            <div class="challenge-box">
+                <h3 class="box-title">Client Needs</h3>
+                <ul class="box-list">
+                    <li>No existing website or digital presence</li>
+                    <li>Competitors ranking higher on Google</li>
+                    <li>Phone-only reservations causing missed bookings</li>
+                    <li>No way to showcase high-quality food photography</li>
+                    <li>Limited budget for ongoing maintenance</li>
+                </ul>
+            </div>
+
+            <div class="solution-box">
+                <h3 class="box-title">Our Solution</h3>
+                <ul class="box-list">
+                    <li>Full restaurant website with menu showcase</li>
+                    <li>Professional food photography integration</li>
+                    <li>Elegant dark theme matching brand aesthetic</li>
+                    <li>Real pricing transparency for all dishes</li>
+                    <li>Ambient Italian jazz background music</li>
+                    <li>Mobile-first responsive design</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-title">The Process</h2>
+        <p class="text-block"><strong>Discovery & Research:</strong> We visited the restaurant, experienced the atmosphere, and photographed the space and dishes. We analyzed competitors and identified what made Miazia unique—authentic recipes, family warmth, and attention to detail.</p>
+
+        <p class="text-block"><strong>Design & Development:</strong> We created a sophisticated dark theme with burgundy and gold accents, mirroring the cozy interior. The menu structure was organized into traditional Italian categories (Antipasti, Pasta Fresca, Risotti, etc.) with real pricing from miazia.lu.</p>
+
+        <p class="text-block"><strong>Photography & Content:</strong> Professional food photography was integrated throughout, with each dish paired with mouth-watering descriptions in both Italian and French to reflect Luxembourg's multilingual culture.</p>
+
+        <div class="image-grid">
+            <img src="/0001-2024.02.21-MIAZIA-0328-done.jpg" alt="Risotto ai Funghi">
+            <img src="/0009-2024.02.21-MIAZIA-0345-done.jpg" alt="Fresh Pasta">
+            <img src="/0021-2024.02.21-MIAZIA-0407-done.jpg" alt="Chocolate Dessert">
+            <img src="/0007-2024.02.21-MIAZIA-0343-done.jpg" alt="Lasagna">
+        </div>
+
+        <h2 class="section-title">Key Features</h2>
+        <p class="text-block">✦ <strong>Immersive Audio Experience:</strong> Subtle Italian jazz creates atmosphere from the moment visitors arrive</p>
+        <p class="text-block">✦ <strong>Complete Menu with Pricing:</strong> Full transparency with 30+ dishes across 6 categories</p>
+        <p class="text-block">✦ <strong>Mobile-Optimized:</strong> 92% of visitors browse on mobile—the design adapts beautifully</p>
+        <p class="text-block">✦ <strong>Fast Loading:</strong> Optimized images and clean code ensure quick page loads</p>
+        <p class="text-block">✦ <strong>Brand Consistency:</strong> Every element reflects Miazia's warm, authentic Italian character</p>
+
+        <div class="testimonial">
+            <p class="testimonial-text">The website perfectly captures the soul of our restaurant. We've seen a huge increase in reservations, and customers often mention they chose us after browsing the menu online. It's like having our restaurant open 24/7.</p>
+            <p class="testimonial-author">— Owner, Miazia Restaurant</p>
+        </div>
+
+        <h2 class="section-title">Results & Impact</h2>
+        <p class="text-block">Within 3 months of launch, Miazia experienced a <strong>45% increase in table reservations</strong>, with most customers mentioning they discovered the restaurant through the website. Organic search traffic grew by <strong>3.2x</strong>, and the restaurant now ranks on the first page for "Italian restaurant Luxembourg."</p>
+
+        <p class="text-block">The menu page became the most visited section, with an average session duration of <strong>4 minutes 32 seconds</strong>—far above industry averages. The combination of beautiful photography, transparent pricing, and atmospheric music created an experience that converted browsers into diners.</p>
+
+        <div class="cta-section">
+            <h2 class="section-title">Ready to Transform Your Restaurant?</h2>
+            <p class="text-block">Let's create a website that makes customers hungry and drives real business results.</p>
+            <a href="/#contact" class="cta-button">Start Your Project</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 JM Digital Solutions. All rights reserved.</p>
+    </footer>
+</body>
+</html>

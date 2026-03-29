@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miazia - Italian Restaurant Luxembourg</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍝</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --burgundy: #6B0F1A;
+            --gold: #D4AF37;
+            --cream: #FFF8DC;
+            --dark: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                        url('CP0031_-scaled.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--cream);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .about {
+            background: var(--burgundy);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--cream);
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div>
+            <h1>Miazia</h1>
+            <p>Ristorante Italiano · Luxembourg</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title">Our Restaurant</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="CP0005_6051-scaled.jpg" alt="Miazia Dining Room">
+            </div>
+            <div class="gallery-item">
+                <img src="CP0017_6153-scaled.jpg" alt="Miazia Interior">
+            </div>
+            <div class="gallery-item">
+                <img src="CP0032_-scaled.jpg" alt="Miazia Wine Cabinet">
+            </div>
+            <div class="gallery-item">
+                <img src="CP0039_-scaled.jpg" alt="Miazia Atmosphere">
+            </div>
+        </div>
+
+        <h2 class="section-title">Our Cuisine</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="0001-2024.02.21-MIAZIA-0328-done.jpg" alt="Risotto">
+            </div>
+            <div class="gallery-item">
+                <img src="0007-2024.02.21-MIAZIA-0343-done.jpg" alt="Lasagna">
+            </div>
+            <div class="gallery-item">
+                <img src="0009-2024.02.21-MIAZIA-0345-done.jpg" alt="Pasta">
+            </div>
+            <div class="gallery-item">
+                <img src="0018-2024.02.21-MIAZIA-0375-done.jpg" alt="Pizza">
+            </div>
+            <div class="gallery-item">
+                <img src="0021-2024.02.21-MIAZIA-0407-done.jpg" alt="Dessert">
+            </div>
+            <div class="gallery-item">
+                <img src="CP0003_6046-scaled.jpg" alt="Restaurant Entrance">
+            </div>
+        </div>
+    </div>
+
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">About Miazia</h2>
+            <p>
+                Authentic Italian cuisine in the heart of Luxembourg. Experience traditional recipes,
+                premium ingredients, and a warm atmosphere that brings the essence of Italy to your table.
+                From handmade pasta to wood-fired pizza, every dish tells a story of passion and tradition.
+            </p>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miazia - Ristorante Italiano</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍝</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --burgundy: #6B0F1A;
+            --dark-burgundy: #4A0A12;
+            --gold: #D4AF37;
+            --cream: #FFF8DC;
+            --dark: #1a1a1a;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: #fff;
+            overflow-x: hidden;
+            cursor: none;
+        }
+        
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s ease;
+            mix-blend-mode: difference;
+        }
+        
+        .cursor-follower {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.3s ease;
+        }
+        
+        .cursor.hover {
+            transform: scale(2);
+            background: var(--gold);
+            opacity: 0.3;
+        }
+        
+        /* Hero Section with Parallax */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background: linear-gradient(135deg, var(--dark-burgundy), var(--burgundy));
+            transition: transform 0.3s ease;
+        }
+        
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+            background: var(--burgundy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px dashed rgba(212, 175, 55, 0.3);
+        }
+        
+        .hero-image-text {
+            background: rgba(212, 175, 55, 0.2);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 400px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent, rgba(0,0,0,0.6));
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px;
+            max-width: 1200px;
+        }
+        
+        .hero-label {
+            font-size: 0.85rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 9rem;
+            font-weight: 900;
+            letter-spacing: 20px;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+            background: linear-gradient(to right, #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--cream);
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.7s forwards;
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            padding: 20px 60px;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.9s forwards;
+        }
+        
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+        
+        .hero-cta:hover {
+            color: var(--dark);
+        }
+        
+        .hero-cta:hover::before {
+            left: 0;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: var(--gold);
+            opacity: 0;
+            animation: fadeInUp 1s ease 1.1s forwards, bounce 2s ease 2s infinite;
+        }
+        
+        /* Section Base */
+        section {
+            padding: 150px 60px;
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+        
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+        
+        .section-description {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.6);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        /* About Section */
+        .about {
+            background: var(--dark);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .about-text p {
+            margin-bottom: 30px;
+        }
+        
+        .about-image {
+            height: 600px;
+            background: var(--burgundy);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .about-image .image-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed rgba(212, 175, 55, 0.3);
+        }
+        
+        .about-image .image-placeholder-text {
+            background: rgba(0,0,0,0.5);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        /* Featured Dishes with Tilt Effect */
+        .featured {
+            background: linear-gradient(to bottom, var(--dark), #0a0a0a);
+        }
+        
+        .dishes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .dish-card {
+            position: relative;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .dish-card-inner {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+        
+        .dish-card:hover .dish-card-inner {
+            background: rgba(255,255,255,0.05);
+            border-color: var(--gold);
+            transform: translateY(-20px);
+        }
+        
+        .dish-image {
+            height: 350px;
+            background: var(--burgundy);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dish-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+        }
+        
+        .dish-card:hover .dish-image::before {
+            left: 100%;
+        }
+        
+        .dish-image .image-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .dish-image .image-placeholder-text {
+            background: rgba(0,0,0,0.6);
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+        
+        .dish-content {
+            padding: 40px;
+        }
+        
+        .dish-badge {
+            display: inline-block;
+            padding: 6px 15px;
+            background: var(--gold);
+            color: var(--dark);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .dish-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .dish-description {
+            color: rgba(255,255,255,0.6);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        .dish-price {
+            font-size: 2rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+        
+        /* Menu Grid with Magnetic Effect */
+        .menu {
+            background: var(--dark);
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .menu-category {
+            background: rgba(255,255,255,0.02);
+            padding: 60px 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .menu-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--burgundy), var(--gold));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .menu-category:hover::before {
+            opacity: 0.1;
+        }
+        
+        .menu-category:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+        }
+        
+        .menu-icon {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            transition: transform 0.4s ease;
+        }
+        
+        .menu-category:hover .menu-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        .menu-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Gallery with Reveal Effect */
+        .gallery {
+            background: #0a0a0a;
+            padding: 150px 0;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            max-width: 100%;
+        }
+        
+        .gallery-item {
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            z-index: 2;
+            transform: scaleX(1);
+            transform-origin: left;
+            transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        
+        .gallery-item.revealed::before {
+            transform: scaleX(0);
+            transform-origin: right;
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+            background: var(--burgundy);
+            transition: transform 0.6s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .gallery-item:hover .gallery-image {
+            transform: scale(1.1);
+        }
+        
+        .gallery-image .image-placeholder-text {
+            background: rgba(0,0,0,0.7);
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 3;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-label {
+            color: var(--gold);
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        /* Contact */
+        .contact {
+            background: linear-gradient(135deg, var(--dark-burgundy), var(--dark));
+            text-align: center;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            max-width: 1200px;
+            margin: 60px auto 0;
+        }
+        
+        .contact-item {
+            background: rgba(255,255,255,0.03);
+            padding: 60px 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            transition: all 0.4s ease;
+        }
+        
+        .contact-item:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: var(--gold);
+            transform: translateY(-10px);
+        }
+        
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            color: var(--gold);
+        }
+        
+        .contact-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-item p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 60px 40px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        footer p {
+            color: rgba(255,255,255,0.4);
+            margin: 10px 0;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 6rem;
+                letter-spacing: 10px;
+            }
+            
+            .dishes-grid,
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                cursor: auto;
+            }
+            
+            .cursor,
+            .cursor-follower {
+                display: none;
+            }
+            
+            section {
+                padding: 80px 30px;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+                letter-spacing: 5px;
+            }
+            
+            .section-title {
+                font-size: 3rem;
+            }
+            
+            .dishes-grid,
+            .menu-grid,
+            .gallery-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
+    <!-- Hero with Parallax -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-image">
+            <div class="hero-image-text">
+                📸 HERO IMAGE:<br>
+                Wood-fired pizza oven with flames<br>
+                OR Fresh pasta being made<br>
+                OR Italian ingredients spread<br>
+                1920x1080px, high quality
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <p class="hero-label">Autentico Ristorante Italiano</p>
+            <h1>MIAZIA</h1>
+            <p class="hero-subtitle">La Dolce Vita in Luxembourg</p>
+            <a href="#featured" class="hero-cta">Découvrir</a>
+        </div>
+        
+        <div class="scroll-indicator">SCROLL ↓</div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about">
+        <div class="section-header">
+            <p class="section-label">La Nostra Storia</p>
+            <h2 class="section-title">Benvenuti</h2>
+            <p class="section-description">
+                Une tradition italienne authentique, des saveurs qui racontent notre histoire
+            </p>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    Chez Miazia, chaque plat est une célébration de la tradition culinaire italienne. 
+                    Nos recettes sont transmises de génération en génération, préparées avec passion 
+                    et les meilleurs ingrédients importés directement d'Italie.
+                </p>
+                <p>
+                    De nos pâtes fraîches faites maison à nos pizzas cuites au feu de bois, 
+                    nous vous invitons à découvrir la vraie cuisine italienne - celle des nonnas, 
+                    des trattorias familiales et des tables dominicales.
+                </p>
+            </div>
+            
+            <div class="about-image" data-tilt>
+                <div class="image-placeholder">
+                    <div class="image-placeholder-text">
+                        📸 ABOUT IMAGE:<br>
+                        Restaurant interior<br>
+                        Warm, rustic dining area<br>
+                        OR Chef preparing food<br>
+                        800x600px
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Dishes -->
+    <section class="featured" id="featured">
+        <div class="section-header">
+            <p class="section-label">Specialità della Casa</p>
+            <h2 class="section-title">Nos Signatures</h2>
+            <p class="section-description">
+                Des plats qui définissent notre cuisine, préparés avec amour et authenticité
+            </p>
+        </div>
+        
+        <div class="dishes-grid">
+            <div class="dish-card" data-tilt>
+                <div class="dish-card-inner">
+                    <div class="dish-image">
+                        <div class="image-placeholder">
+                            <div class="image-placeholder-text">
+                                📸 DISH 1:<br>
+                                Spaghetti Carbonara<br>
+                                Creamy, close-up shot<br>
+                                800x600px
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dish-content">
+                        <span class="dish-badge">Populaire</span>
+                        <h3 class="dish-title">Carbonara</h3>
+                        <p class="dish-description">
+                            Guanciale croustillant, pecorino DOP, jaune d'œuf, poivre noir
+                        </p>
+                        <p class="dish-price">22€</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dish-card" data-tilt>
+                <div class="dish-card-inner">
+                    <div class="dish-image">
+                        <div class="image-placeholder">
+                            <div class="image-placeholder-text">
+                                📸 DISH 2:<br>
+                                Pizza with prosciutto<br>
+                                Wood-fired, artisan shot<br>
+                                800x600px
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dish-content">
+                        <span class="dish-badge">Chef's Choice</span>
+                        <h3 class="dish-title">Prosciutto Crudo</h3>
+                        <p class="dish-description">
+                            Mozzarella di bufala, jambon de Parme 18 mois, roquette
+                        </p>
+                        <p class="dish-price">19.90€</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dish-card" data-tilt>
+                <div class="dish-card-inner">
+                    <div class="dish-image">
+                        <div class="image-placeholder">
+                            <div class="image-placeholder-text">
+                                📸 DISH 3:<br>
+                                Tagliata di Filetto<br>
+                                Sliced beef, elegant plating<br>
+                                800x600px
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dish-content">
+                        <span class="dish-badge">Signature</span>
+                        <h3 class="dish-title">Tagliata</h3>
+                        <p class="dish-description">
+                            Filet de bœuf grillé, roquette, parmesan, balsamique
+                        </p>
+                        <p class="dish-price">35.80€</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Menu Categories -->
+    <section class="menu">
+        <div class="section-header">
+            <p class="section-label">Il Nostro Menù</p>
+            <h2 class="section-title">Notre Carte</h2>
+        </div>
+        
+        <div class="menu-grid">
+            <div class="menu-category">
+                <div class="menu-icon">🍝</div>
+                <h3 class="menu-title">Pasta</h3>
+            </div>
+            <div class="menu-category">
+                <div class="menu-icon">🍕</div>
+                <h3 class="menu-title">Pizze</h3>
+            </div>
+            <div class="menu-category">
+                <div class="menu-icon">🥩</div>
+                <h3 class="menu-title">Carne</h3>
+            </div>
+            <div class="menu-category">
+                <div class="menu-icon">🐟</div>
+                <h3 class="menu-title">Pesce</h3>
+            </div>
+            <div class="menu-category">
+                <div class="menu-icon">🥗</div>
+                <h3 class="menu-title">Insalate</h3>
+            </div>
+            <div class="menu-category">
+                <div class="menu-icon">🍰</div>
+                <h3 class="menu-title">Dolci</h3>
+            </div>
+            <div class="menu-category">
+                <div class="menu-icon">🍷</div>
+                <h3 class="menu-title">Vini</h3>
+            </div>
+            <div class="menu-category">
+                <div class="menu-icon">☕</div>
+                <h3 class="menu-title">Caffè</h3>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery with Reveal -->
+    <section class="gallery">
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <div class="image-placeholder-text">
+                        📸 ATMOSPHERE 1:<br>
+                        Dining area, candlelit<br>
+                        800x600px
+                    </div>
+                </div>
+                <div class="gallery-overlay">
+                    <span class="gallery-label">Atmosfera</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <div class="image-placeholder-text">
+                        📸 ATMOSPHERE 2:<br>
+                        Wine bottles/cellar<br>
+                        800x600px
+                    </div>
+                </div>
+                <div class="gallery-overlay">
+                    <span class="gallery-label">Vini</span>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image">
+                    <div class="image-placeholder-text">
+                        📸 ATMOSPHERE 3:<br>
+                        Kitchen/Chef at work<br>
+                        800x600px
+                    </div>
+                </div>
+                <div class="gallery-overlay">
+                    <span class="gallery-label">Cucina</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact -->
+    <section class="contact">
+        <div class="section-header">
+            <p class="section-label">Contattaci</p>
+            <h2 class="section-title">Venez Nous Voir</h2>
+        </div>
+        
+        <div class="contact-grid">
+            <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <h3>Adresse</h3>
+                <p>[Votre Adresse]<br>Luxembourg</p>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">📞</div>
+                <h3>Téléphone</h3>
+                <p>+352 XX XX XX XX</p>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">⏰</div>
+                <h3>Horaires</h3>
+                <p>Mar-Dim: 12h-14h30<br>18h-22h30</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p style="color: var(--gold); font-size: 1.2rem; margin-bottom: 20px;">Mangia bene, ridi spesso, ama molto</p>
+        <p>&copy; 2025 Miazia Ristorante Italiano</p>
+    </footer>
+    
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const follower = document.querySelector('.cursor-follower');
+        
+        let mouseX = 0, mouseY = 0;
+        let followerX = 0, followerY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            cursor.style.left = mouseX + 'px';
+            cursor.style.top = mouseY + 'px';
+        });
+        
+        function animateFollower() {
+            followerX += (mouseX - followerX) * 0.1;
+            followerY += (mouseY - followerY) * 0.1;
+            
+            follower.style.left = followerX + 'px';
+            follower.style.top = followerY + 'px';
+            
+            requestAnimationFrame(animateFollower);
+        }
+        animateFollower();
+        
+        // Cursor hover effect
+        const hoverElements = document.querySelectorAll('a, button, .dish-card, .menu-category, .gallery-item');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+        
+        // Parallax effect on hero
+        const hero = document.querySelector('.hero');
+        const heroBg = document.querySelector('.hero-bg');
+        
+        hero.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+            heroBg.style.transform = `translate(${x}px, ${y}px)`;
+        });
+        
+        // Tilt effect on cards
+        const tiltElements = document.querySelectorAll('[data-tilt]');
+        tiltElements.forEach(el => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            });
+        });
+        
+        // Scroll reveal for gallery
+        const observerOptions = {
+            threshold: 0.3
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            observer.observe(item);
+        });
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Parallax scroll effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.hero-content');
+            parallaxElements.forEach(el => {
+                el.style.transform = `translateY(${scrolled * 0.5}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

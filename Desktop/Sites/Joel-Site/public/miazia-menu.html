@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miazia - Menu & Prices</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍝</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --burgundy: #6B0F1A;
+            --gold: #D4AF37;
+            --cream: #FFF8DC;
+            --dark: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                        url('CP0031_-scaled.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--cream);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .menu-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+        }
+
+        .menu-item-image {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            background: #0a0a0a;
+        }
+
+        .menu-item-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-description {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .menu-item-price {
+            font-size: 1.3rem;
+            color: var(--cream);
+            font-weight: 600;
+        }
+
+        .info-banner {
+            background: var(--burgundy);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            border-radius: 12px;
+        }
+
+        .info-banner h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-banner p {
+            color: var(--cream);
+            font-size: 1.1rem;
+        }
+
+        /* Audio Control Button */
+        .audio-control {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--gold);
+            border: 2px solid var(--cream);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+        }
+
+        .audio-control:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(212, 175, 55, 0.6);
+        }
+
+        .audio-control svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--dark);
+        }
+
+        .audio-control.paused {
+            background: rgba(212, 175, 55, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Audio -->
+    <audio id="bgAudio" loop preload="auto">
+        <source src="/miazia-jazz.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Audio Control Button -->
+    <button class="audio-control" id="audioControl" aria-label="Toggle Music">
+        <svg id="playIcon" viewBox="0 0 24 24" style="display: none;">
+            <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg id="pauseIcon" viewBox="0 0 24 24">
+            <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+        </svg>
+    </button>
+
+    <section class="hero">
+        <div>
+            <h1>Menu</h1>
+            <p>Authentic Italian Cuisine</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Antipasti (Starters) -->
+        <div class="menu-section">
+            <h2 class="section-title">Antipasti</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="Gemini_Generated_Image_1iahw81iahw81iah.png" alt="Parma Ham" class="menu-item-image">
+                    <div class="menu-item-name">Planchette de Jambon de Parme</div>
+                    <p class="menu-item-description">Parma ham served with warm piadina bread</p>
+                    <div class="menu-item-price">€23.00</div>
+                </div>
+                <div class="menu-item">
+                    <img src="Gemini_Generated_Image_h4oo0jh4oo0jh4oo.png" alt="Bruschetta" class="menu-item-image">
+                    <div class="menu-item-name">Bruschetta Mista</div>
+                    <p class="menu-item-description">Toasted bread with fresh tomatoes, basil and garlic</p>
+                    <div class="menu-item-price">€12.50</div>
+                </div>
+                <div class="menu-item">
+                    <img src="Gemini_Generated_Image_nrrah8nrrah8nrra.png" alt="Carpaccio" class="menu-item-image">
+                    <div class="menu-item-name">Carpaccio di Manzo</div>
+                    <p class="menu-item-description">Thinly sliced beef with rocket and parmesan</p>
+                    <div class="menu-item-price">€18.50</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pasta Fresca -->
+        <div class="menu-section">
+            <h2 class="section-title">Pasta Fresca</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="0009-2024.02.21-MIAZIA-0345-done.jpg" alt="Pasta" class="menu-item-image">
+                    <div class="menu-item-name">Mezze Lune alla Norma</div>
+                    <p class="menu-item-description">Half-moon pasta with eggplant and smoked scamorza</p>
+                    <div class="menu-item-price">€22.80</div>
+                </div>
+                <div class="menu-item">
+                    <img src="Gemini_Generated_Image_vdiv5vdiv5vdiv5v.png" alt="Tagliatelle" class="menu-item-image">
+                    <div class="menu-item-name">Tagliatelle al Ragù</div>
+                    <p class="menu-item-description">Fresh tagliatelle with traditional Bolognese sauce</p>
+                    <div class="menu-item-price">€19.80</div>
+                </div>
+                <div class="menu-item">
+                    <img src="Gemini_Generated_Image_3ivw0p3ivw0p3ivw.png" alt="Spaghetti Vongole" class="menu-item-image">
+                    <div class="menu-item-name">Spaghetti alle Vongole</div>
+                    <p class="menu-item-description">Spaghetti with fresh clams, garlic and white wine</p>
+                    <div class="menu-item-price">€24.50</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pasta al Forno -->
+        <div class="menu-section">
+            <h2 class="section-title">Pasta al Forno</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="Gemini_Generated_Image_most2pmost2pmost.png" alt="Lasagna" class="menu-item-image">
+                    <div class="menu-item-name">Lasagna della Zia</div>
+                    <p class="menu-item-description">Traditional homemade lasagna with meat sauce</p>
+                    <div class="menu-item-price">€19.50</div>
+                </div>
+                <div class="menu-item">
+                    <img src="Gemini_Generated_Image_acq1vgacq1vgacq1.png" alt="Gnocchi" class="menu-item-image">
+                    <div class="menu-item-name">Gnocchi Sorrentina</div>
+                    <p class="menu-item-description">Potato gnocchi with tomato sauce, mozzarella and basil</p>
+                    <div class="menu-item-price">€19.60</div>
+                </div>
+                <div class="menu-item">
+                    <img src="Gemini_Generated_Image_beaulpbeaulpbeau.png" alt="Cannelloni" class="menu-item-image">
+                    <div class="menu-item-name">Cannelloni di Carne</div>
+                    <p class="menu-item-description">Cannelloni filled with meat and béchamel sauce</p>
+                    <div class="menu-item-price">€19.20</div>
+                </div>
+                <div class="menu-item">
+                    <img src="Gemini_Generated_Image_wh3rpcwh3rpcwh3r.png" alt="Parmigiana" class="menu-item-image">
+                    <div class="menu-item-name">Parmigiana Miazia</div>
+                    <p class="menu-item-description">Eggplant lasagna with tomato, mozzarella and parmesan</p>
+                    <div class="menu-item-price">€21.80</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Risotti -->
+        <div class="menu-section">
+            <h2 class="section-title">Risotti</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="0001-2024.02.21-MIAZIA-0328-done.jpg" alt="Risotto" class="menu-item-image">
+                    <div class="menu-item-name">Risotto ai Funghi</div>
+                    <p class="menu-item-description">Creamy mushroom risotto with porcini</p>
+                    <div class="menu-item-price">€19.20</div>
+                </div>
+                <div class="menu-item">
+                    <img src="Gemini_Generated_Image_h4oo0jh4oo0jh4oo.png" alt="Risotto Gamberi" class="menu-item-image">
+                    <div class="menu-item-name">Risotto ai Gamberi</div>
+                    <p class="menu-item-description">Risotto with fresh scampi and cherry tomatoes</p>
+                    <div class="menu-item-price">€21.20</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pizza -->
+        <div class="menu-section">
+            <h2 class="section-title">Pizza</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="0018-2024.02.21-MIAZIA-0375-done.jpg" alt="Pizza" class="menu-item-image">
+                    <div class="menu-item-name">Pizza Margherita</div>
+                    <p class="menu-item-description">Classic tomato, mozzarella and fresh basil</p>
+                    <div class="menu-item-price">€13.50</div>
+                </div>
+                <div class="menu-item">
+                    <img src="0007-2024.02.21-MIAZIA-0343-done.jpg" alt="Pizza Bismack" class="menu-item-image">
+                    <div class="menu-item-name">Pizza Bismack</div>
+                    <p class="menu-item-description">Tomato, mozzarella, ham and egg</p>
+                    <div class="menu-item-price">€15.50</div>
+                </div>
+                <div class="menu-item">
+                    <img src="Gemini_Generated_Image_c1f57tc1f57tc1f5.png" alt="Pizza Goat Cheese" class="menu-item-image">
+                    <div class="menu-item-name">Pizza al Formaggio di Capra</div>
+                    <p class="menu-item-description">Tomato, mozzarella, goat cheese, honey and walnuts</p>
+                    <div class="menu-item-price">€16.90</div>
+                </div>
+                <div class="menu-item">
+                    <img src="Gemini_Generated_Image_ojm6ryojm6ryojm6.png" alt="Pizza Prosciutto Funghi" class="menu-item-image">
+                    <div class="menu-item-name">Pizza Prosciutto e Funghi</div>
+                    <p class="menu-item-description">Tomato, mozzarella, ham and mushrooms</p>
+                    <div class="menu-item-price">€15.80</div>
+                </div>
+                <div class="menu-item">
+                    <img src="Gemini_Generated_Image_ecjbulecjbulecjb.png" alt="Pizza Quattro Formaggi" class="menu-item-image">
+                    <div class="menu-item-name">Pizza Quattro Formaggi</div>
+                    <p class="menu-item-description">Four cheese pizza: mozzarella, gorgonzola, parmesan, goat cheese</p>
+                    <div class="menu-item-price">€17.50</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dolci -->
+        <div class="menu-section">
+            <h2 class="section-title">Dolci</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="0021-2024.02.21-MIAZIA-0407-done.jpg" alt="Dessert" class="menu-item-image">
+                    <div class="menu-item-name">Fondant al Cioccolato</div>
+                    <p class="menu-item-description">Warm chocolate fondant with vanilla ice cream</p>
+                    <div class="menu-item-price">€9.50</div>
+                </div>
+                <div class="menu-item">
+                    <img src="Gemini_Generated_Image_7qkq267qkq267qkq.png" alt="Tiramisu" class="menu-item-image">
+                    <div class="menu-item-name">Tiramisù della Casa</div>
+                    <p class="menu-item-description">Classic Italian tiramisu made fresh daily</p>
+                    <div class="menu-item-price">€8.90</div>
+                </div>
+                <div class="menu-item">
+                    <img src="Gemini_Generated_Image_5pw2ld5pw2ld5pw2.png" alt="Panna Cotta" class="menu-item-image">
+                    <div class="menu-item-name">Panna Cotta</div>
+                    <p class="menu-item-description">Creamy Italian dessert with berry coulis</p>
+                    <div class="menu-item-price">€8.50</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-banner">
+            <h3>Visit Us</h3>
+            <p>24, rue des Alliés<br>Belvaux, Luxembourg</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Prices may vary. Please check miazia.lu for current menu.</p>
+        </div>
+    </div>
+
+    <script>
+        const audio = document.getElementById('bgAudio');
+        const audioControl = document.getElementById('audioControl');
+        const playIcon = document.getElementById('playIcon');
+        const pauseIcon = document.getElementById('pauseIcon');
+
+        // Set volume
+        audio.volume = 0.5;
+
+        // Track if we've tried autoplay
+        let autoplayAttempted = false;
+
+        // Update button to match audio state
+        function updateButton() {
+            if (!audio.paused) {
+                // Music is playing
+                audioControl.classList.remove('paused');
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+            } else {
+                // Music is paused
+                audioControl.classList.add('paused');
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            }
+        }
+
+        // Try to start music
+        function startMusic() {
+            if (autoplayAttempted) return;
+            autoplayAttempted = true;
+
+            audio.play()
+                .then(() => {
+                    console.log('Music started automatically!');
+                    updateButton();
+                })
+                .catch(err => {
+                    console.log('Autoplay blocked. Will start on user interaction.');
+                    updateButton();
+                });
+        }
+
+        // Start music immediately when page loads
+        setTimeout(startMusic, 100);
+
+        // Also try on first interaction
+        ['click', 'touchstart', 'scroll', 'mousemove', 'keydown'].forEach(event => {
+            document.addEventListener(event, () => {
+                if (audio.paused && autoplayAttempted) {
+                    audio.play().then(() => updateButton());
+                }
+            }, { once: true });
+        });
+
+        // Update button when audio state changes
+        audio.addEventListener('play', updateButton);
+        audio.addEventListener('pause', updateButton);
+
+        // Set initial button state
+        updateButton();
+
+        // Button click handler
+        audioControl.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+            // Button will update automatically via event listeners
+        });
+    </script>
+</body>
+</html>
